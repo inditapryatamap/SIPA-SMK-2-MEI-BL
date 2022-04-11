@@ -1,0 +1,38 @@
+.radius-10 {
+    border-radius: 10px;
+}
+
+.text-black {
+    color: black !important;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.label-input {
+    font-weight: 400;
+    color: black !important;
+}
+
+.btn-info {
+    background: #00A7FF !important;
+}
+
+.btn {
+    padding: 10px 30px;
+    border-radius: 15px;
+}
+
+.centered-radio-cs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.text-highlight {
+    font-weight: 400;
+    color: #5d78ff;
+}

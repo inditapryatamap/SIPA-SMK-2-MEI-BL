@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             PerusahaanSeeder::class,
             ReviewPertanyaanSeeder::class,
+            JenisSuratSeeder::class,
         ]);
     }
 }

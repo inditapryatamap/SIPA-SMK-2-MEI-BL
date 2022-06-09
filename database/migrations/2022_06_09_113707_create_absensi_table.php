@@ -13,17 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pengajuan_magang_pkl', function (Blueprint $table) {
+        Schema::create('absensi', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_siswa');
-            $table->enum('jenis_kegiatan', ['pkl', 'magang']);
-            $table->unsignedBigInteger('id_perusahaan');
-            $table->string('nama_pembimbing')->nullable();
-            $table->enum('status', ['diproses', 'diverifikasi', 'ditolak'])->comment('diproses', 'diverifikasi', 'ditolak');
+            $table->unsignedBigInteger('id_magang_pkl');
+            $table->date('tanggal');
+            $table->enum('absensi', ['h', 'i', 's', 'a'])->comment('h: hadir, i: izin, s: sakit, a: tanpa keterangan');
+            $table->enum('status', [0, 1, 2])->comment('0: belum di validasi, 1: divalidasi, 2: tidak divalidasi');
             $table->timestamps();
 
             $table->foreign('id_siswa')->references('id')->on('siswa');
-            $table->foreign('id_perusahaan')->references('id')->on('perusahaan');
+            $table->foreign('id_magang_pkl')->references('id')->on('pengajuan_magang_pkl');
         });
     }
 
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pengajuan_magang_pkl');
+        Schema::dropIfExists('absensi');
     }
 };

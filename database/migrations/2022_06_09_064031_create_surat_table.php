@@ -13,17 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pengajuan_magang_pkl', function (Blueprint $table) {
+        Schema::create('surat', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_siswa');
-            $table->enum('jenis_kegiatan', ['pkl', 'magang']);
+            $table->unsignedBigInteger('id_jenis_surat');
             $table->unsignedBigInteger('id_perusahaan');
-            $table->string('nama_pembimbing')->nullable();
-            $table->enum('status', ['diproses', 'diverifikasi', 'ditolak'])->comment('diproses', 'diverifikasi', 'ditolak');
+            $table->enum('status', ['diproses', 'diverifikasi', 'ditolak']);
+            $table->text('file')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
             $table->timestamps();
 
             $table->foreign('id_siswa')->references('id')->on('siswa');
+            $table->foreign('id_jenis_surat')->references('id')->on('jenis_surat');
             $table->foreign('id_perusahaan')->references('id')->on('perusahaan');
+            $table->foreign('created_by')->references('id')->on('admin');
         });
     }
 
@@ -34,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pengajuan_magang_pkl');
+        Schema::dropIfExists('surat');
     }
 };

@@ -11,7 +11,7 @@
     <div class="container mt-5">
         <form method="POST" action="{{ route('siswalogin') }}">
             @csrf
-            @include('siswa.frame.flash')
+            @include('flash')
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Email address</label>
                 <input type="text" name="nis" class="form-control">

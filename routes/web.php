@@ -38,6 +38,25 @@ Route::prefix('siswa')->group(function () {
         Route::post('go_create_perusahaan', [Siswa\PengajuanController::class, 'go_create_perusahaan'])->name('go_create_perusahaan');
     });
 
+    Route::prefix('surat')->group(function () {
+        Route::get('list', [Siswa\SuratController::class, 'index'])->name('surat.list');
+        Route::get('create', [Siswa\SuratController::class, 'create'])->name('surat.create');
+        Route::post('go_create_surat', [Siswa\SuratController::class, 'go_create_surat'])->name('surat.go_create_surat');
+    });
+
+    Route::prefix('riwayat-kegiatan')->group(function () {
+        Route::prefix('jurnal-harian')->group(function () {
+            Route::get('list', [Siswa\JurnalHarianController::class, 'index'])->name('riwayat.jurnal.list');
+            Route::post('create', [Siswa\JurnalHarianController::class, 'go_create'])->name('riwayat.jurnal.go_create');
+        });
+
+        Route::prefix('absensi')->group(function () {
+            Route::get('list', [Siswa\AbsensiController::class, 'index'])->name('riwayat.absensi.list');
+            Route::post('create', [Siswa\AbsensiController::class, 'go_create'])->name('riwayat.absensi.go_create');
+        });
+
+    });
+
     Route::get('buat_surat', [Siswa\SuratController::class, 'index'])->name('buat_surat');
     Route::get('unggah_dokumen', [Siswa\DokumenController::class, 'index'])->name('unggah_dokumen');
     Route::post('go_create_dokumen_review', [Siswa\DokumenController::class, 'go_create_dokumen_review'])->name('go_create_dokumen_review');

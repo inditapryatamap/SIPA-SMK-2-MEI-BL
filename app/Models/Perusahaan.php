@@ -12,6 +12,6 @@ class Perusahaan extends Model
     protected $table = 'perusahaan';
 
     protected $fillable = [
-        'nama_perusahaan', 'profile_perusahaan', 'alamat_perusahaan', 'no_telp','deskripsi_pekerjaan','created_by'
+        'id_pembimbing_lapang', 'nama_perusahaan', 'profile_perusahaan', 'alamat_perusahaan', 'no_telp','deskripsi_pekerjaan','created_by'
     ];
 }

@@ -10,7 +10,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        dd(Auth::guard('admin')->user());
-        return view('siswa.pages.dashboard');
+        // dd(Auth::guard('admin')->user());
+        return view('admin.pages.dashboard');
     }
 }

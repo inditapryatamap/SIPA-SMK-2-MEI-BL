@@ -34,5 +34,24 @@
 
 .text-highlight {
     font-weight: 400;
-    color: #5d78ff;
+    color: #0E961C;
+}
+
+.kt-header {
+    background: #0E961C !important;
+    border-bottom: 1px solid #eff0f6;
+}
+
+.container-detail-pekerjaan {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.ctm-footer-detail {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }

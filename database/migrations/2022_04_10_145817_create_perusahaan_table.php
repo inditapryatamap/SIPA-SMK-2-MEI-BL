@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('perusahaan', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_pembimbing_lapang');
             $table->string('nama_perusahaan');
             $table->string('profile_perusahaan');
             $table->text('alamat_perusahaan');
@@ -23,6 +24,7 @@ return new class extends Migration
             $table->unsignedBigInteger('created_by');
             $table->timestamps();
 
+            $table->foreign('id_pembimbing_lapang')->references('id')->on('pembimbing_lapang');
             $table->foreign('created_by')->references('id')->on('siswa');
         });
     }

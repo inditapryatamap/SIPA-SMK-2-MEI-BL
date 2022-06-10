@@ -23,10 +23,20 @@ class LoginController extends Controller
 
     public function index()
     {
-        return view('login');
+        return view('landing');
     }
 
-    public function postLogin(Request $request)
+    public function loginAdmin()
+    {
+        return view('admin.login');
+    }
+
+    public function loginSiswa()
+    {
+        return view('siswa.login');
+    }
+
+    public function goLoginAdmin(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'nis' => ['required', 'string', 'max:100', 'min:6'],
@@ -37,19 +47,7 @@ class LoginController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        if (Siswa::where('nis', $request->nis)->count() > 0) {
-            if (Auth::guard('siswa')->attempt($request->only('nis', 'password'))) {
-                $request->session()->regenerate();
-                // $this->clearLoginAttempts($request);
-                return redirect()->route('siswa.dashboard');
-            } else {
-                $this->incrementLoginAttempts($request);
-                return redirect()
-                    ->back()
-                    ->withInput()
-                    ->withErrors(["Incorrect user login details!"]);
-            }
-        } else if (Admin::where('nis', $request->nis)->count() > 0 ) {
+        if (Admin::where('nis', $request->nis)->count() > 0 ) {
             if (Auth::guard('admin')->attempt($request->only('nis', 'password'))) {
                 $request->session()->regenerate();
                 // $this->clearLoginAttempts($request);
@@ -66,12 +64,44 @@ class LoginController extends Controller
         }
     }
 
+    public function goLoginSiswa(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'nis' => ['required', 'string', 'max:100', 'min:6'],
+            'password' => ['required', 'string', 'max:255', 'min:6'],
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        if (Siswa::where('nis', $request->nis)->count() > 0) {
+            if (Auth::guard('siswa')->attempt($request->only('nis', 'password'))) {
+                $request->session()->regenerate();
+                return redirect()->route('siswa.dashboard');
+            } else {
+                $this->incrementLoginAttempts($request);
+                return redirect()
+                    ->back()
+                    ->withInput()
+                    ->withErrors(["Incorrect user login details!"]);
+            }
+        } else {
+            return redirect()->back()->withErrors('User tidak ditemukan')->withInput();
+        }
+    }
+
     public function postLogout()
     {
-        auth()->guard('siswa')->logout();
-        session()->flush();
+        if (Auth::guard('admin')->check()) {
+            Auth::guard('admin')->logout();
+        }else if (Auth::guard('siswa')->check()) {
+            Auth::guard('siswa')->logout();
+        } else {
+            Auth::guard()->logout();
+        }
 
-        return redirect()->route('siswa.login');
+        return redirect('/');
     }
     
 }

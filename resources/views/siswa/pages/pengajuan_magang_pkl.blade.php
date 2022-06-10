@@ -1,7 +1,7 @@
 @include('siswa.frame.header')
 <div class="row">
     <div class="col-lg-12">
-        @include('siswa.frame.flash')
+        @include('flash')
     </div>
     <div class="col-lg-12 mb-3">
         <div class="card radius-10">

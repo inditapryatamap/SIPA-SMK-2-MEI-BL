@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col-lg-12 mb-4">
-        @include('siswa.frame.flash')
+        @include('flash')
     </div>
     <div class="col-md-12 mb-4">
         <div class="card radius-10">

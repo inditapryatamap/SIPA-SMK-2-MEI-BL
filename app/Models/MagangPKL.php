@@ -12,6 +12,6 @@ class MagangPKL extends Model
     protected $table = 'pengajuan_magang_pkl';
 
     protected $fillable = [
-        'id_siswa', 'jenis_kegiatan', 'id_jurusan', 'id_perusahaan','nama_pembimbing','status'
+        'id_guru_pembimbing', 'id_siswa', 'jenis_kegiatan', 'id_jurusan', 'id_perusahaan','nama_pembimbing','status'
     ];
 }

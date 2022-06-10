@@ -17,6 +17,7 @@ class PerusahaanSeeder extends Seeder
     public function run()
     {
         $perusahaan = new Perusahaan();
+        $perusahaan->id_pembimbing_lapang = 1;
         $perusahaan->nama_perusahaan = 'PT Microdata Indonesia';
         $perusahaan->profile_perusahaan = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s';
         $perusahaan->alamat_perusahaan = 'Pasaraya Blok M Gedung B Lt. 6. Jalan Iskandarsyah II No.';

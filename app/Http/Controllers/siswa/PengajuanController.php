@@ -5,6 +5,7 @@ namespace App\Http\Controllers\siswa;
 use App\Http\Controllers\Controller;
 use App\Models\Jurusan;
 use App\Models\MagangPKL;
+use App\Models\PembimbingLapang;
 use App\Models\Perusahaan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,7 @@ class PengajuanController extends Controller
         $data['perusahaan'] = Perusahaan::select('id', 'nama_perusahaan')->get();
         $data['magang_pkl'] = MagangPKL::where('id_siswa', Auth::guard('siswa')->user()->id)
         ->join('perusahaan', 'perusahaan.id', 'pengajuan_magang_pkl.id_perusahaan')
-        ->select('pengajuan_magang_pkl.id', 'pengajuan_magang_pkl.jenis_kegiatan', 'pengajuan_magang_pkl.nama_pembimbing', 'pengajuan_magang_pkl.status', 'perusahaan.nama_perusahaan')->get();
+        ->select('pengajuan_magang_pkl.id', 'pengajuan_magang_pkl.jenis_kegiatan', 'pengajuan_magang_pkl.id_guru_pembimbing', 'pengajuan_magang_pkl.status', 'perusahaan.nama_perusahaan')->get();
         return view('siswa.pages.pengajuan_magang_pkl', compact('data'));
     }
 
@@ -38,7 +39,6 @@ class PengajuanController extends Controller
             'id_siswa' => Auth::guard('siswa')->user()->id,
             'jenis_kegiatan' => $request->jenis_kegiatan,
             'id_perusahaan' => $request->id_perusahaan,
-            'nama_pembimbing' => 'Belum Ditentukan',
             'status' => 'diproses',
         ]);
         
@@ -64,13 +64,23 @@ class PengajuanController extends Controller
             'alamat_perusahaan' => ['required', 'string', 'max:100', 'min:6'],
             'no_telp' => ['required', 'string', 'max:20', 'min:6'],
             'deskripsi_pekerjaan' => ['required', 'string'],
+            'nama_pembimbing_lapang' => ['required', 'string'],
+            'email_pembimbing_lapang' => ['required', 'string'],
         ]);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
+        $id_pembimbing_lapang = PembimbingLapang::create([
+            'email' => $request->email_pembimbing_lapang,
+            'nama' => $request->nama_pembimbing_lapang,
+            'no_telpon' => $request->no_telp,
+            'password' => bcrypt('12345678')
+        ])->id;
+
         $query = Perusahaan::create([
+            'id_pembimbing_lapang' => $id_pembimbing_lapang,
             'nama_perusahaan' => $request->nama_perusahaan,
             'profile_perusahaan' => $request->profile_perusahaan,
             'alamat_perusahaan' => $request->alamat_perusahaan,

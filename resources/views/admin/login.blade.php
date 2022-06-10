@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container mt-5">
-        <form method="POST" action="{{ route('siswalogin') }}">
+        <form method="POST" action="{{ route('admin.go_login') }}">
             @csrf
             @include('flash')
             <div class="mb-3">

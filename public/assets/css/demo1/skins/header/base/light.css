@@ -1,6 +1,6 @@
 @media (min-width: 1025px) {
   .kt-header {
-    background-color: #ffffff;
+    background-color: #0E961C;
     border-bottom: 1px solid #eff0f6; }
     .kt-header--fixed:not(.kt-subheader--fixed) .kt-header {
       border-bottom: 0;
@@ -9,20 +9,20 @@
     .kt-header .kt-header-menu .kt-menu__nav > .kt-menu__item > .kt-menu__link {
       border-radius: 4px !important; }
       .kt-header .kt-header-menu .kt-menu__nav > .kt-menu__item > .kt-menu__link .kt-menu__link-text {
-        color: #6c7293;
+        color: #FFF;
         font-weight: 500; }
       .kt-header .kt-header-menu .kt-menu__nav > .kt-menu__item > .kt-menu__link .kt-menu__hor-arrow {
         color: #c8cde8; }
       .kt-header .kt-header-menu .kt-menu__nav > .kt-menu__item > .kt-menu__link .kt-menu__hor-icon {
         color: #c8cde8; }
     .kt-header .kt-header-menu .kt-menu__nav > .kt-menu__item.kt-menu__item--here > .kt-menu__link, .kt-header .kt-header-menu .kt-menu__nav > .kt-menu__item.kt-menu__item--active > .kt-menu__link, .kt-header .kt-header-menu .kt-menu__nav > .kt-menu__item:hover > .kt-menu__link {
-      background-color: rgba(77, 89, 149, 0.06); }
+      background-color: #FFF; }
       .kt-header .kt-header-menu .kt-menu__nav > .kt-menu__item.kt-menu__item--here > .kt-menu__link .kt-menu__link-text, .kt-header .kt-header-menu .kt-menu__nav > .kt-menu__item.kt-menu__item--active > .kt-menu__link .kt-menu__link-text, .kt-header .kt-header-menu .kt-menu__nav > .kt-menu__item:hover > .kt-menu__link .kt-menu__link-text {
-        color: #5d78ff; }
+        color: #0E961C; }
       .kt-header .kt-header-menu .kt-menu__nav > .kt-menu__item.kt-menu__item--here > .kt-menu__link .kt-menu__hor-arrow, .kt-header .kt-header-menu .kt-menu__nav > .kt-menu__item.kt-menu__item--active > .kt-menu__link .kt-menu__hor-arrow, .kt-header .kt-header-menu .kt-menu__nav > .kt-menu__item:hover > .kt-menu__link .kt-menu__hor-arrow {
-        color: #5d78ff; }
+        color: #FFF; }
       .kt-header .kt-header-menu .kt-menu__nav > .kt-menu__item.kt-menu__item--here > .kt-menu__link .kt-menu__hor-icon, .kt-header .kt-header-menu .kt-menu__nav > .kt-menu__item.kt-menu__item--active > .kt-menu__link .kt-menu__hor-icon, .kt-header .kt-header-menu .kt-menu__nav > .kt-menu__item:hover > .kt-menu__link .kt-menu__hor-icon {
-        color: #5d78ff; } }
+        color: #FFF; } }
 
 .kt-aside-secondary--enabled .kt-header .kt-header__topbar {
   padding-right: 0; }
@@ -33,17 +33,17 @@
   color: #c8cad5; }
 
 .kt-header .kt-header__topbar .kt-header__topbar-item .kt-header__topbar-icon svg g [fill] {
-  fill: #5d78ff; }
+  fill: #0E961C; }
 
 .kt-header .kt-header__topbar .kt-header__topbar-item.kt-header__topbar-item--user .kt-header__topbar-user .kt-header__topbar-welcome {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  color: #959cb6; }
+  color: #dbdbdb; }
 
 .kt-header .kt-header__topbar .kt-header__topbar-item.kt-header__topbar-item--user .kt-header__topbar-user .kt-header__topbar-username {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  color: #6c7293; }
+  color: #fff; }
 
 .kt-header .kt-header__topbar .kt-header__topbar-item.kt-header__topbar-item--user .kt-header__topbar-user .kt-badge.kt-badge--username {
   height: 35px;
@@ -61,7 +61,7 @@
   .kt-header .kt-header__topbar .kt-header__topbar-item:hover .kt-header__topbar-icon i, .kt-header .kt-header__topbar .kt-header__topbar-item.show .kt-header__topbar-icon i {
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
-    color: #5d78ff; }
+    color: #0E961C; }
 
 .kt-header .kt-header__topbar .kt-header__topbar-item:hover.kt-header__topbar-item--user .kt-header__topbar-user, .kt-header .kt-header__topbar .kt-header__topbar-item.show.kt-header__topbar-item--user .kt-header__topbar-user {
   -webkit-transition: all 0.3s;
@@ -71,7 +71,7 @@
 .kt-aside-secondary--enabled .kt-header .kt-header__topbar .kt-header__topbar-item:hover.kt-header__topbar-item--quick-panel, .kt-aside-secondary--enabled .kt-header .kt-header__topbar .kt-header__topbar-item.show.kt-header__topbar-item--quick-panel {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  background-color: #5d78ff; }
+  background-color: #0E961C; }
   .kt-aside-secondary--enabled .kt-header .kt-header__topbar .kt-header__topbar-item:hover.kt-header__topbar-item--quick-panel .kt-header__topbar-icon, .kt-aside-secondary--enabled .kt-header .kt-header__topbar .kt-header__topbar-item.show.kt-header__topbar-item--quick-panel .kt-header__topbar-icon {
     -webkit-transition: all 0.3s;
     transition: all 0.3s;

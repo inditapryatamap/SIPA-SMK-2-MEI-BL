@@ -3,8 +3,8 @@
 <head>
     <base href="../">
     <meta charset="utf-8" />
-    <title>Metronic | Dashboard</title>
-    <meta name="description" content="Updates and statistics">
+    <title>SIPA - Sistem Pengajuan Tempat PKL</title>
+    <meta name="description" content="Maksimalkan Pengalaman Anda Dengan Mengikuti Kegiatan Praktik Kerja Lapangan (PKL)">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
     <script>
@@ -47,10 +47,10 @@
     <link href="{{ url('assets') }}/css/demo1/style.bundle.css" rel="stylesheet" type="text/css" />
     <link href="{{ url('assets') }}/css/demo1/skins/header/base/light.css" rel="stylesheet" type="text/css" />
     <link href="{{ url('assets') }}/css/demo1/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
-    <link href="{{ url('assets') }}/css/demo1/skins/brand/dark.css" rel="stylesheet" type="text/css" />
-    <link href="{{ url('assets') }}/css/demo1/skins/aside/dark.css" rel="stylesheet" type="text/css" />
+    <link href="{{ url('assets') }}/css/demo1/skins/brand/light.css" rel="stylesheet" type="text/css" />
+    <link href="{{ url('assets') }}/css/demo1/skins/aside/light.css" rel="stylesheet" type="text/css" />
     <link href="./custom.css" rel="stylesheet" type="text/css" />
-    <link rel="shortcut icon" href="{{ url('assets') }}/media/logos/favicon.ico" />
+    <link rel="shortcut icon" href="{{ url('logo.png') }}" />
 </head>
 <body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--fixed kt-subheader--enabled kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
     <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">

@@ -44,6 +44,14 @@ return [
             'driver' => 'session',
             'provider' => 'siswas',
         ],
+        'guru_pembimbing' => [
+            'driver' => 'session',
+            'provider' => 'guru_pembimbings',
+        ],
+        'pembimbing_lapang' => [
+            'driver' => 'session',
+            'provider' => 'pembimbing_lapangs',
+        ],
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
@@ -75,6 +83,14 @@ return [
         'siswas' => [
             'driver' => 'eloquent',
             'model' => App\Models\Siswa::class,
+        ],
+        'guru_pembimbings' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\GuruPembimbing::class,
+        ],
+        'pembimbing_lapangs' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\PembimbingLapang::class,
         ],
         'admins' => [
             'driver' => 'eloquent',

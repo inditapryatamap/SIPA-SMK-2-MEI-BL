@@ -28,8 +28,16 @@
                                     <label class="label-input">Alamat Perusahaan</label>
                                     <input name="alamat_perusahaan" class="form-control" />
                                 </div>
+                                <div class="col-md-6 mb-4">
+                                    <label class="label-input">Nama Pembimbing Lapang</label>
+                                    <input name="nama_pembimbing_lapang" class="form-control" />
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <label class="label-input">Email Perusahaan</label>
+                                    <input name="email_pembimbing_lapang" class="form-control" />
+                                </div>
                                 <div class="col-md-12 mb-4">
-                                    <label class="label-input">No. Telp.</label>
+                                    <label class="label-input">No. Telp Perusahaan.</label>
                                     <input name="no_telp" class="form-control" />
                                 </div>
                                 <div class="col-md-6 mb-4">

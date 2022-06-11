@@ -85,6 +85,7 @@ class PengajuanController extends Controller
             'profile_perusahaan' => $request->profile_perusahaan,
             'alamat_perusahaan' => $request->alamat_perusahaan,
             'no_telp' => $request->no_telp,
+            'status' => 'diproses',
             'deskripsi_pekerjaan' => $request->deskripsi_pekerjaan,
             'created_by' => Auth::guard('siswa')->user()->id,
         ]);

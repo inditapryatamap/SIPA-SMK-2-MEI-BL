@@ -12,6 +12,6 @@ class Surat extends Model
     protected $table = 'surat';
 
     protected $fillable = [
-        'id_siswa', 'id_jenis_surat', 'id_perusahaan', 'status', 'file', 'created_by'
+        'id_siswa', 'id_jenis_surat', 'status', 'file', 'keterangan'
     ];
 }

@@ -41,8 +41,17 @@
                         </div>
                     </div>
                     <div class="ctm-footer-detail mt-4">
-                        <button type="button" style="width: 100%" class="btn mr-3 btn-label-success btb-block btn-lg btn-upper">Verifikasi</button>
-                        <button type="button" style="width: 100%" class="btn btn-label-danger btn-lg btn-upper">Tolak</button>
+                        @if ($data['pengajuan']->status === 'diverifikasi')
+                            <button type="button" disabled style="width: 100%; cursor: no-drop !important;" class="btn mr-3 btn-label-light btb-block btn-lg btn-upper text-black">Verifikasi</button>
+                            <a href="{{ route('admin.magang-pkl.go_update_status', ['id_pengajuan' => $data['pengajuan']->id, 'tipe' => 'ditolak']) }}" style="width: 100%" class="btn btn-label-danger btn-lg btn-upper">Tolak</a>
+                        @elseif ($data['pengajuan']->status === 'ditolak')
+                            <a href="{{ route('admin.magang-pkl.go_update_status', ['id_pengajuan' => $data['pengajuan']->id, 'tipe' => 'diverifikasi']) }}" style="width: 100%" class="btn mr-3 btn-label-success btb-block btn-lg btn-upper">Verifikasi</a>
+                            <button type="button" disabled style="width: 100%; cursor: no-drop !important;" class="btn mr-3 btn-label-light btb-block btn-lg btn-upper text-black">Tolak</button>
+                        @else
+                            <a href="{{ route('admin.magang-pkl.go_update_status', ['id_pengajuan' => $data['pengajuan']->id, 'tipe' => 'diverifikasi']) }}" style="width: 100%" class="btn mr-3 btn-label-success btb-block btn-lg btn-upper">Verifikasi</a>
+                            <a href="{{ route('admin.magang-pkl.go_update_status', ['id_pengajuan' => $data['pengajuan']->id, 'tipe' => 'ditolak']) }}" style="width: 100%" class="btn btn-label-danger btn-lg btn-upper">Tolak</a>
+                        @endif
+                        
                     </div>
                 </div>
 

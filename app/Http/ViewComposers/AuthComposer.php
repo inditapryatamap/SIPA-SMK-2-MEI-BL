@@ -15,6 +15,16 @@ class AuthComposer
             $role = 'Siswa';
         }
 
+        if ($user == null) {
+            $user = Auth::guard('guru-pembimbing')->user();
+            $role = 'Guru Pembimbing';
+        }
+
+        if ($user == null) {
+            $user = Auth::guard('pembimbing-lapang')->user();
+            $role = 'Pembimbing Lapang';
+        }
+
         // if ($user == null) {
         //     $user = Auth::guard('guru')->user();
         //     $role = 'Guru';

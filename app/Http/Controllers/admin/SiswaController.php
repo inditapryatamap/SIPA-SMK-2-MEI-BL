@@ -50,7 +50,7 @@ class SiswaController extends Controller
     public function go_create(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nis' => ['required', 'numeric', 'digits_between:4,20'],
+            'nis' => ['required', 'numeric', 'digits_between:6,20'],
             'nama' => ['required', 'string'],
             'email' => ['required', 'string'],
             'jenis_kelamin' => ['required', 'string'],

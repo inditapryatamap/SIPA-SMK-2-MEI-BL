@@ -9,5 +9,6 @@
 <body>
     <a href="{{ route('admin.login') }}" >Admin</a>
     <a href="{{ route('siswa.login') }}" >Siswa</a>
+    <a href="{{ route('guru-pembimbing.login') }}" >Guru Pembimbing</a>
 </body>
 </html>

@@ -3,36 +3,35 @@
 namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\DokumenReview;
-use App\Models\GuruPembimbing;
+use App\Models\PembimbingLapang;
 use App\Models\Jurusan;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
-class GuruPembimbingController extends Controller
+class PembimbingLapangController extends Controller
 {
     public function index()
     {
-        $data['guru_pembimbing'] = GuruPembimbing::paginate(10);
-        return view('admin.pages.akun-guru-pembimbing.list', compact('data'));
+        $data['pembimbing_lapang'] = PembimbingLapang::paginate(10);
+        return view('admin.pages.akun-pembimbing-lapang.list', compact('data'));
     }
 
-    public function update($id_guru_pembimbing)
+    public function update($id_pembimbing_lapang)
     {
-        $data['guru_pembimbing'] = GuruPembimbing::where('id', $id_guru_pembimbing)->first();
-        return view('admin.pages.akun-guru-pembimbing.update', compact('data'));
+        $data['pembimbing_lapang'] = PembimbingLapang::where('id', $id_pembimbing_lapang)->first();
+        return view('admin.pages.akun-pembimbing-lapang.update', compact('data'));
     }
     
     public function create()
     {
-        return view('admin.pages.akun-guru-pembimbing.create');
+        return view('admin.pages.akun-pembimbing-lapang.create');
     }
 
     public function go_create(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nis' => ['required', 'numeric', 'digits_between:6,20'],
             'nama' => ['required', 'string'],
             'email' => ['required', 'string'],
             'no_telpon' => ['required', 'string'],
@@ -43,9 +42,8 @@ class GuruPembimbingController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        if (!GuruPembimbing::where('nis', $request->nis)->exists()) {
-            $query = GuruPembimbing::create([
-                'nis' => $request->nis,
+        if (!PembimbingLapang::where('email', $request->email)->exists()) {
+            $query = PembimbingLapang::create([
                 'nama' => $request->nama,
                 'email' => $request->email,
                 'no_telpon' => $request->no_telpon,
@@ -53,11 +51,11 @@ class GuruPembimbingController extends Controller
             ]);
 
             if ($query) {
-                return redirect()->back()->with(['success' => 'Akun guru pembimbing berhasil dibuat']);
+                return redirect()->back()->with(['success' => 'Akun pembimbing lapang berhasil dibuat']);
             }
             return redirect()->back()->with(['errors' => 'Query gagal, Ada kesalahan sistem. Coba kembali beberapa saat']);
         }
-        return redirect()->back()->with(['errors' => 'NIS sudah terdaftar']);
+        return redirect()->back()->with(['errors' => 'Email sudah terdaftar']);
     }
 
     public function go_update(Request $request)
@@ -66,44 +64,44 @@ class GuruPembimbingController extends Controller
             'nama' => ['required', 'string'],
             'email' => ['required', 'string'],
             'no_telpon' => ['required', 'string'],
-            'id_guru_pembimbing' => ['required', 'integer'],
+            'id_pembimbing_lapang' => ['required', 'integer'],
         ]);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        if (GuruPembimbing::where('id', $request->id_guru_pembimbing)->exists()) {
-            $query = GuruPembimbing::where('id', $request->id_guru_pembimbing)->update([
+        if (PembimbingLapang::where('id', $request->id_pembimbing_lapang)->exists()) {
+            $query = PembimbingLapang::where('id', $request->id_pembimbing_lapang)->update([
                 'nama' => $request->nama,
                 'email' => $request->email,
                 'no_telpon' => $request->no_telpon,
             ]);
 
             if ($request->password !== null) {
-                GuruPembimbing::where('id', $request->id_guru_pembimbing)->update([
+                PembimbingLapang::where('id', $request->id_pembimbing_lapang)->update([
                     'password' => bcrypt($request->password),
                 ]);
             }
 
             if ($query) {
-                return redirect()->back()->with(['success' => 'Akun guru pembimbing berhasil diperbarui']);
+                return redirect()->back()->with(['success' => 'Akun pembimbing lapang berhasil diperbarui']);
             }
             return redirect()->back()->with(['errors' => 'Query gagal, Ada kesalahan sistem. Coba kembali beberapa saat']);
         }
-        return redirect()->back()->with(['errors' => 'Akun guru pembimbing tidak ditemukan']);
+        return redirect()->back()->with(['errors' => 'Akun pembimbing lapang tidak ditemukan']);
     }
 
-    public function go_delete($id_guru_pembimbing)
+    public function go_delete($id_pembimbing_lapang)
     {
-        if (GuruPembimbing::where('id', $id_guru_pembimbing)->exists()) {
-            $query = GuruPembimbing::where('id', $id_guru_pembimbing)->delete();
+        if (PembimbingLapang::where('id', $id_pembimbing_lapang)->exists()) {
+            $query = PembimbingLapang::where('id', $id_pembimbing_lapang)->delete();
 
             if ($query) {
-                return redirect()->back()->with(['success' => 'Akun guru pembimbing berhasil dihapus']);
+                return redirect()->back()->with(['success' => 'Akun pembimbing lapang berhasil dihapus']);
             }
             return redirect()->back()->with(['errors' => 'Query gagal, Ada kesalahan sistem. Coba kembali beberapa saat']);
         }
-        return redirect()->back()->with(['errors' => 'Akun guru pembimbing tidak ditemukan']);
+        return redirect()->back()->with(['errors' => 'Akun pembimbing lapang tidak ditemukan']);
     }
 }

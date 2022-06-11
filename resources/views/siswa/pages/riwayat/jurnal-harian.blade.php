@@ -59,7 +59,8 @@
                                 <th>Perusahaan</th>
                                 <th>Tanggal Kegiatan</th>
                                 <th>Kegiatan</th>
-                                <th>Status</th>
+                                <th>Validasi Guru Pembimbing</th>
+                                <th>Validasi Pembimbing Lapang</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -71,7 +72,36 @@
                                     <td>{{ $data['current_magang_pkl']->nama_perusahaan }}</td>
                                     <td>{{ $data['jurnal'][$i]->tanggal }}</td>
                                     <td>{{ $data['jurnal'][$i]->kegiatan }}</td>
-                                    <td>{{ $data['jurnal'][$i]->status }}</td>
+                                    <td>
+                                        @if ($data['jurnal'][$i]->status_guru_pembimbing == 1)
+                                            <span class="kt-link kt-link--dark kt-timeline-v3__itek-link text-success font-bold">
+                                                Divalidasi
+                                            </span>
+                                        @elseif ($data['jurnal'][$i]->status_guru_pembimbing == 2)
+                                            <span class="kt-link kt-link--dark kt-timeline-v3__itek-link text-danger font-bold">
+                                                Tidak Divalidasi
+                                            </span>
+                                        @else
+                                            <span class="kt-link kt-link--dark kt-timeline-v3__itek-link font-bold">
+                                                Belum Divalidasi
+                                            </span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($data['jurnal'][$i]->status_pembimbing_lapang == 1)
+                                            <span class="kt-link kt-link--dark kt-timeline-v3__itek-link text-success font-bold">
+                                                Divalidasi
+                                            </span>
+                                        @elseif ($data['jurnal'][$i]->status_pembimbing_lapang == 2)
+                                            <span class="kt-link kt-link--dark kt-timeline-v3__itek-link text-danger font-bold">
+                                                Tidak Divalidasi
+                                            </span>
+                                        @else
+                                            <span class="kt-link kt-link--dark kt-timeline-v3__itek-link font-bold">
+                                                Belum Divalidasi
+                                            </span>
+                                        @endif
+                                    </td>
                                     <td><button class="btn btn-info">Edit</button></td>
                                 </tr>
                             @endfor

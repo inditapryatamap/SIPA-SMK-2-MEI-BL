@@ -19,10 +19,10 @@
     background: #00A7FF !important;
 }
 
-.btn {
+/* .btn {
     padding: 10px 30px;
     border-radius: 15px;
-}
+} */
 
 .centered-radio-cs {
     display: flex;
@@ -54,4 +54,23 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.font-12 {
+    font-size: 7px !important;
+}
+
+.font-bold {
+    font-weight: bold !important;
+}
+
+.centered-action-jurnal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.label-jurnal-detail {
+    font-size: 10px;
 }

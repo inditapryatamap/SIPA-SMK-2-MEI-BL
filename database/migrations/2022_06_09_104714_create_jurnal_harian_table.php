@@ -19,7 +19,8 @@ return new class extends Migration
             $table->unsignedBigInteger('id_magang_pkl');
             $table->date('tanggal');
             $table->text('kegiatan');
-            $table->enum('status', [0, 1, 2])->comment('0: belum di validasi, 1: divalidasi, 2: tidak divalidasi');
+            $table->enum('status_guru_pembimbing', [0, 1, 2])->comment('0: belum di validasi, 1: divalidasi, 2: tidak divalidasi');
+            $table->enum('status_pembimbing_lapang', [0, 1, 2])->comment('0: belum di validasi, 1: divalidasi, 2: tidak divalidasi');
             $table->timestamps();
 
             $table->foreign('id_siswa')->references('id')->on('siswa');

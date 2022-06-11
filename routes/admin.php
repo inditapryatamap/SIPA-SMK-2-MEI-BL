@@ -59,5 +59,14 @@ Route::group(['middleware' => 'auth:admin'], function() {
             Route::get('/go_delete/{id_guru_pembimbing}', [Admin\GuruPembimbingController::class, 'go_delete'])->name('admin.guru-pembimbing.go.delete');
         });
 
+        Route::prefix('pembimbing-lapang')->group(function () {
+            Route::get('/list', [Admin\PembimbingLapangController::class, 'index'])->name('admin.pembimbing-lapang.list');
+            Route::get('/create', [Admin\PembimbingLapangController::class, 'create'])->name('admin.pembimbing-lapang.create');
+            Route::get('/update/{id_pembimbing_lapang}', [Admin\PembimbingLapangController::class, 'update'])->name('admin.pembimbing-lapang.update');
+            Route::post('/go_create', [Admin\PembimbingLapangController::class, 'go_create'])->name('admin.pembimbing-lapang.go.create');
+            Route::post('/go_update', [Admin\PembimbingLapangController::class, 'go_update'])->name('admin.pembimbing-lapang.go.update');
+            Route::get('/go_delete/{id_pembimbing_lapang}', [Admin\PembimbingLapangController::class, 'go_delete'])->name('admin.pembimbing-lapang.go.delete');
+        });
+
     });
 });

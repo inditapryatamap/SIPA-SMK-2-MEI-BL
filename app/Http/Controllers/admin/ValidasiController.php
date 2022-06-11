@@ -22,14 +22,11 @@ class ValidasiController extends Controller
             'siswa.nama',
             'siswa.nis',
             'jurusan.nama_jurusan',
-            'guru_pembimbing.nama as pembimbing_nama',
-            'guru_pembimbing.nis as pembimbing_nis'
         )
         ->join('perusahaan', 'perusahaan.id', 'pengajuan_magang_pkl.id_perusahaan')
         ->join('siswa', 'siswa.id', 'pengajuan_magang_pkl.id_siswa')
         ->join('jurusan', 'jurusan.id', 'siswa.id_jurusan')
-        ->join('guru_pembimbing', 'guru_pembimbing.id', 'pengajuan_magang_pkl.id_guru_pembimbing')
-        ->paginate(1);
+        ->paginate(10);
         
         return view('admin.pages.validasi.magang-pkl.list', compact('data'));
     }

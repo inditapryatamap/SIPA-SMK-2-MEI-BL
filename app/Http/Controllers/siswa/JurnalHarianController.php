@@ -14,13 +14,13 @@ class JurnalHarianController extends Controller
     public function index(Request $request)
     {
         
-        $data['magang_pkl'] = MagangPKL::where([['id_siswa', Auth::guard('siswa')->user()->id], ['status', 'diverifikasi']])
+        $data['magang_pkl'] = MagangPKL::where([['id_siswa', Auth::guard('siswa')->user()->id], ['pengajuan_magang_pkl.status', 'diverifikasi']])
         ->join('perusahaan', 'perusahaan.id', 'pengajuan_magang_pkl.id_perusahaan')
         ->select('pengajuan_magang_pkl.id', 'pengajuan_magang_pkl.jenis_kegiatan', 'perusahaan.nama_perusahaan')
         ->get();
 
         if ($request['magang-pkl'] != null) {
-            $data['current_magang_pkl'] = MagangPKL::where([['id_siswa', Auth::guard('siswa')->user()->id], ['status', 'diverifikasi']])
+            $data['current_magang_pkl'] = MagangPKL::where([['id_siswa', Auth::guard('siswa')->user()->id], ['pengajuan_magang_pkl.status', 'diverifikasi']])
             ->join('perusahaan', 'perusahaan.id', 'pengajuan_magang_pkl.id_perusahaan')
             ->join('siswa', 'siswa.id', 'pengajuan_magang_pkl.id_siswa')
             ->select('pengajuan_magang_pkl.id', 'siswa.nama as nama_siswa','pengajuan_magang_pkl.jenis_kegiatan', 'perusahaan.nama_perusahaan')
@@ -49,7 +49,8 @@ class JurnalHarianController extends Controller
                 'id_magang_pkl' => $request->id_magang_pkl,
                 'tanggal' => $request->tanggal,
                 'kegiatan' => $request->kegiatan,
-                'status' => 0,
+                'status_guru_pembimbing' => 0,
+                'status_pembimbing_lapang' => 0,
             ]);
 
             if ($query) {

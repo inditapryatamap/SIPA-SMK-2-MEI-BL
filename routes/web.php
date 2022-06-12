@@ -9,3 +9,5 @@ Route::get('/logout', [LoginController::class, 'postLogout'])->name('logout');
 
 require_once "admin.php";
 require_once "siswa.php";
+require_once "guru-pembimbing.php";
+require_once "pembimbing-lapang.php";

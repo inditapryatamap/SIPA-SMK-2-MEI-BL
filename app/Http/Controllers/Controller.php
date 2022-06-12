@@ -19,4 +19,10 @@ class Controller extends BaseController
         $file->move($tujuan_upload, $nama_file);
         return '/assets/images/'.$path.'/'.$nama_file;
     }
+
+    public function deleteFile($url)
+    {
+        $file_path = public_path() . '/' . $url;
+        return unlink($file_path);
+    }
 }

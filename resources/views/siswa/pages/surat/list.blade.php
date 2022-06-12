@@ -75,7 +75,7 @@
                                 <th>NO</th>
                                 <th>Nama Siswa</th>
                                 <th>Jenis Surat</th>
-                                <th>Nama Perusahaan</th>
+                                <th>Keterangan</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -86,9 +86,23 @@
                                     <th scope="row">{{ (int)$i + 1 }}</th>
                                     <td>{{ $data['surat'][$i]->nama_siswa }}</td>
                                     <td>{{ $data['surat'][$i]->nama_surat }}</td>
-                                    <td>{{ $data['surat'][$i]->nama_perusahaan }}</td>
-                                    <td><span class="badge badge-primary">{{ $data['surat'][$i]->status }}</span></td>
-                                    <td><button class="btn btn-info">Donwload</button></td>
+                                    <td>{{ $data['surat'][$i]->keterangan }}</td>
+                                    <td>
+                                        @if ($data['surat'][$i]->status === 'diverifikasi')
+                                            <span class="badge badge-success">{{ strtoupper($data['surat'][$i]->status) }}</span>
+                                        @elseif ($data['surat'][$i]->status === 'ditolak')
+                                            <span class="badge badge-danger">{{ strtoupper($data['surat'][$i]->status) }}</span>
+                                        @else
+                                            <span class="badge badge-info">{{ strtoupper($data['surat'][$i]->status) }}</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($data['surat'][$i]->file !== null)
+                                            <a class="btn btn-success" target="_blank" rel="noreferrer" href="{{ $data['surat'][$i]->file }}">Donwload</a>
+                                        @else
+                                            <span class="badge badge-danger">Belum Dibuat</span>
+                                        @endif
+                                    </td>
                                 </tr>
                             @endfor
                         </tbody>

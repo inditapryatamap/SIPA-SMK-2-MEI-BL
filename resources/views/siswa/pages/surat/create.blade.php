@@ -16,13 +16,13 @@
                                     <label class="label-input">Nama</label>
                                     <input class="form-control" name="name" readonly value="{{ $data['siswa']->nama }}" />
                                 </div>
-                                <div class="col-md-6 mb-4">
+                                {{-- <div class="col-md-6 mb-4">
                                     <label class="label-input">Jenis Kegiatan</label>
                                     <select class="form-control" name="jenis_kegiatan">
                                         <option value="pkl">Praktik Kerja Lapangan (PKL) 3 Bulan</option>
                                         <option value="magang">Magang 1 Bulan</option>
                                     </select>
-                                </div>
+                                </div> --}}
                                 <div class="col-md-6 mb-4">
                                     <label class="label-input">NIS</label>
                                     <input class="form-control" name="nis" readonly value="{{ $data['siswa']->nis }}"/>
@@ -39,14 +39,18 @@
                                         @endfor
                                     </select>
                                 </div>
-                                <div class="col-md-6 mb-4">
+                                <div class="col-md-12 mb-4">
+                                    <label class="label-input">Keterangan</label>
+                                    <textarea class="form-control" rows="5" name="keterangan">{{ old('keterangan') }}</textarea>
+                                </div>
+                                {{-- <div class="col-md-6 mb-4">
                                     <label class="label-input">Nama Perusahaan</label>
                                     <select class="form-control" name="id_perusahaan">
                                         @for ($i = 0; $i < count($data['perusahaan']); $i++)
                                             <option value="{{ $data['perusahaan'][$i]->id }}">{{ $data['perusahaan'][$i]->nama_perusahaan }}</option>
                                         @endfor
                                     </select>
-                                </div>
+                                </div> --}}
                                 <div class="col-md-12 text-right">
                                     <button type="submit" class="btn btn-info">Buat Pengajuan</button>
                                 </div>

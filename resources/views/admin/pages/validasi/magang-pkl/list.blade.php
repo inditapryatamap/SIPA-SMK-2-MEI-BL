@@ -38,19 +38,28 @@
                                 <tbody>
                                     @for ($i = 0; $i < count($data['magang-pkl']); $i++)
                                         <tr>
-                                            <th scope="row">1</th>
+                                            <th scope="row">{{ (int)$i + 1 }}</th>
                                             <td>{{ $data['magang-pkl'][$i]->nis }}</td>
                                             <td>{{ $data['magang-pkl'][$i]->nama }}</td>
                                             <td>{{ $data['magang-pkl'][$i]->nama_jurusan }}</td>
                                             <td>{{ $data['magang-pkl'][$i]->jenis_kegiatan }}</td>
                                             <td>{{ $data['magang-pkl'][$i]->nama_perusahaan }}</td>
-                                            <td>{{ $data['magang-pkl'][$i]->nama_pembimbing }}</td>
-                                            <td>{{ $data['magang-pkl'][$i]->status }}</td>
+                                            <td>{{ $data['magang-pkl'][$i]->pembimbing_nama }}</td>
+                                            <td>
+                                                @if ($data['magang-pkl'][$i]->status === 'diverifikasi')
+                                                    <span class="badge badge-success">{{ strtoupper($data['magang-pkl'][$i]->status) }}</span>
+                                                @elseif ($data['magang-pkl'][$i]->status === 'ditolak')
+                                                    <span class="badge badge-danger">{{ strtoupper($data['magang-pkl'][$i]->status) }}</span>
+                                                @else
+                                                    <span class="badge badge-info">{{ strtoupper($data['magang-pkl'][$i]->status) }}</span>
+                                                @endif
+                                            </td>
                                             <td><a href="{{ route('admin.magang-pkl.detail', ['id_pengajuan' => $data['magang-pkl'][$i]->id]) }}" class="btn btn-success">Detail</a></td>
                                         </tr>
                                     @endfor
                                 </tbody>
                             </table>
+                            {{ $data['magang-pkl']->links('pagination::bootstrap-5') }}
                         </div>
                     </div>
                 </div>

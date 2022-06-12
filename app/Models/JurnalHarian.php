@@ -12,6 +12,6 @@ class JurnalHarian extends Model
     protected $table = 'jurnal_harian';
 
     protected $fillable = [
-        'id_siswa', 'id_magang_pkl', 'tanggal', 'kegiatan', 'status'
+        'id_siswa', 'id_magang_pkl', 'tanggal', 'kegiatan', 'status_pembimbing_lapang', 'status_guru_pembimbing'
     ];
 }

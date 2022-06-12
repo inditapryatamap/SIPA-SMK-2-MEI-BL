@@ -17,10 +17,9 @@ class SuratController extends Controller
     public function index()
     {
         $data['surat'] = Surat::where('id_siswa', Auth::guard('siswa')->user()->id)
-        ->select('surat.id', 'surat.status', 'surat.file', 'siswa.nama as nama_siswa', 'jenis_surat.name as nama_surat', 'perusahaan.nama_perusahaan')
+        ->select('surat.id', 'surat.status', 'surat.file', 'surat.keterangan', 'siswa.nama as nama_siswa', 'jenis_surat.name as nama_surat')
         ->join('siswa', 'surat.id_siswa', 'siswa.id')
         ->join('jenis_surat', 'surat.id_jenis_surat', 'jenis_surat.id')
-        ->join('perusahaan', 'surat.id_perusahaan', 'perusahaan.id')
         ->paginate(1);
         return view('siswa.pages.surat.list', compact('data'));
     }
@@ -29,32 +28,30 @@ class SuratController extends Controller
     {
         $data['siswa'] = Auth::guard('siswa')->user();
         $data['siswa']['jurusan'] = Jurusan::where('id', Auth::guard('siswa')->user()->id_jurusan)->select('nama_jurusan')->first()->nama_jurusan;
-        $data['perusahaan'] = Perusahaan::select('id', 'nama_perusahaan')->get();
         $data['jenis_surat'] = JenisSurat::select('id', 'name')->get();
-        $data['magang_pkl'] = MagangPKL::where('id_siswa', Auth::guard('siswa')->user()->id)
-        ->join('perusahaan', 'perusahaan.id', 'pengajuan_magang_pkl.id_perusahaan')
-        ->select('pengajuan_magang_pkl.id', 'pengajuan_magang_pkl.jenis_kegiatan', 'pengajuan_magang_pkl.nama_pembimbing', 'pengajuan_magang_pkl.status', 'perusahaan.nama_perusahaan')->get();
+        // $data['magang_pkl'] = MagangPKL::where('id_siswa', Auth::guard('siswa')->user()->id)
+        // ->select('pengajuan_magang_pkl.id', 'pengajuan_magang_pkl.jenis_kegiatan', 'pengajuan_magang_pkl.nama_pembimbing', 'pengajuan_magang_pkl.status', 'perusahaan.nama_perusahaan')->get();
         return view('siswa.pages.surat.create', compact('data'));
     }
 
     public function go_create_surat(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'jenis_kegiatan' => ['required', 'string'],
             'id_jenis_surat' => ['required', 'integer'],
-            'id_perusahaan' => ['required', 'integer'],
+            'keterangan' => ['string'],
         ]);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        if (JenisSurat::where('id', $request->id_jenis_surat)->exists() && Perusahaan::where('id', $request->id_perusahaan)->exists()) {
+        if (JenisSurat::where('id', $request->id_jenis_surat)->exists()) {
             $query = Surat::create([
                 'id_siswa' => Auth::guard('siswa')->user()->id,
                 'id_jenis_surat' => $request->id_jenis_surat,
                 'id_perusahaan' => $request->id_perusahaan,
                 'status' => 'diproses',
+                'keterangan' => $request->keterangan,
             ]);
     
             if ($query) {

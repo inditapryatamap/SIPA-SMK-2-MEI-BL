@@ -42,7 +42,7 @@ class DokumenController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
         
-        // dd($request->file_laporan_pdf);
+        // dd(Auth::guard('siswa')->user()->id);
         $query = DokumenReview::create([
             'id_siswa' => Auth::guard('siswa')->user()->id,
             'id_magang_pkl' => $request->id_magang_pkl,
@@ -53,7 +53,7 @@ class DokumenController extends Controller
             'jumlah_review_score_rendah' => $request->dr_rendah,
             'jumlah_review_score_tinggi' => $request->dr_tinggi,
             'jumlah_review_score_sangat_tinggi' => $request->dr_sangat_tinggi,
-            'score_review' => $request->dr_total_score,
+            'total_score_review' => $request->dr_total_score,
         ]);
 
         if ($query) {

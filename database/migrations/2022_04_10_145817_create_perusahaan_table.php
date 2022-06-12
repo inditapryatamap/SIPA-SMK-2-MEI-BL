@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('alamat_perusahaan');
             $table->string('no_telp');
             $table->text('deskripsi_pekerjaan');
+            $table->enum('status', ['diproses', 'diverifikasi', 'ditolak'])->comment('diproses', 'diverifikasi', 'ditolak');
             $table->unsignedBigInteger('created_by');
             $table->timestamps();
 

@@ -17,16 +17,13 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_siswa');
             $table->unsignedBigInteger('id_jenis_surat');
-            $table->unsignedBigInteger('id_perusahaan');
             $table->enum('status', ['diproses', 'diverifikasi', 'ditolak']);
             $table->text('file')->nullable();
-            $table->unsignedBigInteger('created_by')->nullable();
+            $table->text('keterangan')->nullable();
             $table->timestamps();
 
             $table->foreign('id_siswa')->references('id')->on('siswa');
             $table->foreign('id_jenis_surat')->references('id')->on('jenis_surat');
-            $table->foreign('id_perusahaan')->references('id')->on('perusahaan');
-            $table->foreign('created_by')->references('id')->on('admin');
         });
     }
 

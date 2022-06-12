@@ -22,4 +22,61 @@ class JurusanController extends Controller
     {
         return view('admin.pages.master-data.jurusan.create');
     }
+
+    public function go_create(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'nama_jurusan' => ['required'],
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $query = Jurusan::create([
+            'nama_jurusan' => $request->nama_jurusan
+        ]);
+
+        if ($query) {
+            return redirect()->back()->with(['success' => 'Jurusan berhasil dibuat']);
+        }
+        return redirect()->back()->with(['errors' => 'Query gagal, Ada kesalahan sistem. Coba kembali beberapa saat']);
+    }
+
+    public function go_update(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id_jurusan' => ['required'],
+            'nama_jurusan' => ['required'],
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        if (Jurusan::where('id', $request->id_jurusan)->exists()) {
+            $query = Jurusan::where('id', $request->id_jurusan)->update([
+                'nama_jurusan' => $request->nama_jurusan
+            ]);
+    
+            if ($query) {
+                return redirect()->back()->with(['success' => 'Jurusan berhasil dibuat']);
+            }
+            return redirect()->back()->with(['errors' => 'Query gagal, Ada kesalahan sistem. Coba kembali beberapa saat']);
+        }
+        return redirect()->back()->with(['errors' => 'Jurusan tidak ditemukan']);
+    }
+
+    public function go_delete($id_jurusan)
+    {
+        if (Jurusan::where('id', $id_jurusan)->exists()) {
+            $query = Jurusan::where('id', $id_jurusan)->delete();
+
+            if ($query) {
+                return redirect()->back()->with(['success' => 'Jurusan berhasil dihapus']);
+            }
+            return redirect()->back()->with(['errors' => 'Query gagal, Ada kesalahan sistem. Coba kembali beberapa saat']);
+        }
+        return redirect()->back()->with(['errors' => 'Jurusan tidak ditemukan']);
+    }
 }

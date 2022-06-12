@@ -71,9 +71,9 @@ Route::group(['middleware' => 'auth:admin'], function() {
         Route::prefix('master-data')->group(function () {
             Route::prefix('jurusan')->group(function () {
                 Route::get('/list', [Admin\JurusanController::class, 'index'])->name('admin.master-data.jurusan.list');
-                Route::get('/update', [Admin\JurusanController::class, 'update'])->name('admin.master-data.jurusan.update');
-                Route::get('/create', [Admin\JurusanController::class, 'create'])->name('admin.master-data.jurusan.create');
-                Route::get('/go_delete', [Admin\JurusanController::class, 'go_delete'])->name('admin.master-data.jurusan.go.delete');
+                Route::get('/go_delete/{id_jurusan}', [Admin\JurusanController::class, 'go_delete'])->name('admin.master-data.jurusan.go.delete');
+                Route::post('/go_create', [Admin\JurusanController::class, 'go_create'])->name('admin.master-data.jurusan.go.create');
+                Route::post('/go_update', [Admin\JurusanController::class, 'go_update'])->name('admin.master-data.jurusan.go.update');
             });
         });
 

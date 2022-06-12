@@ -84,7 +84,6 @@
                             @csrf
                             <!--begin: Form Wizard Step 1-->
                             <div class="kt-wizard-v1__content" data-ktwizard-type="step-content" data-ktwizard-state="current">
-                                <div class="kt-heading kt-heading--md">Setup Your Current Location</div>
                                 <div class="kt-form__section kt-form__section--first">
                                     <div class="kt-wizard-v1__form">
                                         <div class="form-group">
@@ -108,7 +107,6 @@
 
                             <!--begin: Form Wizard Step 2-->
                             <div class="kt-wizard-v1__content" data-ktwizard-type="step-content">
-                                <div class="kt-heading kt-heading--md">Enter the Details of your Delivery</div>
                                 <div class="kt-form__section kt-form__section--first">
                                     <div class="kt-wizard-v1__form">
                                         <div class="form-group">

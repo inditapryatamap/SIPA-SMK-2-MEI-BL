@@ -10,5 +10,6 @@
     <a href="{{ route('admin.login') }}" >Admin</a>
     <a href="{{ route('siswa.login') }}" >Siswa</a>
     <a href="{{ route('guru-pembimbing.login') }}" >Guru Pembimbing</a>
+    <a href="{{ route('pembimbing-lapang.login') }}" >Pembimbing Lapang</a>
 </body>
 </html>

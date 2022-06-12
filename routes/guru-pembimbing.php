@@ -5,8 +5,8 @@ use \App\Http\Controllers\siswa as Siswa;
 use \App\Http\Controllers\guru_pembimbing as GuruPembimbing;
 use App\Http\Controllers\LoginController;
 
-Route::get('/login-guru-pembimbing', [LoginController::class, 'loginGuruembimbing'])->name('guru-pembimbing.login');
-Route::post('/go-login-guru-pembimbing', [LoginController::class, 'goLoginGuruembimbing'])->name('guru-pembimbing.go_login');
+Route::get('/login-guru-pembimbing', [LoginController::class, 'loginGuruPembimbing'])->name('guru-pembimbing.login');
+Route::post('/go-login-guru-pembimbing', [LoginController::class, 'goLoginGuruPembimbing'])->name('guru-pembimbing.go_login');
 
 Route::group(['middleware' => 'auth:guru-pembimbing'], function() {
     Route::prefix('guru-pembimbing')->group(function () {

@@ -6,7 +6,7 @@
        <div id="kt_header_menu"
           class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default ">
           <ul class="kt-menu__nav ">
-             <li class="kt-menu__item  kt-menu__item--open kt-menu__item--here kt-menu__item--submenu kt-menu__item--rel kt-menu__item--open kt-menu__item--here kt-menu__item--active"
+             {{-- <li class="kt-menu__item  kt-menu__item--open kt-menu__item--here kt-menu__item--submenu kt-menu__item--rel kt-menu__item--open kt-menu__item--here kt-menu__item--active"
                 data-ktmenu-submenu-toggle="click" aria-haspopup="true">
                 <a href="javascript:;"
                    class="kt-menu__link kt-menu__toggle"><span
@@ -717,7 +717,7 @@
                       </li>
                    </ul>
                 </div>
-             </li>
+             </li> --}}
           </ul>
        </div>
     </div>

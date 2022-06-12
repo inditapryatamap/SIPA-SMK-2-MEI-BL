@@ -37,7 +37,7 @@
          <ul class="kt-menu__nav ">
             <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true">
                <a
-                  href="{{ route('guru-pembimbing.dashboard') }}" class="kt-menu__link ">
+                  href="{{ route('pembimbing-lapang.dashboard') }}" class="kt-menu__link ">
                   <span class="kt-menu__link-icon">
                      <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -63,7 +63,7 @@
             </li>
             <li class="kt-menu__item" aria-haspopup="true">
                <a
-                  href="{{ route('guru-pembimbing.jurnal-harian.list') }}" class="kt-menu__link ">
+                  href="{{ route('pembimbing-lapang.jurnal-harian.list') }}" class="kt-menu__link ">
                   <span class="kt-menu__link-icon">
                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -78,7 +78,7 @@
             </li>
             <li class="kt-menu__item" aria-haspopup="true">
                <a
-                  href="{{ route('guru-pembimbing.dokumen') }}" class="kt-menu__link ">
+                  href="{{ route('pembimbing-lapang.penilaian.list') }}" class="kt-menu__link ">
                   <span class="kt-menu__link-icon">
                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -88,7 +88,7 @@
                         </g>
                      </svg>
                   </span>
-                  <span class="kt-menu__link-text">Arsip Dokumen</span>
+                  <span class="kt-menu__link-text">Penilaian</span>
                </a>
             </li>
             <li class="kt-menu__section ">

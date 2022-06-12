@@ -236,7 +236,7 @@
                 </div>
             </div>
         </div>
-        <div class="card radius-10">
+        {{-- <div class="card radius-10">
             <div class="card-body">
                 <div class="col-md-12 mb-4">
                     <label class="label-input">Upload Laporan</label>
@@ -246,7 +246,7 @@
                     <button type="button" class="btn btn-danger">Upload</button>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>
 

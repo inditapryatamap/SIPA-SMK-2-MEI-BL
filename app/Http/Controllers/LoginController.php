@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\GuruPembimbing;
+use App\Models\PembimbingLapang;
 use App\Models\Siswa;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -37,9 +38,14 @@ class LoginController extends Controller
         return view('siswa.login');
     }
 
-    public function loginGuruembimbing()
+    public function loginGuruPembimbing()
     {
         return view('guru-pembimbing.login');
+    }
+
+    public function loginPembimbingLapang()
+    {
+        return view('pembimbing-lapang.login');
     }
 
     public function goLoginAdmin(Request $request)
@@ -97,7 +103,7 @@ class LoginController extends Controller
         }
     }
 
-    public function goLoginGuruembimbing(Request $request)
+    public function goLoginGuruPembimbing(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'nis' => ['required', 'string', 'max:100', 'min:6'],
@@ -122,6 +128,34 @@ class LoginController extends Controller
             }
         } else {
             return redirect()->back()->withErrors('Guru Pembimbing tidak ditemukan')->withInput();
+        }
+    }
+
+    public function goLoginPembimbingLapang(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => ['required', 'string', 'max:100', 'min:6'],
+            'password' => ['required', 'string', 'max:255', 'min:6'],
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        if (PembimbingLapang::where('email', $request->email)->count() > 0 ) {
+            if (Auth::guard('pembimbing-lapang')->attempt($request->only('email', 'password'))) {
+                $request->session()->regenerate();
+                // $this->clearLoginAttempts($request);
+                return redirect()->route('pembimbing-lapang.dashboard');
+            } else {
+                // $this->incrementLoginAttempts($request);
+                return redirect()
+                    ->back()
+                    ->withInput()
+                    ->withErrors(["Incorrect user login details!"]);
+            }
+        } else {
+            return redirect()->back()->withErrors('Pembimbing Lapang tidak ditemukan')->withInput();
         }
     }
 

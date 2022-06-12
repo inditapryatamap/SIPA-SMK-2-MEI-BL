@@ -14,13 +14,8 @@ class JurusanController extends Controller
 {
     public function index()
     {
-        $data['jurusan'] = Jurusan::paginate();
+        $data['jurusan'] = Jurusan::paginate(10);
         return view('admin.pages.master-data.jurusan.list', compact('data'));
-    }
-
-    public function create()
-    {
-        return view('admin.pages.master-data.jurusan.create');
     }
 
     public function go_create(Request $request)

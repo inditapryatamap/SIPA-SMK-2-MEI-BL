@@ -16,7 +16,14 @@ class DokumenController extends Controller
     {
         $data['kegiatan'] = MagangPKL::where('id_siswa', Auth::guard('siswa')->user()->id)
         ->join('perusahaan', 'perusahaan.id', 'pengajuan_magang_pkl.id_perusahaan')
-        ->select('pengajuan_magang_pkl.id', 'pengajuan_magang_pkl.jenis_kegiatan', 'perusahaan.nama_perusahaan')
+        ->join('jenis_kegiatan', 'jenis_kegiatan.id', 'pengajuan_magang_pkl.id_jenis_kegiatan')
+        ->select(
+            'pengajuan_magang_pkl.id', 
+            'perusahaan.nama_perusahaan',
+            'jenis_kegiatan.nama_kegiatan', 
+            'jenis_kegiatan.durasi', 
+        )
+        ->where('pengajuan_magang_pkl.status', 'diverifikasi')
         ->get();
 
         $data['review_pertanyaan'] = ReviewPertanyaan::select('id', 'pertanyaan', 'tipe_pertanyaan')->get();

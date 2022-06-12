@@ -14,16 +14,29 @@ class AbsensiController extends Controller
 {
     public function index(Request $request)
     {
-        $data['magang_pkl'] = MagangPKL::where([['id_siswa', Auth::guard('siswa')->user()->id], ['status', 'diverifikasi']])
+        $data['magang_pkl'] = MagangPKL::where([['id_siswa', Auth::guard('siswa')->user()->id], ['pengajuan_magang_pkl.status', 'diverifikasi']])
         ->join('perusahaan', 'perusahaan.id', 'pengajuan_magang_pkl.id_perusahaan')
-        ->select('pengajuan_magang_pkl.id', 'pengajuan_magang_pkl.jenis_kegiatan', 'perusahaan.nama_perusahaan')
+        ->join('jenis_kegiatan', 'jenis_kegiatan.id', 'pengajuan_magang_pkl.id_jenis_kegiatan')
+        ->select(
+            'pengajuan_magang_pkl.id', 
+            'perusahaan.nama_perusahaan',
+            'jenis_kegiatan.nama_kegiatan', 
+            'jenis_kegiatan.durasi'
+        )
         ->get();
 
         if ($request['magang-pkl'] != null) {
-            $data['current_magang_pkl'] = MagangPKL::where([['id_siswa', Auth::guard('siswa')->user()->id], ['status', 'diverifikasi']])
+            $data['current_magang_pkl'] = MagangPKL::where([['id_siswa', Auth::guard('siswa')->user()->id], ['pengajuan_magang_pkl.status', 'diverifikasi']])
             ->join('perusahaan', 'perusahaan.id', 'pengajuan_magang_pkl.id_perusahaan')
+            ->join('jenis_kegiatan', 'jenis_kegiatan.id', 'pengajuan_magang_pkl.id_jenis_kegiatan')
             ->join('siswa', 'siswa.id', 'pengajuan_magang_pkl.id_siswa')
-            ->select('pengajuan_magang_pkl.id', 'siswa.nama as nama_siswa','pengajuan_magang_pkl.jenis_kegiatan', 'perusahaan.nama_perusahaan')
+            ->select(
+                'pengajuan_magang_pkl.id', 
+                'siswa.nama as nama_siswa',
+                'perusahaan.nama_perusahaan',
+                'jenis_kegiatan.nama_kegiatan', 
+                'jenis_kegiatan.durasi'
+            )
             ->first();
             $data['absensi'] = Absensi::where('id_magang_pkl', $request['magang-pkl'])->get();
         }

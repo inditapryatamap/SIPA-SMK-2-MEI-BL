@@ -92,12 +92,8 @@
                                             <select id="select-kegiatan" name="id_magang_pkl" type="text" class="form-control">
                                                 <option selected disabled>Pilih kegiatan yang pernah diajukan</option>
                                                 @for ($i = 0; $i < count($data['kegiatan']); $i++)
-                                                    <option optionAtribute="{{ $data['kegiatan'][$i]->jenis_kegiatan }}" value={{ $data['kegiatan'][$i]->id }}>
-                                                        <?php if ($data['kegiatan'][$i]->jenis_kegiatan === 'pkl') { ?>
-                                                            {{ strtoupper($data['kegiatan'][$i]->jenis_kegiatan) }}
-                                                        <?php } else { ?>
-                                                            {{ ucwords($data['kegiatan'][$i]->jenis_kegiatan) }}
-                                                        <?php } ?>
+                                                    <option optionAtribute="{{ $data['kegiatan'][$i]->nama_kegiatan }}" value={{ $data['kegiatan'][$i]->id }}>
+                                                        {{ $data['kegiatan'][$i]->nama_kegiatan }} - {{ $data['kegiatan'][$i]->durasi }} hari
                                                         di {{ $data['kegiatan'][$i]->nama_perusahaan }}
                                                     </option>
                                                 @endfor

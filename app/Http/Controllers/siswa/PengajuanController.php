@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\siswa;
 
 use App\Http\Controllers\Controller;
+use App\Models\JenisKegiatan;
 use App\Models\Jurusan;
 use App\Models\MagangPKL;
 use App\Models\PembimbingLapang;
@@ -20,7 +21,18 @@ class PengajuanController extends Controller
         $data['perusahaan'] = Perusahaan::select('id', 'nama_perusahaan')->get();
         $data['magang_pkl'] = MagangPKL::where('id_siswa', Auth::guard('siswa')->user()->id)
         ->join('perusahaan', 'perusahaan.id', 'pengajuan_magang_pkl.id_perusahaan')
-        ->select('pengajuan_magang_pkl.id', 'pengajuan_magang_pkl.jenis_kegiatan', 'pengajuan_magang_pkl.id_guru_pembimbing', 'pengajuan_magang_pkl.status', 'perusahaan.nama_perusahaan')->get();
+        ->join('jenis_kegiatan', 'jenis_kegiatan.id', 'pengajuan_magang_pkl.id_jenis_kegiatan')
+        ->select(
+            'pengajuan_magang_pkl.id', 
+            'jenis_kegiatan.nama_kegiatan', 
+            'jenis_kegiatan.durasi', 
+            'pengajuan_magang_pkl.id_jenis_kegiatan', 
+            'pengajuan_magang_pkl.id_guru_pembimbing',
+            'pengajuan_magang_pkl.status', 
+            'perusahaan.nama_perusahaan'
+        )->get();
+
+        $data['jenis-kegiatan'] = JenisKegiatan::get();
         return view('siswa.pages.pengajuan_magang_pkl', compact('data'));
     }
 
@@ -28,7 +40,7 @@ class PengajuanController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'id_perusahaan' => ['required', 'string', 'max:100'],
-            'jenis_kegiatan' => ['required', 'string'],
+            'id_jenis_kegiatan' => ['required', 'string'],
         ]);
 
         if ($validator->fails()) {
@@ -37,7 +49,7 @@ class PengajuanController extends Controller
 
         $query = MagangPKL::create([
             'id_siswa' => Auth::guard('siswa')->user()->id,
-            'jenis_kegiatan' => $request->jenis_kegiatan,
+            'id_jenis_kegiatan' => $request->id_jenis_kegiatan,
             'id_perusahaan' => $request->id_perusahaan,
             'status' => 'diproses',
         ]);
@@ -95,5 +107,18 @@ class PengajuanController extends Controller
         } else {
             return redirect()->back()->with(['errors' => 'Query gagal, Ada kesalahan sistem. Coba kembali beberapa saat']);
         }
+    }
+
+    public function go_delete_pkl_magang($id_pengajuan)
+    {
+        if (MagangPKL::where('id', $id_pengajuan)->exists()) {
+            $query = MagangPKL::where('id', $id_pengajuan)->delete();
+
+            if ($query) {
+                return redirect()->back()->with(['success' => 'Pengajuan berhasil dihapus']);
+            }
+            return redirect()->back()->with(['errors' => 'Query gagal, Ada kesalahan sistem. Coba kembali beberapa saat']);
+        }
+        return redirect()->back()->with(['errors' => 'Pengajuan tidak ditemukan']);
     }
 }

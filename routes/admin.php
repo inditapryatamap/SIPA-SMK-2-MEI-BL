@@ -69,11 +69,26 @@ Route::group(['middleware' => 'auth:admin'], function() {
         });
 
         Route::prefix('master-data')->group(function () {
+            
             Route::prefix('jurusan')->group(function () {
                 Route::get('/list', [Admin\JurusanController::class, 'index'])->name('admin.master-data.jurusan.list');
                 Route::get('/go_delete/{id_jurusan}', [Admin\JurusanController::class, 'go_delete'])->name('admin.master-data.jurusan.go.delete');
                 Route::post('/go_create', [Admin\JurusanController::class, 'go_create'])->name('admin.master-data.jurusan.go.create');
                 Route::post('/go_update', [Admin\JurusanController::class, 'go_update'])->name('admin.master-data.jurusan.go.update');
+            });
+
+            Route::prefix('kegiatan')->group(function () {
+                Route::get('/list', [Admin\KegiatanController::class, 'index'])->name('admin.master-data.kegiatan.list');
+                Route::get('/go_delete/{id_jurusan}', [Admin\KegiatanController::class, 'go_delete'])->name('admin.master-data.kegiatan.go.delete');
+                Route::post('/go_create', [Admin\KegiatanController::class, 'go_create'])->name('admin.master-data.kegiatan.go.create');
+                Route::post('/go_update', [Admin\KegiatanController::class, 'go_update'])->name('admin.master-data.kegiatan.go.update');
+            });
+
+            Route::prefix('jenis-surat')->group(function () {
+                Route::get('/list', [Admin\JenisSuratController::class, 'index'])->name('admin.master-data.jenis-surat.list');
+                Route::get('/go_delete/{id_jenis_surat}', [Admin\JenisSuratController::class, 'go_delete'])->name('admin.master-data.jenis-surat.go.delete');
+                Route::post('/go_create', [Admin\JenisSuratController::class, 'go_create'])->name('admin.master-data.jenis-surat.go.create');
+                Route::post('/go_update', [Admin\JenisSuratController::class, 'go_update'])->name('admin.master-data.jenis-surat.go.update');
             });
         });
 

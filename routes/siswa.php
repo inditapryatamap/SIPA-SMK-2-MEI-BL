@@ -20,6 +20,7 @@ Route::group(['middleware' => 'auth:siswa'], function() {
 
             Route::get('perusahaan', [Siswa\PengajuanController::class, 'pengajuan_perusahaan'])->name('pengajuan_perusahaan');
             Route::post('go_create_perusahaan', [Siswa\PengajuanController::class, 'go_create_perusahaan'])->name('go_create_perusahaan');
+            Route::get('go_delete_pkl_magang/{id_pengajuan}', [Siswa\PengajuanController::class, 'go_delete_pkl_magang'])->name('go_delete_pkl_magang');
         });
 
         Route::prefix('surat')->group(function () {

@@ -38,7 +38,7 @@
                                             <td>{{ $data['magang-pkl'][$i]->nis }}</td>
                                             <td>{{ $data['magang-pkl'][$i]->nama }}</td>
                                             <td>{{ $data['magang-pkl'][$i]->nama_jurusan }}</td>
-                                            <td>{{ strtoupper($data['magang-pkl'][$i]->jenis_kegiatan) }}</td>
+                                            <td>{{ $data['magang-pkl'][$i]->nama_kegiatan }} - {{ $data['magang-pkl'][$i]->durasi }} hari</td>
                                             <td>{{ $data['magang-pkl'][$i]->nama_perusahaan }}</td>
                                             <td class="text-center">
                                                 <a href="{{ route('pembimbing-lapang.jurnal-harian.detail', ['id_pengajuan' => $data['magang-pkl'][$i]->id]) }}" class="btn btn-primary">Jurnal Harian</a>

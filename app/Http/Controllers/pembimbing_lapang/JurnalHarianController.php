@@ -14,7 +14,8 @@ class JurnalHarianController extends Controller
         $data['magang-pkl'] = MagangPKL::select(
             'pengajuan_magang_pkl.id',
             'pengajuan_magang_pkl.id_perusahaan',
-            'pengajuan_magang_pkl.jenis_kegiatan',
+            'jenis_kegiatan.nama_kegiatan', 
+            'jenis_kegiatan.durasi', 
             'perusahaan.nama_perusahaan',
             'siswa.nis',
             'siswa.nama',
@@ -23,6 +24,7 @@ class JurnalHarianController extends Controller
         ->join('perusahaan', 'perusahaan.id', 'pengajuan_magang_pkl.id_perusahaan')
         ->join('siswa', 'siswa.id', 'pengajuan_magang_pkl.id_siswa')
         ->join('jurusan', 'jurusan.id', 'siswa.id_jurusan')
+        ->join('jenis_kegiatan', 'jenis_kegiatan.id', 'pengajuan_magang_pkl.id_jenis_kegiatan')
         ->where('perusahaan.id_pembimbing_lapang', Auth::guard('pembimbing-lapang')->user()->id)
         ->orderBy('perusahaan.nama_perusahaan', 'DESC')
         ->paginate(10);
@@ -34,7 +36,8 @@ class JurnalHarianController extends Controller
         $data['magang-pkl'] = MagangPKL::select(
             'pengajuan_magang_pkl.id',
             'pengajuan_magang_pkl.id_perusahaan',
-            'pengajuan_magang_pkl.jenis_kegiatan',
+            'jenis_kegiatan.nama_kegiatan', 
+            'jenis_kegiatan.durasi', 
             'perusahaan.nama_perusahaan',
             'siswa.nis',
             'siswa.nama as nama_siswa',
@@ -43,6 +46,7 @@ class JurnalHarianController extends Controller
         ->join('perusahaan', 'perusahaan.id', 'pengajuan_magang_pkl.id_perusahaan')
         ->join('siswa', 'siswa.id', 'pengajuan_magang_pkl.id_siswa')
         ->join('jurusan', 'jurusan.id', 'siswa.id_jurusan')
+        ->join('jenis_kegiatan', 'jenis_kegiatan.id', 'pengajuan_magang_pkl.id_jenis_kegiatan')
         ->where('pengajuan_magang_pkl.id', $id_pengajuan)
         ->orderBy('perusahaan.nama_perusahaan', 'DESC')
         ->first();

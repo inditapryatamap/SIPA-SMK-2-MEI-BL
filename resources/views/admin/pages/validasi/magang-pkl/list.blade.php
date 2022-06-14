@@ -42,7 +42,7 @@
                                             <td>{{ $data['magang-pkl'][$i]->nis }}</td>
                                             <td>{{ $data['magang-pkl'][$i]->nama }}</td>
                                             <td>{{ $data['magang-pkl'][$i]->nama_jurusan }}</td>
-                                            <td>{{ $data['magang-pkl'][$i]->jenis_kegiatan }}</td>
+                                            <td>{{ $data['magang-pkl'][$i]->nama_kegiatan }} - {{ $data['magang-pkl'][$i]->durasi }} hari</td>
                                             <td>{{ $data['magang-pkl'][$i]->nama_perusahaan }}</td>
                                             <td>{{ $data['magang-pkl'][$i]->pembimbing_nama }}</td>
                                             <td>

@@ -2,7 +2,7 @@
 <script src="{{ url('assets') }}/vendors/general/popper.js/dist/umd/popper.js" type="text/javascript"></script>
 <script src="{{ url('assets') }}/vendors/general/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="{{ url('assets') }}/vendors/general/js-cookie/src/js.cookie.js" type="text/javascript"></script>
-{{-- <script src="{{ url('assets') }}/vendors/general/moment/min/moment.min.js" type="text/javascript"></script>
+<script src="{{ url('assets') }}/vendors/general/moment/min/moment.min.js" type="text/javascript"></script>
 <script src="{{ url('assets') }}/vendors/general/tooltip.js/dist/umd/tooltip.min.js" type="text/javascript"></script>
 <script src="{{ url('assets') }}/vendors/general/perfect-scrollbar/dist/perfect-scrollbar.js" type="text/javascript"></script>
 <script src="{{ url('assets') }}/vendors/general/sticky-js/dist/sticky.min.js" type="text/javascript"></script>
@@ -56,7 +56,7 @@
 <script src="{{ url('assets') }}/vendors/general/jquery.repeater/src/lib.js" type="text/javascript"></script>
 <script src="{{ url('assets') }}/vendors/general/jquery.repeater/src/jquery.input.js" type="text/javascript"></script>
 <script src="{{ url('assets') }}/vendors/general/jquery.repeater/src/repeater.js" type="text/javascript"></script>
-<script src="{{ url('assets') }}/vendors/general/dompurify/dist/purify.js" type="text/javascript"></script> --}}
+<script src="{{ url('assets') }}/vendors/general/dompurify/dist/purify.js" type="text/javascript"></script>
 <script src="{{ url('assets') }}/js/demo1/scripts.bundle.js" type="text/javascript"></script>
 <!--end::Global Theme Bundle -->
 <!--begin::Page Vendors(used by this page) -->

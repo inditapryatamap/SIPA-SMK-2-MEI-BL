@@ -22,10 +22,10 @@ return new class extends Migration
             $table->enum('status', ['diproses', 'diverifikasi', 'ditolak'])->comment('diproses, diverifikasi, ditolak');
             $table->timestamps();
 
-            $table->foreign('id_guru_pembimbing')->references('id')->on('guru_pembimbing');
-            $table->foreign('id_siswa')->references('id')->on('siswa');
-            $table->foreign('id_perusahaan')->references('id')->on('perusahaan');
-            $table->foreign('id_jenis_kegiatan')->references('id')->on('jenis_kegiatan');
+            $table->foreign('id_guru_pembimbing')->references('id')->on('guru_pembimbing')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_siswa')->references('id')->on('siswa')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_perusahaan')->references('id')->on('perusahaan')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_jenis_kegiatan')->references('id')->on('jenis_kegiatan')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

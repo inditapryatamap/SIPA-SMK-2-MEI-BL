@@ -25,8 +25,8 @@ return new class extends Migration
             $table->unsignedBigInteger('created_by');
             $table->timestamps();
 
-            $table->foreign('id_pembimbing_lapang')->references('id')->on('pembimbing_lapang');
-            $table->foreign('created_by')->references('id')->on('siswa');
+            $table->foreign('id_pembimbing_lapang')->references('id')->on('pembimbing_lapang')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('created_by')->references('id')->on('siswa')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -13,17 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('jurnal_harian', function (Blueprint $table) {
+        Schema::create('nilai_keterampilan', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_siswa');
             $table->unsignedBigInteger('id_magang_pkl');
-            $table->date('tanggal');
-            $table->text('kegiatan');
-            $table->enum('status_guru_pembimbing', [0, 1, 2])->comment('0: belum di validasi, 1: divalidasi, 2: tidak divalidasi');
-            $table->enum('status_pembimbing_lapang', [0, 1, 2])->comment('0: belum di validasi, 1: divalidasi, 2: tidak divalidasi');
+            $table->text('keterampilan');
+            $table->text('indikator_keberhasilan');
+            $table->enum('status', [0, 1, 2])->comment('0: belum di validasi, 1: divalidasi, 2: tidak divalidasi');
             $table->timestamps();
 
-            $table->foreign('id_siswa')->references('id')->on('siswa')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_magang_pkl')->references('id')->on('pengajuan_magang_pkl')->onDelete('cascade')->onUpdate('cascade');
         });
     }
@@ -35,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jurnal_harian');
+        Schema::dropIfExists('nilai_keterampilan');
     }
 };

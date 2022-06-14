@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('password');
             $table->timestamps();
 
-            $table->foreign('id_jurusan')->references('id')->on('jurusan');
+            $table->foreign('id_jurusan')->references('id')->on('jurusan')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

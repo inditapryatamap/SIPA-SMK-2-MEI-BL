@@ -27,8 +27,8 @@ return new class extends Migration
             $table->integer('total_score_review');
             $table->timestamps();
 
-            $table->foreign('id_siswa')->references('id')->on('siswa');
-            $table->foreign('id_magang_pkl')->references('id')->on('pengajuan_magang_pkl');
+            $table->foreign('id_siswa')->references('id')->on('siswa')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_magang_pkl')->references('id')->on('pengajuan_magang_pkl')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

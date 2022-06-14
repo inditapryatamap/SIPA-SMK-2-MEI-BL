@@ -90,6 +90,31 @@ Route::group(['middleware' => 'auth:admin'], function() {
                 Route::post('/go_create', [Admin\JenisSuratController::class, 'go_create'])->name('admin.master-data.jenis-surat.go.create');
                 Route::post('/go_update', [Admin\JenisSuratController::class, 'go_update'])->name('admin.master-data.jenis-surat.go.update');
             });
+
+            Route::prefix('penilaian')->group(function () {
+                
+                Route::prefix('jenis-kegiatan')->group(function () {
+                    Route::get('/list', [Admin\PenilaianJenisKegiatanController::class, 'index'])->name('admin.penilaian.jenis-kegiatan.list');
+                    Route::get('/go_delete/{id_jenis_kegiatan}', [Admin\PenilaianJenisKegiatanController::class, 'go_delete'])->name('admin.penilaian.jenis-kegiatan.go.delete');
+                    Route::post('/go_create', [Admin\PenilaianJenisKegiatanController::class, 'go_create'])->name('admin.penilaian.jenis-kegiatan.go.create');
+                    Route::post('/go_update', [Admin\PenilaianJenisKegiatanController::class, 'go_update'])->name('admin.penilaian.jenis-kegiatan.go.update');
+                });
+
+                Route::prefix('kepribadian')->group(function () {
+                    Route::get('/list', [Admin\PenilaianKepribadianController::class, 'index'])->name('admin.penilaian.kepribadian.list');
+                    Route::get('/go_delete/{id_kepribadian}', [Admin\PenilaianKepribadianController::class, 'go_delete'])->name('admin.penilaian.kepribadian.go.delete');
+                    Route::post('/go_create', [Admin\PenilaianKepribadianController::class, 'go_create'])->name('admin.penilaian.kepribadian.go.create');
+                    Route::post('/go_update', [Admin\PenilaianKepribadianController::class, 'go_update'])->name('admin.penilaian.kepribadian.go.update');
+                });
+
+                Route::prefix('surat-keterangan')->group(function () {
+                    Route::get('/list', [Admin\PenilaianSuratKeteranganController::class, 'index'])->name('admin.penilaian.surat-keterangan.list');
+                    Route::get('/go_delete/{id_kepribadian}', [Admin\PenilaianSuratKeteranganController::class, 'go_delete'])->name('admin.penilaian.surat-keterangan.go.delete');
+                    Route::post('/go_create', [Admin\PenilaianSuratKeteranganController::class, 'go_create'])->name('admin.penilaian.surat-keterangan.go.create');
+                    Route::post('/go_update', [Admin\PenilaianSuratKeteranganController::class, 'go_update'])->name('admin.penilaian.surat-keterangan.go.update');
+                });
+
+            });
         });
 
     });

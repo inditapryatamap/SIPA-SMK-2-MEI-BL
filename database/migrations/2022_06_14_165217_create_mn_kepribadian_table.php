@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('review_pertanyaan', function (Blueprint $table) {
+        Schema::create('mn_kepribadian', function (Blueprint $table) {
             $table->id();
-            $table->text('pertanyaan');
-            $table->enum('tipe_pertanyaan', ['pkl', 'magang', 'semua']);
-            $table->unsignedBigInteger('created_by');
+            $table->text('aspek_penilaian');
             $table->timestamps();
-
-            $table->foreign('created_by')->references('id')->on('admin')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('review_pertanyaan');
+        Schema::dropIfExists('mn_kepribadian');
     }
 };

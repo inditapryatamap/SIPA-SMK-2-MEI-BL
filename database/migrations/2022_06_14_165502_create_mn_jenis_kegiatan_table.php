@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('jenis_penilaian', function (Blueprint $table) {
+        Schema::create('mn_jenis_kegiatan', function (Blueprint $table) {
             $table->id();
-            $table->string('rubrik');
-            $table->integer('bobot');
-            $table->text('keterangan')->nullable();
+            $table->unsignedBigInteger('id_jurusan');
+            $table->text('kompetensi');
             $table->timestamps();
+
+            $table->foreign('id_jurusan')->references('id')->on('jurusan')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jenis_penilaian');
+        Schema::dropIfExists('mn_jenis_kegiatan');
     }
 };

@@ -28,7 +28,7 @@ class JurnalHarianController extends Controller
         ->where('perusahaan.id_pembimbing_lapang', Auth::guard('pembimbing-lapang')->user()->id)
         ->orderBy('perusahaan.nama_perusahaan', 'DESC')
         ->paginate(10);
-        return view('pembimbing-lapang.pages.jurnal-harian.list', compact('data'));
+        return view('pembimbing-lapang.pages.validasi.jurnal-harian.list', compact('data'));
     }
 
     public function detail($id_pengajuan)
@@ -61,7 +61,7 @@ class JurnalHarianController extends Controller
         )
         ->where('id_magang_pkl', $id_pengajuan)
         ->get();
-        return view('pembimbing-lapang.pages.jurnal-harian.detail', compact('data'));
+        return view('pembimbing-lapang.pages.validasi.jurnal-harian.detail', compact('data'));
     }
 
     public function go_validasi($id_jurnal_harian, $tipe)

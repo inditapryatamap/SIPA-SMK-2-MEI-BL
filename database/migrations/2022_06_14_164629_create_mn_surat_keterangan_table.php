@@ -13,15 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('penilaian', function (Blueprint $table) {
+        Schema::create('mn_surat_keterangan', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_jenis_penilaian');
-            $table->unsignedBigInteger('id_magang_pkl');
-            $table->integer('nilai');
+            $table->text('aspek_penilaian');
             $table->timestamps();
-
-            $table->foreign('id_jenis_penilaian')->references('id')->on('jenis_penilaian');
-            $table->foreign('id_magang_pkl')->references('id')->on('pengajuan_magang_pkl');
         });
     }
 
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('penilaian');
+        Schema::dropIfExists('mn_surat_keterangan');
     }
 };

@@ -22,8 +22,8 @@ return new class extends Migration
             $table->enum('status', [0, 1, 2])->comment('0: belum di validasi, 1: divalidasi, 2: tidak divalidasi');
             $table->timestamps();
 
-            $table->foreign('id_siswa')->references('id')->on('siswa');
-            $table->foreign('id_magang_pkl')->references('id')->on('pengajuan_magang_pkl');
+            $table->foreign('id_siswa')->references('id')->on('siswa')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_magang_pkl')->references('id')->on('pengajuan_magang_pkl')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

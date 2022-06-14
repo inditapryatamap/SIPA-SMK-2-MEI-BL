@@ -22,8 +22,8 @@ return new class extends Migration
             $table->text('keterangan')->nullable();
             $table->timestamps();
 
-            $table->foreign('id_siswa')->references('id')->on('siswa');
-            $table->foreign('id_jenis_surat')->references('id')->on('jenis_surat');
+            $table->foreign('id_siswa')->references('id')->on('siswa')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_jenis_surat')->references('id')->on('jenis_surat')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

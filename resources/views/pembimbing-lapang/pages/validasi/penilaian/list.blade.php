@@ -41,7 +41,7 @@
                                             <td>{{ strtoupper($data['magang-pkl'][$i]->jenis_kegiatan) }}</td>
                                             <td>{{ $data['magang-pkl'][$i]->nama_perusahaan }}</td>
                                             <td class="text-center">
-                                                <a href="{{ route('pembimbing-lapang.jurnal-harian.detail', ['id_pengajuan' => $data['magang-pkl'][$i]->id]) }}" class="btn btn-primary">Jurnal Harian</a>
+                                                <a href="{{ route('pembimbing-lapang.validasi.penilaian.detail', ['id_pengajuan' => $data['magang-pkl'][$i]->id]) }}" class="btn btn-primary">Penilaian</a>
                                             </td>
                                         </tr>
                                     @endfor

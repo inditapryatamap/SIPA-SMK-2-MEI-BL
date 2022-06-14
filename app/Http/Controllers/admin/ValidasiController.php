@@ -73,7 +73,9 @@ class ValidasiController extends Controller
     {
         $data['pengajuan'] = MagangPKL::select(
             'pengajuan_magang_pkl.id',
-            'pengajuan_magang_pkl.jenis_kegiatan',
+            'pengajuan_magang_pkl.id_jenis_kegiatan', 
+            'jenis_kegiatan.nama_kegiatan', 
+            'jenis_kegiatan.durasi', 
             'pengajuan_magang_pkl.id_guru_pembimbing',
             'pengajuan_magang_pkl.status',
             'pengajuan_magang_pkl.created_at',
@@ -95,6 +97,7 @@ class ValidasiController extends Controller
         ->join('perusahaan', 'perusahaan.id', 'pengajuan_magang_pkl.id_perusahaan')
         ->join('siswa', 'siswa.id', 'pengajuan_magang_pkl.id_siswa')
         ->join('jurusan', 'jurusan.id', 'siswa.id_jurusan')
+        ->join('jenis_kegiatan', 'jenis_kegiatan.id', 'pengajuan_magang_pkl.id_jenis_kegiatan')
         // ->join('guru_pembimbing', 'guru_pembimbing.id', 'pengajuan_magang_pkl.id_guru_pembimbing')
         ->where('pengajuan_magang_pkl.id', $id_pengajuan)
         ->first();

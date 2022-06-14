@@ -9,7 +9,7 @@
             <div class="kt-portlet__head kt-portlet__head--noborder">
                 <div class="kt-portlet__head-label">
                     <h1 class="kt-portlet__head-title">
-                        Detail {{ strtoupper($data['pengajuan']->jenis_kegiatan) }} {{ $data['pengajuan']->nama }} 
+                        Detail {{ strtoupper($data['pengajuan']->nama_kegiatan) }} {{ $data['pengajuan']->nama }} 
                     </h1>
                    
                 </div>

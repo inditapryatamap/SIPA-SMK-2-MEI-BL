@@ -24,6 +24,14 @@ Route::group(['middleware' => 'auth:pembimbing-lapang'], function() {
                 Route::get('/list', [PembimbingLapang\PenilaianController::class, 'index'])->name('pembimbing-lapang.validasi.penilaian.list');
                 Route::get('/detail/{id_pengajuan}', [PembimbingLapang\PenilaianController::class, 'detail'])->name('pembimbing-lapang.validasi.penilaian.detail');
                 Route::post('/go_save_jenis_kegiatan/{id_magang_pkl}', [PembimbingLapang\PenilaianController::class, 'go_save_jenis_kegiatan'])->name('pembimbing-lapang.validasi.penilaian.go_save_jenis_kegiatan');
+                Route::post('/go_save_keterampilan/{id_magang_pkl}', [PembimbingLapang\PenilaianController::class, 'go_save_keterampilan'])->name('pembimbing-lapang.validasi.penilaian.go_save_keterampilan');
+                Route::post('/go_update_keterampilan/{id_keterampilan}', [PembimbingLapang\PenilaianController::class, 'go_update_keterampilan'])->name('pembimbing-lapang.validasi.penilaian.go_update_keterampilan');
+                Route::get('/go_delete_keterampilan/{id_keterampilan}', [PembimbingLapang\PenilaianController::class, 'go_delete_keterampilan'])->name('pembimbing-lapang.validasi.penilaian.go_delete_keterampilan');
+                Route::post('/go_save_surat_keterangan/{id_magang_pkl}', [PembimbingLapang\PenilaianController::class, 'go_save_surat_keterangan'])->name('pembimbing-lapang.validasi.penilaian.go_save_surat_keterangan');
+                Route::post('/go_save_kepribadian/{id_magang_pkl}', [PembimbingLapang\PenilaianController::class, 'go_save_kepribadian'])->name('pembimbing-lapang.validasi.penilaian.go_save_kepribadian');
+                Route::post('/go_save_aspek_teknis/{id_magang_pkl}', [PembimbingLapang\PenilaianController::class, 'go_save_aspek_teknis'])->name('pembimbing-lapang.validasi.penilaian.go_save_aspek_teknis');
+                Route::post('/go_update_aspek_teknis/{id_aspek_teknis}', [PembimbingLapang\PenilaianController::class, 'go_update_aspek_teknis'])->name('pembimbing-lapang.validasi.penilaian.go_update_aspek_teknis');
+                Route::get('/go_delete_aspek_teknis/{id_aspek_teknis}', [PembimbingLapang\PenilaianController::class, 'go_delete_aspek_teknis'])->name('pembimbing-lapang.validasi.penilaian.go_delete_aspek_teknis');
             });
 
         });

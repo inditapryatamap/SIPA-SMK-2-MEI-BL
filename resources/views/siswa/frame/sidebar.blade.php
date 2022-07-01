@@ -386,7 +386,7 @@
                         class="kt-menu__link-text">Absensi</span></a>
                      </li>
                      <li class="kt-menu__item " aria-haspopup="true"><a
-                        href="{{ route('pengajuan_perusahaan') }}"
+                        href="{{ route('riwayat.kuesioner.list') }}"
                         class="kt-menu__link "><i
                         class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
                         class="kt-menu__link-text">Kuisioner</span></a>

@@ -44,6 +44,12 @@ Route::group(['middleware' => 'auth:siswa'], function() {
                 Route::get('list', [Siswa\PenilaianController::class, 'index'])->name('riwayat.penilaian.list');
             });
 
+            Route::prefix('kuesioner')->group(function () {
+                Route::get('/list', [Siswa\KuesionerController::class, 'index'])->name('riwayat.kuesioner.list');
+                Route::post('/go_save_kuesioner', [Siswa\KuesionerController::class, 'go_save_kuesioner'])->name('riwayat.kuesioner.go_save_kuesioner');
+                Route::get('/go_delete_kuesioner', [Siswa\KuesionerController::class, 'go_delete_kuesioner'])->name('riwayat.kuesioner.go_delete_kuesioner');
+            });
+
         });
 
         Route::get('buat_surat', [Siswa\SuratController::class, 'index'])->name('buat_surat');

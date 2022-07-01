@@ -1,4 +1,4 @@
-@include('pembimbing-lapang.frame.header')
+@include('siswa.frame.header')
 <div class="row">
     <div class="col-lg-12">
         @include('flash')
@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 <div class="kt-portlet__body">
-                    <form method="POST" action="{{ route('pembimbing-lapang.kuesioner.go_save_kuesioner') }}" class="">
+                    <form method="POST" action="{{ route('riwayat.kuesioner.go_save_kuesioner') }}" class="">
                         @csrf
                         <?php $incrementHelper = 0; ?>
                         @for ($i = 0; $i < count($data['kuesioner']); $i++)
@@ -142,8 +142,8 @@
                     </div>
                 </div>
             @endfor
-            <a href="{{ route('pembimbing-lapang.kuesioner.go_delete_kuesioner') }}" class="btn btn-danger">Hapus dan Buat Ulang Kuesioner</a>
+            <a href="{{ route('riwayat.kuesioner.go_delete_kuesioner') }}" class="btn btn-danger">Hapus dan Buat Ulang Kuesioner</a>
         </div>
     @endif
 </div>
-@include('pembimbing-lapang.frame.footer')
+@include('siswa.frame.footer')

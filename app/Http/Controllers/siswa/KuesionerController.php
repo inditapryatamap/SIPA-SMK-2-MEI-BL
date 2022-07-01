@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\pembimbing_lapang;
+namespace App\Http\Controllers\siswa;
 use App\Http\Controllers\Controller;
 use App\Models\JurnalHarian;
 use App\Models\Kuesioner;
@@ -16,12 +16,12 @@ class KuesionerController extends Controller
 {
     public function index()
     {
-        $data['kuesioner'] = Kuesioner::where('for', 'lapang')->get();
+        $data['kuesioner'] = Kuesioner::where('for', 'siswa')->get();
         for ($i=0; $i < count($data['kuesioner']); $i++) {
             $data['kuesioner'][$i]->option = KuesionerSelect::where('id_kuesioner', $data['kuesioner'][$i]->id)->get();
         }
 
-        if (KuesionerJawaban::where([['for', 'lapang'], ['id_user', Auth::guard('pembimbing-lapang')->user()->id]])->exists()) {
+        if (KuesionerJawaban::where([['for', 'siswa'], ['id_user', Auth::guard('siswa')->user()->id]])->exists()) {
             $data['jawaban'] = KuesionerJawaban::select(
                 'kuesioner_jawaban.id',
                 'kuesioner_jawaban.id_kuesioner',
@@ -31,7 +31,7 @@ class KuesionerController extends Controller
                 'kuesioner.type',
                 'kuesioner.pertanyaan',
             )
-            ->where([['kuesioner_jawaban.for', 'lapang'], ['kuesioner_jawaban.id_user', Auth::guard('pembimbing-lapang')->user()->id]])
+            ->where([['kuesioner_jawaban.for', 'siswa'], ['kuesioner_jawaban.id_user', Auth::guard('siswa')->user()->id]])
             ->join('kuesioner', 'kuesioner.id', 'kuesioner_jawaban.id_kuesioner')
             ->get();
             for ($i=0; $i < count($data['jawaban']); $i++) {
@@ -41,7 +41,7 @@ class KuesionerController extends Controller
 
         // dd($data);
 
-        return view('pembimbing-lapang.pages.kuesioner.list', compact('data'));
+        return view('siswa.pages.riwayat.kuesioner', compact('data'));
     }
 
     public function go_save_kuesioner(Request $request)
@@ -50,20 +50,20 @@ class KuesionerController extends Controller
         DB::beginTransaction();
         try {
 
-            KuesionerJawaban::where([['for', 'lapang'], ['id_user', Auth::guard('pembimbing-lapang')->user()->id]])->delete();
+            KuesionerJawaban::where([['for', 'siswa'], ['id_user', Auth::guard('siswa')->user()->id]])->delete();
             for ($i=0; $i < count($request->jawaban); $i++) {
                 if ($request->jawaban[$i]['type'] !== 'select') {
                     KuesionerJawaban::create([
                         'id_kuesioner' => $request->jawaban[$i]['id'],
-                        'id_user' => Auth::guard('pembimbing-lapang')->user()->id,
-                        'for' => 'lapang',
+                        'id_user' => Auth::guard('siswa')->user()->id,
+                        'for' => 'siswa',
                         'jawaban' => $request->jawaban[$i]['value']
                     ]);
                 } else {
                     $id = KuesionerJawaban::create([
                         'id_kuesioner' => $request->jawaban[$i]['id'],
-                        'id_user' => Auth::guard('pembimbing-lapang')->user()->id,
-                        'for' => 'lapang',
+                        'id_user' => Auth::guard('siswa')->user()->id,
+                        'for' => 'siswa',
                         'jawaban' => '-'
                     ])->id;
                         
@@ -87,8 +87,8 @@ class KuesionerController extends Controller
 
     public function go_delete_kuesioner()
     {
-        if (KuesionerJawaban::where([['for', 'lapang'], ['id_user', Auth::guard('pembimbing-lapang')->user()->id]])->exists()) {
-            $query = KuesionerJawaban::where([['for', 'lapang'], ['id_user', Auth::guard('pembimbing-lapang')->user()->id]])->delete();
+        if (KuesionerJawaban::where([['for', 'siswa'], ['id_user', Auth::guard('siswa')->user()->id]])->exists()) {
+            $query = KuesionerJawaban::where([['for', 'siswa'], ['id_user', Auth::guard('siswa')->user()->id]])->delete();
             
             if ($query) {
                 return redirect()->back()->with(['success' => 'Kuesioner ini telah berhasil di hapus']);

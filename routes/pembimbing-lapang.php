@@ -36,7 +36,10 @@ Route::group(['middleware' => 'auth:pembimbing-lapang'], function() {
 
         });
 
-        
+        Route::prefix('kuesioner')->group(function () {
+            Route::get('/list', [PembimbingLapang\KuesionerController::class, 'index'])->name('pembimbing-lapang.kuesioner.list');
+            Route::post('/go_save_kuesioner', [PembimbingLapang\KuesionerController::class, 'go_save_kuesioner'])->name('pembimbing-lapang.kuesioner.go_save_kuesioner');
+        });
 
         Route::prefix('penilaian')->group(function () {
             Route::get('/list', [PembimbingLapang\PenilaianController::class, 'index'])->name('pembimbing-lapang.penilaian.list');

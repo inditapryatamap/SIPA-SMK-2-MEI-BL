@@ -115,6 +115,13 @@ Route::group(['middleware' => 'auth:admin'], function() {
                 });
 
             });
+
+            Route::prefix('kuesioner')->group(function () {
+                Route::get('/list', [Admin\KuesionerController::class, 'index'])->name('admin.master-data.kuesioner.list');
+                Route::get('/go_delete/{id_jenis_surat}', [Admin\KuesionerController::class, 'go_delete'])->name('admin.master-data.kuesioner.go.delete');
+                Route::post('/go_create', [Admin\KuesionerController::class, 'go_create'])->name('admin.master-data.kuesioner.go.create');
+                Route::post('/go_update', [Admin\KuesionerController::class, 'go_update'])->name('admin.master-data.kuesioner.go.update');
+            });
         });
 
     });

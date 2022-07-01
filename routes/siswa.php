@@ -40,6 +40,10 @@ Route::group(['middleware' => 'auth:siswa'], function() {
                 Route::post('create', [Siswa\AbsensiController::class, 'go_create'])->name('riwayat.absensi.go_create');
             });
 
+            Route::prefix('penilaian')->group(function () {
+                Route::get('list', [Siswa\PenilaianController::class, 'index'])->name('riwayat.penilaian.list');
+            });
+
         });
 
         Route::get('buat_surat', [Siswa\SuratController::class, 'index'])->name('buat_surat');

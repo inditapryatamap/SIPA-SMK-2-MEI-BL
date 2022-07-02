@@ -14,6 +14,11 @@ Route::group(['middleware' => 'auth:admin'], function() {
     Route::prefix('admin')->group(function () {
         Route::get('/dashboard', [Admin\DashboardController::class, 'index'])->name('admin.dashboard');
 
+        Route::prefix('pengumuman')->group(function () {
+            Route::get('/detail/{id_pengumuman}', [Admin\PengumumanController::class, 'detail'])->name('admin.pengumuman.detail');
+            Route::post('/go_create_pengumuman', [Admin\PengumumanController::class, 'go_create_pengumuman'])->name('admin.pengumuman.go_create_pengumuman');
+        });
+
         Route::prefix('validasi')->group(function () {
             Route::prefix('magang-pkl')->group(function () {
                 Route::get('/list', [Admin\ValidasiController::class, 'magangPKL'])->name('admin.magang-pkl');

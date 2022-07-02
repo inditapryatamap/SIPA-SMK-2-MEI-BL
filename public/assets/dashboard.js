@@ -190,3 +190,9 @@ function getValueKeseluruhan(type) {
     
     return fixedValue;
 }
+
+// tinymce.init({
+//     selector: 'textarea#default-editor'
+// });
+
+$('textarea#tiny').tinymce({ height: 500, /* other settings... */ });

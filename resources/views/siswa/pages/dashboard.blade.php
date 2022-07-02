@@ -87,14 +87,44 @@
                     <div class="col-xl-12">
                         <div class="kt-portlet kt-portlet--height-fluid">
                             <div class="kt-widget14">
-                                <div class="kt-widget14__header">
-                                    <h3 class="kt-widget14__title">
-                                        Grafik Keseluruhan
-                                    </h3>
-                                    <span class="kt-widget14__desc">
-                                        Periode Jan - Des 2021
-                                    </span>
+                                <div class="kt-portlet__head pl-0 pr-0">
+                                    <div class="kt-widget14__header">
+                                        <h3 class="kt-widget14__title">
+                                            Grafik Keseluruhan
+                                        </h3>
+                                        <span class="kt-widget14__desc">
+                                            Periode Jan - Des {{ $data['tahun_keseluruhan'] }}
+                                        </span>
+                                    </div>
+                                    <div class="kt-portlet__head-toolbar">
+                                        <div class="dropdown dropdown-inline">
+                                            <button type="button" class="btn btn-clean btn-sm btn-icon-md btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="flaticon-more-1"></i>
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-fit dropdown-menu-md" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(32px, 33px, 0px);">
+                                                <ul class="kt-nav">
+                                                    <li class="kt-nav__head">
+                                                        Filter Tahun
+                                                        <i class="flaticon2-information" data-toggle="kt-tooltip" data-placement="right" title="Click to learn more..."></i>
+                                                    </li>
+                                                        <li class="kt-nav__separator"></li>
+                                                        @for ($i = date("Y"); $i > (int)date("Y") - 4; $i--)
+                                                            <li class="kt-nav__item">
+                                                                <a href={{ url('siswa/dashboard?tahun_keseluruhan=') . $i }} class="kt-nav__link">
+                                                                    <i class="kt-nav__link-icon flaticon2-soft-icons"></i>
+                                                                    <span class="kt-nav__link-text">Tahun {{ $i }}</span>
+                                                                </a>
+                                                            </li>
+                                                        @endfor
+                                                        <li class="kt-nav__separator"></li>
+                                                </ul>
+
+                                                <!--end::Nav-->
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                                
                                 <div class="kt-widget14__content">
                                     <canvas id="kt_chart_keseluruhan" style="width: 100%;"></canvas>
                                 </div>
@@ -202,6 +232,31 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="col-md-12 col-lg-4 col-xl-4 pl-2">
+        <div class="row row-no-padding row-col-separator-xl">
+            @for ($i = 0; $i < count($data['pengumuman']); $i++)
+                <div class="col-xl-12 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5>{{ $data['pengumuman'][$i]->created_at->format('d F Y') }}</h6>
+                            @if (strlen($data['pengumuman'][$i]->pengumuman) > 200)
+                                <p>
+                                    {!! substr($data['pengumuman'][$i]->pengumuman, 0 ,200) !!} ...
+                                </p>
+                            @else
+                                <p>
+                                    {!! $data['pengumuman'][$i]->pengumuman !!}
+                                </p> 
+                            @endif
+                            <a href="{{ route('siswa.pengumuman.detail', ['id_pengumuman' => $data['pengumuman'][$i]->id]) }}" >Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+            @endfor
+            
         </div>
     </div>
 </div>

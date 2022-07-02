@@ -14,6 +14,10 @@ Route::group(['middleware' => 'auth:siswa'], function() {
 
         Route::get('dashboard', [Siswa\DashboardController::class, 'index'])->name('siswa.dashboard');
 
+        Route::prefix('pengumuman')->group(function () {
+            Route::get('/detail/{id_pengumuman}', [Siswa\PengumumanController::class, 'detail'])->name('siswa.pengumuman.detail');
+        });
+
         Route::prefix('pengajuan')->group(function () {
             Route::get('magang_pkl', [Siswa\PengajuanController::class, 'pengajuan_magang_pkl'])->name('pengajuan_magang_pkl');
             Route::post('go_create_pkl_magang', [Siswa\PengajuanController::class, 'go_create_pkl_magang'])->name('go_create_pkl_magang');

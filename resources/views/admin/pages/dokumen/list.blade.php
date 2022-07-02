@@ -39,7 +39,7 @@
                                             <th scope="row">{{ (int)$i + 1 }}</th>
                                             <td>{{ $data['dokumen'][$i]->nis }}</td>
                                             <td>{{ $data['dokumen'][$i]->nama_siswa }}</td>
-                                            <td>{{ $data['dokumen'][$i]->jenis_kegiatan }}</td>
+                                            <td>{{ $data['dokumen'][$i]->nama_kegiatan }} - {{ $data['dokumen'][$i]->durasi }} hari</td>
                                             <td>{{ $data['dokumen'][$i]->nama_perusahaan }}</td>
                                             <td>{{ $data['dokumen'][$i]->judul_laporan }}</td>
                                             <td><a href="{{ route('admin.dokumen.detail', ['id_dokumen' => $data['dokumen'][$i]->id]) }}" class="btn btn-success">Detail</a></td>

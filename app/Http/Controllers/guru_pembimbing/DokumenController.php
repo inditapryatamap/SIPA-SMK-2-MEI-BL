@@ -11,20 +11,25 @@ use Illuminate\Support\Facades\Validator;
 
 class DokumenController extends Controller
 {
-    public function index()
+    public function index($tipe)
     {
         $data['dokumen'] = DokumenReview::select(
             'siswa.nis',
             'siswa.nama as nama_siswa',
-            'pengajuan_magang_pkl.jenis_kegiatan',
+            'pengajuan_magang_pkl.id_jenis_kegiatan',
             'pengajuan_magang_pkl.id_perusahaan',
             'perusahaan.nama_perusahaan',
             'dokumen.id',
-            'dokumen.judul_laporan'
+            'dokumen.judul_laporan',
+            'jenis_kegiatan.nama_kegiatan', 
+            'jenis_kegiatan.durasi',
+            'dokumen.status_guru_pembimbing', 
         )
         ->join('siswa', 'siswa.id', 'dokumen.id_siswa')
         ->join('pengajuan_magang_pkl', 'pengajuan_magang_pkl.id', 'dokumen.id_magang_pkl')
         ->join('perusahaan', 'perusahaan.id', 'pengajuan_magang_pkl.id_perusahaan')
+        ->join('jenis_kegiatan', 'jenis_kegiatan.id', 'pengajuan_magang_pkl.id_jenis_kegiatan')
+        ->where('tipe', $tipe)
         ->paginate(10);
         return view('guru-pembimbing.pages.dokumen.list', compact('data'));
     }
@@ -34,19 +39,38 @@ class DokumenController extends Controller
         $data['dokumen'] = DokumenReview::select(
             'siswa.nis',
             'siswa.nama as nama_siswa',
-            'pengajuan_magang_pkl.jenis_kegiatan',
+            'pengajuan_magang_pkl.id_jenis_kegiatan',
             'pengajuan_magang_pkl.id_perusahaan',
             'perusahaan.nama_perusahaan',
             'dokumen.id',
             'dokumen.judul_laporan',
             'dokumen.file_laporan_ms_word',
-            'dokumen.file_laporan_pdf'
+            'dokumen.file_laporan_pdf',
+            'jenis_kegiatan.nama_kegiatan', 
+            'jenis_kegiatan.durasi', 
+            'dokumen.status_guru_pembimbing', 
         )
         ->where('dokumen.id', $id_dokumen)
         ->join('siswa', 'siswa.id', 'dokumen.id_siswa')
         ->join('pengajuan_magang_pkl', 'pengajuan_magang_pkl.id', 'dokumen.id_magang_pkl')
+        ->join('jenis_kegiatan', 'jenis_kegiatan.id', 'pengajuan_magang_pkl.id_jenis_kegiatan')
         ->join('perusahaan', 'perusahaan.id', 'pengajuan_magang_pkl.id_perusahaan')
         ->first();
         return view('guru-pembimbing.pages.dokumen.detail', compact('data'));
+    }
+
+    public function go_validasi($id_dokumen, $tipe)
+    {
+        if (DokumenReview::where('id', $id_dokumen)->exists()) {
+            $query = DokumenReview::where('id', $id_dokumen)->update([
+                'status_guru_pembimbing' => $tipe
+            ]);
+
+            if ($query) {
+                return redirect()->back()->with(['success' => 'Dokumen ini telah berhasil di perbarui']);
+            }
+            return redirect()->back()->with(['errors' => 'Query gagal, Ada kesalahan sistem. Coba kembali beberapa saat']);
+        }
+        return redirect()->back()->with(['errors' => 'Dokumen tidak ditemukan']);
     }
 }

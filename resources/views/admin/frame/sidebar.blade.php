@@ -116,9 +116,10 @@
                   <span class="kt-menu__link-text">Surat</span>
                </a>
             </li>
-            <li class="kt-menu__item" aria-haspopup="true">
-               <a
-                  href="{{ route('admin.dokumen') }}" class="kt-menu__link ">
+            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+               data-ktmenu-submenu-toggle="hover">
+               <a href="javascript:;"
+                  class="kt-menu__link kt-menu__toggle">
                   <span class="kt-menu__link-icon">
                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -128,8 +129,26 @@
                         </g>
                      </svg>
                   </span>
-                  <span class="kt-menu__link-text">Arsip Dokumen</span>
+                  <span class="kt-menu__link-text">Dokumen</span><i
+                     class="kt-menu__ver-arrow la la-angle-right"></i>
                </a>
+               <div class="kt-menu__submenu ">
+                  <span class="kt-menu__arrow"></span>
+                  <ul class="kt-menu__subnav">
+                     <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span
+                        class="kt-menu__link"><span
+                        class="kt-menu__link-text">Dokumen</span></span></li>
+                     <li class="kt-menu__item " aria-haspopup="true"><a
+                        href="{{ route('admin.dokumen', ['tipe' => 'individu']) }}" class="kt-menu__link "><i
+                        class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
+                        class="kt-menu__link-text">Laporan Individu</span></a></li>
+                     <li class="kt-menu__item " aria-haspopup="true"><a
+                        href="{{ route('admin.dokumen', ['tipe' => 'kelompok']) }}"
+                        class="kt-menu__link "><i
+                        class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
+                        class="kt-menu__link-text">Laporan Kelompok</span></a></li>
+                  </ul>
+               </div>
             </li>
             <li class="kt-menu__section ">
                <h4 class="kt-menu__section-text">Akun</h4>

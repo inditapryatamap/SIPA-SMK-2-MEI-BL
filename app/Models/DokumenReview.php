@@ -18,5 +18,6 @@ class DokumenReview extends Model
         'file_laporan_ms_word',
         'file_laporan_pdf',
         'tipe',
+        'status_guru_pembimbing'
     ];
 }

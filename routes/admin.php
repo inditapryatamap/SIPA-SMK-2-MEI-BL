@@ -42,7 +42,7 @@ Route::group(['middleware' => 'auth:admin'], function() {
         });
 
         Route::prefix('dokumen')->group(function () {
-            Route::get('/list', [Admin\DokumenController::class, 'index'])->name('admin.dokumen');
+            Route::get('/list/{tipe}', [Admin\DokumenController::class, 'index'])->name('admin.dokumen');
             Route::get('/detail/{id_dokumen}', [Admin\DokumenController::class, 'detail'])->name('admin.dokumen.detail');
         });
 

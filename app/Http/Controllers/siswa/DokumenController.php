@@ -39,6 +39,8 @@ class DokumenController extends Controller
             )
             ->where([['dokumen.id_magang_pkl', $request['id_magang_pkl']], ['tipe', 'kelompok']])
             ->first();
+        } else {
+            $data['id_magang_pkl'] = null;
         }
 
         // dd($data);
@@ -93,6 +95,7 @@ class DokumenController extends Controller
             'tipe' => 'individu',
             'id_magang_pkl' => $id_magang_pkl,
             'judul_laporan' => $request->judul_laporan,
+            'status_guru_pembimbing' => 0,
             'file_laporan_ms_word' => $this->uploadFile($request->file_laporan_ms_word, 'file_dokumen'),
             'file_laporan_pdf' => $this->uploadFile($request->file_laporan_pdf, 'file_dokumen'),
         ]);
@@ -123,6 +126,7 @@ class DokumenController extends Controller
             'tipe' => 'kelompok',
             'id_magang_pkl' => $id_magang_pkl,
             'judul_laporan' => $request->judul_laporan,
+            'status_guru_pembimbing' => 0,
             'file_laporan_ms_word' => $this->uploadFile($request->file_laporan_ms_word, 'file_dokumen'),
             'file_laporan_pdf' => $this->uploadFile($request->file_laporan_pdf, 'file_dokumen'),
         ]);

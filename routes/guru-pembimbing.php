@@ -19,9 +19,11 @@ Route::group(['middleware' => 'auth:guru-pembimbing'], function() {
         });
 
         Route::prefix('dokumen')->group(function () {
-            Route::get('/list', [GuruPembimbing\DokumenController::class, 'index'])->name('guru-pembimbing.dokumen');
+            Route::get('/list/{tipe}', [GuruPembimbing\DokumenController::class, 'index'])->name('guru-pembimbing.dokumen');
             Route::get('/detail/{id_dokumen}', [GuruPembimbing\DokumenController::class, 'detail'])->name('guru-pembimbing.dokumen.detail');
+            Route::get('/go_validasi/{id_dokumen}/{tipe}', [GuruPembimbing\DokumenController::class, 'go_validasi'])->name('guru-pembimbing.dokumen.go_validasi');
         });
+
     });
 });
 

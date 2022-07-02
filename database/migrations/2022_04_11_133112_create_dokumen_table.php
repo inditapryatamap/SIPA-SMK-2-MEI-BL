@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('judul_laporan');
             $table->text('file_laporan_ms_word');
             $table->text('file_laporan_pdf');
+            $table->enum('status_guru_pembimbing', [0, 1, 2])->comment('0: belum di validasi, 1: divalidasi, 2: tidak divalidasi');
             $table->timestamps();
 
             $table->foreign('id_siswa')->references('id')->on('siswa')->onDelete('cascade')->onUpdate('cascade');

@@ -10,11 +10,18 @@
                 <div class="kt-portlet__head">
                     <div class="kt-portlet__head-label">
                         <h3 class="kt-portlet__head-title">
-                            Detail dokumen
+                            Detail dokumen 
+                            @if ($data['dokumen']->status_guru_pembimbing == 1)
+                                <span class="badge badge-success">Terverifikasi</span>
+                            @elseif ($data['dokumen']->status_guru_pembimbing == 2)
+                                <span class="badge badge-danger">Ditolak</span>
+                            @else
+                                <span class="badge badge-light">Belum Diproses</span>
+                            @endif
                         </h3>
                     </div>
                 </div>
-                <div class="kt-portlet__body">
+                <div class="kt-portlet__body pb-0 mb-0">
                     <div class="kt-widget12">
                         <div class="kt-widget12__content">
                             <div class="kt-widget12__item">
@@ -30,12 +37,37 @@
                             <div class="kt-widget12__item">
                                 <div class="kt-widget12__info">
                                     <span class="kt-widget12__desc">Jenis Kegiatan</span>
-                                    <span class="kt-widget12__value">{{ strtoupper($data['dokumen']->jenis_kegiatan) }}</span>
+                                    <span class="kt-widget12__value">{{ strtoupper($data['dokumen']->nama_kegiatan) }} - {{ strtoupper($data['dokumen']->durasi) }} hari</span>
                                 </div>
                                 <div class="kt-widget12__info">
                                     <span class="kt-widget12__desc">Perusahaan</span>
                                     <span class="kt-widget12__value">{{ $data['dokumen']->nama_perusahaan }}</span>
                                 </div>
+                            </div>
+                            <div class="kt-widget12__item mb-0">
+                                @if ($data['dokumen']->status_guru_pembimbing == 1)
+                                    <div class="kt-widget12__info mr-2">
+                                        <button class="btn btn-success btn-block" style="cursor: no-drop" disabled>Verifikasi</button>
+                                    </div>
+                                    <div class="kt-widget12__info">
+                                        <a href="{{ route('guru-pembimbing.dokumen.go_validasi', ['id_dokumen' => $data['dokumen']->id, 'tipe' => 2]) }}" class="btn btn-danger btn-block">Tolak</a>
+                                    </div>
+                                @elseif ($data['dokumen']->status_guru_pembimbing == 2)
+                                    <div class="kt-widget12__info mr-2">
+                                        <a href="{{ route('guru-pembimbing.dokumen.go_validasi', ['id_dokumen' => $data['dokumen']->id, 'tipe' => 1]) }}" class="btn btn-success btn-block">Verifikasi</a>
+                                    </div>
+                                    <div class="kt-widget12__info">
+                                        <button class="btn btn-danger btn-block" style="cursor: no-drop" disabled>Ditolak</button>
+                                    </div>
+                                @else
+                                    <div class="kt-widget12__info mr-2">
+                                        <a href="{{ route('guru-pembimbing.dokumen.go_validasi', ['id_dokumen' => $data['dokumen']->id, 'tipe' => 1]) }}" class="btn btn-success btn-block">Verifikasi</a>
+                                    </div>
+                                    <div class="kt-widget12__info">
+                                        <a href="{{ route('guru-pembimbing.dokumen.go_validasi', ['id_dokumen' => $data['dokumen']->id, 'tipe' => 2]) }}" class="btn btn-danger btn-block">Tolak</a>
+                                    </div>
+                                @endif
+                               
                             </div>
                         </div>
                     </div>

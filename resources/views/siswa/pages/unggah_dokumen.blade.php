@@ -8,8 +8,8 @@
     <div class="col-md-12 mb-4">
         <div class="card radius-10">
             <div class="card-body">
-                <h4>Unggah Dokumen Laporan PKL/Magang</h4>
-                <p class="mb-0">Silahkan unggah dokumen laporan kegiatan PKL/Magang Anda dan berikan ulasan tentang perusahaan tempat Anda melaksanakan PKL/ Magang</p>
+                <h4>Dokumen Laporan PKL atau Magang</h4>
+                <p class="mb-0">Dokumen tentang kegiatan dan hasil kegiatan selama melakukan PKL atau Magang</p>
             </div>
         </div>
     </div>
@@ -21,10 +21,25 @@
                     <select id="select-kegiatan" name="id_magang_pkl" type="text" class="form-control">
                         <option selected disabled>Pilih kegiatan yang pernah diajukan</option>
                         @for ($i = 0; $i < count($data['kegiatan']); $i++)
-                            <option optionAtribute="{{ $data['kegiatan'][$i]->nama_kegiatan }}" value={{ $data['kegiatan'][$i]->id }}>
-                                {{ $data['kegiatan'][$i]->nama_kegiatan }} - {{ $data['kegiatan'][$i]->durasi }} hari
-                                di {{ $data['kegiatan'][$i]->nama_perusahaan }}
-                            </option>
+                            @if ($data['id_magang_pkl'] != null)
+                                @if ($data['id_magang_pkl'] == $data['kegiatan'][$i]->id)
+                                    <option selected optionAtribute="{{ $data['kegiatan'][$i]->nama_kegiatan }}" value={{ $data['kegiatan'][$i]->id }}>
+                                        {{ $data['kegiatan'][$i]->nama_kegiatan }} - {{ $data['kegiatan'][$i]->durasi }} hari
+                                        di {{ $data['kegiatan'][$i]->nama_perusahaan }}
+                                    </option>
+                                @else
+                                    <option optionAtribute="{{ $data['kegiatan'][$i]->nama_kegiatan }}" value={{ $data['kegiatan'][$i]->id }}>
+                                        {{ $data['kegiatan'][$i]->nama_kegiatan }} - {{ $data['kegiatan'][$i]->durasi }} hari
+                                        di {{ $data['kegiatan'][$i]->nama_perusahaan }}
+                                    </option>
+                                @endif
+                            @else
+                                <option optionAtribute="{{ $data['kegiatan'][$i]->nama_kegiatan }}" value={{ $data['kegiatan'][$i]->id }}>
+                                    {{ $data['kegiatan'][$i]->nama_kegiatan }} - {{ $data['kegiatan'][$i]->durasi }} hari
+                                    di {{ $data['kegiatan'][$i]->nama_perusahaan }}
+                                </option>
+                            @endif
+                            
                         @endfor
                     </select>
                     <span class="form-text text-muted">Pilih kegiatan yang pernah diajukan.</span>

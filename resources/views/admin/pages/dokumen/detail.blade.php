@@ -11,6 +11,13 @@
                     <div class="kt-portlet__head-label">
                         <h3 class="kt-portlet__head-title">
                             Detail dokumen
+                            @if ($data['dokumen']->status_guru_pembimbing == 1)
+                                <span class="badge badge-success">Terverifikasi</span>
+                            @elseif ($data['dokumen']->status_guru_pembimbing == 2)
+                                <span class="badge badge-danger">Ditolak</span>
+                            @else
+                                <span class="badge badge-light">Belum Diproses</span>
+                            @endif
                         </h3>
                     </div>
                 </div>

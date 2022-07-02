@@ -29,7 +29,7 @@
                                         <th>Nama Siswa</th>
                                         <th>Jenis Kegiatan</th>
                                         <th>Nama Perusahaan</th>
-                                        <th>Judul Laporan</th>
+                                        <th>Status</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -41,7 +41,15 @@
                                             <td>{{ $data['dokumen'][$i]->nama_siswa }}</td>
                                             <td>{{ $data['dokumen'][$i]->nama_kegiatan }} - {{ $data['dokumen'][$i]->durasi }} hari</td>
                                             <td>{{ $data['dokumen'][$i]->nama_perusahaan }}</td>
-                                            <td>{{ $data['dokumen'][$i]->judul_laporan }}</td>
+                                            <td>
+                                                @if ($data['dokumen'][$i]->status_guru_pembimbing == 1)
+                                                    <span class="badge badge-success">Terverifikasi</span>
+                                                @elseif ($data['dokumen'][$i]->status_guru_pembimbing == 2)
+                                                    <span class="badge badge-danger">Ditolak</span>
+                                                @else
+                                                    <span class="badge badge-light">Belum Diproses</span>
+                                                @endif
+                                            </td>
                                             <td><a href="{{ route('admin.dokumen.detail', ['id_dokumen' => $data['dokumen'][$i]->id]) }}" class="btn btn-success">Detail</a></td>
                                         </tr>
                                     @endfor

@@ -63,6 +63,7 @@ class DokumenController extends Controller
                 'dokumen.file_laporan_pdf',
                 'jenis_kegiatan.nama_kegiatan', 
                 'jenis_kegiatan.durasi', 
+                'dokumen.status_guru_pembimbing', 
             )
             ->where('dokumen.id', $id_dokumen)
             ->join('siswa', 'siswa.id', 'dokumen.id_siswa')

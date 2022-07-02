@@ -320,9 +320,9 @@ var KTApp = function() {
             $(target).removeClass($(target).data('progress-classes'));
         },
 
-        getStateColor: function(name) {
-            return colors["state"][name];
-        },
+        // getStateColor: function(name) {
+        //     return colors["state"][name];
+        // },
 
         getBaseColor: function(type, level) {
             return colors["base"][type][level - 1];

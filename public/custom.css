@@ -78,3 +78,9 @@
 .cursor-pointer {
     cursor: pointer !important;
 }
+
+.diws {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

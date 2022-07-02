@@ -229,7 +229,8 @@ var KTDashboard = function() {
         };
 
         var ctx = KTUtil.getByID('kt_chart_profit_share').getContext('2d');
-        var myDoughnut = new Chart(ctx, config);
+        console.log('hai');
+        new Chart(ctx, config);
     }
 
     // Sales Stats.
@@ -1881,39 +1882,8 @@ var KTDashboard = function() {
     return {
         // Init demos
         init: function() {
-            // init charts
-            dailySales();
             profitShare();
-            salesStats();
-            salesByApps();
-            latestUpdates();
-            trendsStats();
-            trendsStats2();
-            latestTrendsMap();
-            revenueChange();
-            supportCases();
-            supportRequests();
-            activitiesChart();
-            bandwidthChart1();
-            bandwidthChart2();
-            adWordsStat();
-            financeSummary();
-            quickStats();
-            orderStatistics();
 
-            // init daterangepicker
-            daterangepickerInit();
-
-            // datatables
-            datatableLatestOrders();
-
-            // calendar
-            calendarInit();
-
-            // earnings slide
-            earningsSlide();
-
-            
             // demo loading
             var loading = new KTDialog({'type': 'loader', 'placement': 'top center', 'message': 'Loading ...'});
             loading.show();

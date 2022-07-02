@@ -19,11 +19,11 @@ class DokumenController extends Controller
             'pengajuan_magang_pkl.jenis_kegiatan',
             'pengajuan_magang_pkl.id_perusahaan',
             'perusahaan.nama_perusahaan',
-            'dokumen_dan_review.id',
-            'dokumen_dan_review.judul_laporan'
+            'dokumen.id',
+            'dokumen.judul_laporan'
         )
-        ->join('siswa', 'siswa.id', 'dokumen_dan_review.id_siswa')
-        ->join('pengajuan_magang_pkl', 'pengajuan_magang_pkl.id', 'dokumen_dan_review.id_magang_pkl')
+        ->join('siswa', 'siswa.id', 'dokumen.id_siswa')
+        ->join('pengajuan_magang_pkl', 'pengajuan_magang_pkl.id', 'dokumen.id_magang_pkl')
         ->join('perusahaan', 'perusahaan.id', 'pengajuan_magang_pkl.id_perusahaan')
         ->paginate(10);
         return view('guru-pembimbing.pages.dokumen.list', compact('data'));
@@ -37,14 +37,14 @@ class DokumenController extends Controller
             'pengajuan_magang_pkl.jenis_kegiatan',
             'pengajuan_magang_pkl.id_perusahaan',
             'perusahaan.nama_perusahaan',
-            'dokumen_dan_review.id',
-            'dokumen_dan_review.judul_laporan',
-            'dokumen_dan_review.file_laporan_ms_word',
-            'dokumen_dan_review.file_laporan_pdf'
+            'dokumen.id',
+            'dokumen.judul_laporan',
+            'dokumen.file_laporan_ms_word',
+            'dokumen.file_laporan_pdf'
         )
-        ->where('dokumen_dan_review.id', $id_dokumen)
-        ->join('siswa', 'siswa.id', 'dokumen_dan_review.id_siswa')
-        ->join('pengajuan_magang_pkl', 'pengajuan_magang_pkl.id', 'dokumen_dan_review.id_magang_pkl')
+        ->where('dokumen.id', $id_dokumen)
+        ->join('siswa', 'siswa.id', 'dokumen.id_siswa')
+        ->join('pengajuan_magang_pkl', 'pengajuan_magang_pkl.id', 'dokumen.id_magang_pkl')
         ->join('perusahaan', 'perusahaan.id', 'pengajuan_magang_pkl.id_perusahaan')
         ->first();
         return view('guru-pembimbing.pages.dokumen.detail', compact('data'));

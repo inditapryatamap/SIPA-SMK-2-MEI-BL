@@ -60,6 +60,7 @@ Route::group(['middleware' => 'auth:siswa'], function() {
             Route::get('list', [Siswa\DokumenController::class, 'index'])->name('siswa.dokumen.list');
             Route::get('detail/{id_dokumen}', [Siswa\DokumenController::class, 'detail'])->name('siswa.dokumen.detail');
             Route::post('go_create_dokumen_individu/{id_magang_pkl}', [Siswa\DokumenController::class, 'go_create_dokumen_individu'])->name('siswa.dokumen.go_create_dokumen_individu');
+            Route::post('go_create_dokumen_kelompok/{id_magang_pkl}', [Siswa\DokumenController::class, 'go_create_dokumen_kelompok'])->name('siswa.dokumen.go_create_dokumen_kelompok');
         });
 
         Route::get('buat_surat', [Siswa\SuratController::class, 'index'])->name('buat_surat');

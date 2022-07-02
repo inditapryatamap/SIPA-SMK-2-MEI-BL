@@ -33,6 +33,12 @@ class DokumenController extends Controller
             )
             ->where([['dokumen.id_magang_pkl', $request['id_magang_pkl']], ['tipe', 'individu'], ['id_siswa', Auth::guard('siswa')->user()->id]])
             ->first();
+
+            $data['dokumen_kelompok'] = DokumenReview::select(
+                'dokumen.id',
+            )
+            ->where([['dokumen.id_magang_pkl', $request['id_magang_pkl']], ['tipe', 'kelompok']])
+            ->first();
         }
 
         // dd($data);
@@ -43,7 +49,7 @@ class DokumenController extends Controller
     public function detail($id_dokumen)
     {
         if (DokumenReview::where('id', $id_dokumen)->exists()) {
-            $data['dokumen_individu'] = DokumenReview::select(
+            $data['dokumen'] = DokumenReview::select(
                 'siswa.nis',
                 'siswa.nama as nama_siswa',
                 'pengajuan_magang_pkl.id_jenis_kegiatan',
@@ -52,12 +58,15 @@ class DokumenController extends Controller
                 'dokumen.id',
                 'dokumen.judul_laporan',
                 'dokumen.file_laporan_ms_word',
-                'dokumen.file_laporan_pdf'
+                'dokumen.file_laporan_pdf',
+                'jenis_kegiatan.nama_kegiatan', 
+                'jenis_kegiatan.durasi', 
             )
-            ->where('id', $id_dokumen)
+            ->where('dokumen.id', $id_dokumen)
             ->join('siswa', 'siswa.id', 'dokumen.id_siswa')
             ->join('pengajuan_magang_pkl', 'pengajuan_magang_pkl.id', 'dokumen.id_magang_pkl')
             ->join('perusahaan', 'perusahaan.id', 'pengajuan_magang_pkl.id_perusahaan')
+            ->join('jenis_kegiatan', 'jenis_kegiatan.id', 'pengajuan_magang_pkl.id_jenis_kegiatan')
             ->first();
 
             return view('siswa.pages.dokumen.detail', compact('data'));
@@ -89,7 +98,37 @@ class DokumenController extends Controller
         ]);
 
         if ($query) {
-            return redirect()->back()->with(['success' => 'Seluruh informasi berhasil diupload']);
+            return redirect()->back()->with(['success' => 'Dokumen berhasil diupload']);
+        } else {
+            return redirect()->back()->with(['errors' => 'Query gagal, Ada kesalahan sistem. Coba kembali beberapa saat']);
+        }
+    }
+
+    public function go_create_dokumen_kelompok(Request $request, $id_magang_pkl)
+    {
+        // dd($request);
+        $validator = Validator::make($request->all(), [
+            'judul_laporan' => ['required', 'string'],
+            'file_laporan_ms_word' => ['required', 'mimes:doc,docx'],
+            'file_laporan_pdf' => ['required', 'mimes:pdf', 'max:10240'],
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        
+        // dd(Auth::guard('siswa')->user()->id);
+        $query = DokumenReview::create([
+            'id_siswa' => Auth::guard('siswa')->user()->id,
+            'tipe' => 'kelompok',
+            'id_magang_pkl' => $id_magang_pkl,
+            'judul_laporan' => $request->judul_laporan,
+            'file_laporan_ms_word' => $this->uploadFile($request->file_laporan_ms_word, 'file_dokumen'),
+            'file_laporan_pdf' => $this->uploadFile($request->file_laporan_pdf, 'file_dokumen'),
+        ]);
+
+        if ($query) {
+            return redirect()->back()->with(['success' => 'Dokumen berhasil diupload']);
         } else {
             return redirect()->back()->with(['errors' => 'Query gagal, Ada kesalahan sistem. Coba kembali beberapa saat']);
         }

@@ -30,7 +30,7 @@
                             <div class="kt-widget12__item">
                                 <div class="kt-widget12__info">
                                     <span class="kt-widget12__desc">Jenis Kegiatan</span>
-                                    <span class="kt-widget12__value">{{ strtoupper($data['dokumen']->jenis_kegiatan) }}</span>
+                                    <span class="kt-widget12__value">{{ strtoupper($data['dokumen']->nama_kegiatan) }} - {{ strtoupper($data['dokumen']->durasi) }} hari</span>
                                 </div>
                                 <div class="kt-widget12__info">
                                     <span class="kt-widget12__desc">Perusahaan</span>

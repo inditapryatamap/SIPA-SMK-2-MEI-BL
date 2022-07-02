@@ -20,6 +20,12 @@ Route::group(['middleware' => 'auth:pembimbing-lapang'], function() {
                 Route::get('/go_validasi/{id_jurnal_harian}/{tipe}', [PembimbingLapang\JurnalHarianController::class, 'go_validasi'])->name('pembimbing-lapang.validasi.jurnal-harian.go_validasi');
             });
 
+            Route::prefix('kehadiran')->group(function () {
+                Route::get('/list', [PembimbingLapang\KehadiranController::class, 'index'])->name('pembimbing-lapang.validasi.kehadiran.list');
+                Route::get('/detail/{id_pengajuan}', [PembimbingLapang\KehadiranController::class, 'detail'])->name('pembimbing-lapang.validasi.jurnal-harian.detail');
+                Route::get('/go_validasi/{id_jurnal_harian}/{tipe}', [PembimbingLapang\KehadiranController::class, 'go_validasi'])->name('pembimbing-lapang.validasi.kehadiran.go_validasi');
+            });
+
             Route::prefix('penilaian')->group(function () {
                 Route::get('/list', [PembimbingLapang\PenilaianController::class, 'index'])->name('pembimbing-lapang.validasi.penilaian.list');
                 Route::get('/detail/{id_pengajuan}', [PembimbingLapang\PenilaianController::class, 'detail'])->name('pembimbing-lapang.validasi.penilaian.detail');

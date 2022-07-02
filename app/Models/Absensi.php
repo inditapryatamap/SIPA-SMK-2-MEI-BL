@@ -12,6 +12,6 @@ class Absensi extends Model
     protected $table = 'absensi';
 
     protected $fillable = [
-        'id_siswa', 'id_magang_pkl', 'tanggal', 'absensi', 'status'
+        'id_siswa', 'id_magang_pkl', 'tanggal', 'absensi', 'status_guru_pembimbing', 'status_pembimbing_lapang'
     ];
 }

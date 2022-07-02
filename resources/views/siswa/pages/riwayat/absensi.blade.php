@@ -22,6 +22,45 @@
     </div>
     @if (!empty($data['absensi']))
     <div class="col-md-12">
+        <div class="kt-portlet">
+            <div class="kt-portlet kt-portlet--height-fluid">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">
+                            Informasi Kegiatan
+                        </h3>
+                    </div>
+                </div>
+                <div class="kt-portlet__body">
+                    <div class="kt-widget12">
+                        <div class="kt-widget12__content">
+                            <div class="kt-widget12__item">
+                                <div class="kt-widget12__info">
+                                    <span class="kt-widget12__desc">Nama Siswa</span>
+                                    <span class="kt-widget12__value">{{ $data['current_magang_pkl']->nama_siswa }}</span>
+                                </div>
+                                <div class="kt-widget12__info">
+                                    <span class="kt-widget12__desc">NIS Siswa</span>
+                                    <span class="kt-widget12__value">{{ $data['current_magang_pkl']->nis }}</span>
+                                </div>
+                            </div>
+                            <div class="kt-widget12__item mb-0 pb-0">
+                                <div class="kt-widget12__info">
+                                    <span class="kt-widget12__desc">Jenis Kegiatan</span>
+                                    <span class="kt-widget12__value">{{ $data['current_magang_pkl']->nama_kegiatan }} - {{ $data['current_magang_pkl']->durasi }} hari</span>
+                                </div>
+                                <div class="kt-widget12__info">
+                                    <span class="kt-widget12__desc">Perusahaan</span>
+                                    <span class="kt-widget12__value">{{ $data['current_magang_pkl']->nama_perusahaan }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
         <div class="card">
             <div class="card-body">
                 <form method="POST" action="{{ route('riwayat.absensi.go_create') }}">

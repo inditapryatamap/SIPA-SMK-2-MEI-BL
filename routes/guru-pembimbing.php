@@ -12,6 +12,13 @@ Route::group(['middleware' => 'auth:guru-pembimbing'], function() {
     Route::prefix('guru-pembimbing')->group(function () {
         Route::get('/dashboard', [GuruPembimbing\DashboardController::class, 'index'])->name('guru-pembimbing.dashboard');
 
+        Route::prefix('validasi')->group(function () {
+            Route::prefix('kehadiran')->group(function () {
+                Route::get('/list', [GuruPembimbing\KehadiranController::class, 'index'])->name('guru-pembimbing.validasi.kehadiran.list');
+                Route::get('/detail/{id_pengajuan}', [GuruPembimbing\KehadiranController::class, 'detail'])->name('guru-pembimbing.validasi.jurnal-harian.detail');
+                Route::get('/go_validasi/{id_jurnal_harian}/{tipe}', [GuruPembimbing\KehadiranController::class, 'go_validasi'])->name('guru-pembimbing.validasi.kehadiran.go_validasi');
+            });
+        });
         Route::prefix('jurnal-harian')->group(function () {
             Route::get('/list', [GuruPembimbing\JurnalHarianController::class, 'index'])->name('guru-pembimbing.jurnal-harian.list');
             Route::get('/detail/{id_pengajuan}', [GuruPembimbing\JurnalHarianController::class, 'detail'])->name('guru-pembimbing.jurnal-harian.detail');

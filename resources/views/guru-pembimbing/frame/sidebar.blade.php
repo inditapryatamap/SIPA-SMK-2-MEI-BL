@@ -89,7 +89,7 @@
 							</a>
 						</li>
 						<li class="kt-menu__item " aria-haspopup="true">
-							<a href="{{ route('pembimbing-lapang.validasi.penilaian.list') }}" class="kt-menu__link ">
+							<a href="{{ route('guru-pembimbing.validasi.penilaian.list') }}" class="kt-menu__link ">
 								<i class="kt-menu__link-bullet kt-menu__link-bullet--dot"></i>
 								<span class="kt-menu__link-text">Penilaian PKL</span>
 							</a>

@@ -18,6 +18,11 @@ Route::group(['middleware' => 'auth:guru-pembimbing'], function() {
                 Route::get('/detail/{id_pengajuan}', [GuruPembimbing\KehadiranController::class, 'detail'])->name('guru-pembimbing.validasi.jurnal-harian.detail');
                 Route::get('/go_validasi/{id_jurnal_harian}/{tipe}', [GuruPembimbing\KehadiranController::class, 'go_validasi'])->name('guru-pembimbing.validasi.kehadiran.go_validasi');
             });
+
+            Route::prefix('penilaian')->group(function () {
+                Route::get('list', [GuruPembimbing\PenilaianController::class, 'index'])->name('guru-pembimbing.validasi.penilaian.list');
+            });
+
         });
         Route::prefix('jurnal-harian')->group(function () {
             Route::get('/list', [GuruPembimbing\JurnalHarianController::class, 'index'])->name('guru-pembimbing.jurnal-harian.list');

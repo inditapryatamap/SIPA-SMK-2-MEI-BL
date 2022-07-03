@@ -37,6 +37,12 @@ Route::group(['middleware' => 'auth:guru-pembimbing'], function() {
             Route::get('/go_validasi/{id_dokumen}/{tipe}', [GuruPembimbing\DokumenController::class, 'go_validasi'])->name('guru-pembimbing.dokumen.go_validasi');
         });
 
+        Route::prefix('kuesioner')->group(function () {
+            Route::get('/siswa', [GuruPembimbing\KuesionerController::class, 'siswa'])->name('guru-pembimbing.kuesioner.siswa');
+            Route::get('/perusahaan', [GuruPembimbing\KuesionerController::class, 'perusahaan'])->name('guru-pembimbing.kuesioner.perusahaan');
+            Route::get('/detail/{tipe}/{id_user}', [GuruPembimbing\KuesionerController::class, 'detail'])->name('guru-pembimbing.kuesioner.detail');
+        });
+
     });
 });
 

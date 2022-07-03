@@ -46,6 +46,12 @@ Route::group(['middleware' => 'auth:admin'], function() {
             Route::get('/detail/{id_dokumen}', [Admin\DokumenController::class, 'detail'])->name('admin.dokumen.detail');
         });
 
+        Route::prefix('kuesioner')->group(function () {
+            Route::get('/siswa', [Admin\KuesionerController::class, 'siswa'])->name('admin.kuesioner.siswa');
+            Route::get('/perusahaan', [Admin\KuesionerController::class, 'perusahaan'])->name('admin.kuesioner.perusahaan');
+            Route::get('/detail/{tipe}/{id_user}', [Admin\KuesionerController::class, 'detail'])->name('admin.kuesioner.detail');
+        });
+
         Route::prefix('siswa')->group(function () {
             Route::get('/list', [Admin\SiswaController::class, 'index'])->name('admin.siswa.list');
             Route::get('/create', [Admin\SiswaController::class, 'create'])->name('admin.siswa.create');

@@ -154,11 +154,11 @@
                         class="kt-menu__link"><span
                         class="kt-menu__link-text">Kuesioner</span></span></li>
                      <li class="kt-menu__item " aria-haspopup="true"><a
-                        href="{{ route('guru-pembimbing.dokumen', ['tipe' => 'individu']) }}" class="kt-menu__link "><i
+                        href="{{ route('guru-pembimbing.kuesioner.perusahaan') }}" class="kt-menu__link "><i
                         class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
                         class="kt-menu__link-text">Perusahaan</span></a></li>
                      <li class="kt-menu__item " aria-haspopup="true"><a
-                        href="{{ route('guru-pembimbing.dokumen', ['tipe' => 'kelompok']) }}"
+                        href="{{ route('guru-pembimbing.kuesioner.siswa') }}"
                         class="kt-menu__link "><i
                         class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
                         class="kt-menu__link-text">Siswa</span></a></li>

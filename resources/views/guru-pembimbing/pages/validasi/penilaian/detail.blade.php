@@ -1,4 +1,4 @@
-@include('pembimbing-lapang.frame.header')
+@include('guru-pembimbing.frame.header')
 <link href="{{ url('assets') }}/css/demo1/pages/general/wizard/wizard-1.css" rel="stylesheet" type="text/css" />
 <style>
     .kt-timeline-v3 .kt-timeline-v3__item:before {
@@ -16,49 +16,9 @@
         width: 100%;
     }
 </style>
-
 <div class="row">
     <div class="col-lg-12">
         @include('flash')
-    </div>
-    <div class="col-md-12">
-        <div class="kt-portlet">
-            <div class="kt-portlet kt-portlet--height-fluid">
-                <div class="kt-portlet__head">
-                    <div class="kt-portlet__head-label">
-                        <h3 class="kt-portlet__head-title">
-                            Informasi Kegiatan
-                        </h3>
-                    </div>
-                </div>
-                <div class="kt-portlet__body">
-                    <div class="kt-widget12">
-                        <div class="kt-widget12__content">
-                            <div class="kt-widget12__item">
-                                <div class="kt-widget12__info">
-                                    <span class="kt-widget12__desc">Nama Siswa</span>
-                                    <span class="kt-widget12__value">{{ $data['magang-pkl']->nama_siswa }}</span>
-                                </div>
-                                <div class="kt-widget12__info">
-                                    <span class="kt-widget12__desc">NIS Siswa</span>
-                                    <span class="kt-widget12__value">{{ $data['magang-pkl']->nis }}</span>
-                                </div>
-                            </div>
-                            <div class="kt-widget12__item">
-                                <div class="kt-widget12__info">
-                                    <span class="kt-widget12__desc">Jenis Kegiatan</span>
-                                    <span class="kt-widget12__value">{{ $data['magang-pkl']->nama_kegiatan }} - {{ $data['magang-pkl']->durasi }} hari</span>
-                                </div>
-                                <div class="kt-widget12__info">
-                                    <span class="kt-widget12__desc">Perusahaan</span>
-                                    <span class="kt-widget12__value">{{ $data['magang-pkl']->nama_perusahaan }}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     <div class="col-md-12">
         <div class="card">
@@ -118,7 +78,7 @@
                                 <div class="kt-heading kt-heading--md">Jenis Kegiatan Yang Akan Dilaksanakan Di DU/DI</div>
                                 <div class="kt-form__section kt-form__section--first">
                                     <div class="kt-wizard-v1__form mt-3">
-                                        @include('pembimbing-lapang.pages.validasi.penilaian.p-jenis-kegiatan')
+                                        @include('guru-pembimbing.pages.validasi.penilaian.p-jenis-kegiatan')
                                     </div>
                                 </div>
                             </div>
@@ -130,7 +90,7 @@
                                 <div class="kt-heading kt-heading--md">Keterampilan Yang Bertambah Di DU/DI</div>
                                 <div class="kt-form__section kt-form__section--first">
                                     <div class="kt-wizard-v1__form">
-                                        @include('pembimbing-lapang.pages.validasi.penilaian.p-keterampilan')
+                                        @include('guru-pembimbing.pages.validasi.penilaian.p-keterampilan')
                                     </div>
                                 </div>
                             </div>
@@ -142,7 +102,7 @@
                                 <div class="kt-heading kt-heading--md">Surat Keterangan</div>
                                 <div class="kt-form__section kt-form__section--first">
                                     <div class="kt-wizard-v1__form">
-                                        @include('pembimbing-lapang.pages.validasi.penilaian.p-surat-keterangan')
+                                        @include('guru-pembimbing.pages.validasi.penilaian.p-surat-keterangan')
                                     </div>
                                 </div>
                             </div>
@@ -153,7 +113,7 @@
                             <div class="kt-wizard-v1__content mt-5 mb-5" data-ktwizard-type="step-content">
                                 <div class="kt-heading kt-heading--md">Laporan Penilaian Kepribadian</div>
                                 <div class="kt-wizard-v1__form">
-                                    @include('pembimbing-lapang.pages.validasi.penilaian.p-kepribadian')
+                                    @include('guru-pembimbing.pages.validasi.penilaian.p-kepribadian')
                                 </div>
                             </div>
 
@@ -162,7 +122,7 @@
                             <!--begin: Form Wizard Step 5-->
                             <div class="kt-wizard-v1__content mt-5 mb-5" data-ktwizard-type="step-content">
                                 <div class="kt-heading kt-heading--md">Aspek Teknis dan Catatan Aspek Teknis</div>
-                                @include('pembimbing-lapang.pages.validasi.penilaian.p-aspek-teknis')
+                                @include('guru-pembimbing.pages.validasi.penilaian.p-aspek-teknis')
                             </div>
                             
                         
@@ -181,7 +141,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>  
 </div>
-@include('pembimbing-lapang.frame.footer')
+@include('guru-pembimbing.frame.footer')
 <script src="{{ url('assets') }}/js/demo1/pages/wizard/wizard-1.js" type="text/javascript"></script>

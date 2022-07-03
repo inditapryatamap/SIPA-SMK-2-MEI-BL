@@ -21,6 +21,7 @@ Route::group(['middleware' => 'auth:guru-pembimbing'], function() {
 
             Route::prefix('penilaian')->group(function () {
                 Route::get('list', [GuruPembimbing\PenilaianController::class, 'index'])->name('guru-pembimbing.validasi.penilaian.list');
+                Route::get('detail/{id_pengajuan}', [GuruPembimbing\PenilaianController::class, 'detail'])->name('guru-pembimbing.validasi.penilaian.detail');
             });
 
         });

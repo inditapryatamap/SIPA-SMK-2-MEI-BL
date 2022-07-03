@@ -45,39 +45,21 @@
                 <th style="vertical-align: middle;">Jenis Keterampilan</th>
                 <th style="vertical-align: middle;">Nilai</th>
                 <th style="vertical-align: middle;">Keterangan</th>
-                <th></th>
             </tr>
         </thead>
         <tbody class="text-center">
-            @for ($i = 0; $i < count($data['aspek-teknis']); $i++)
-            <form method="POST" action="{{ route('pembimbing-lapang.validasi.penilaian.go_update_aspek_teknis', ['id_aspek_teknis' => $data['aspek-teknis'][$i]->id]) }}" class="kt-form">
-                @csrf
+            @for ($i = 0; $i < count($data['penilaian']['aspek-teknis']); $i++)
                 <tr>
                     <td>{{ (int)$i + 1 }}</td>
-                    <td><input value="{{ $data['aspek-teknis'][$i]->jenis_keterampilan }}" name="jenis_keterampilan" class="form-control" type="text" /></td>
-                    <td><input value="{{ $data['aspek-teknis'][$i]->nilai }}" name="nilai" class="form-control" type="text" /></td>
-                    <td><input value="{{ $data['aspek-teknis'][$i]->keterangan }}" name="keterangan" class="form-control" type="text" /></td>
-                    <td>
-                        <button class="btn btn-info">Perbarui</button>
-                        <a href="{{ route('pembimbing-lapang.validasi.penilaian.go_delete_aspek_teknis', ['id_aspek_teknis' => $data['aspek-teknis'][$i]->id]) }}" class="btn btn-danger">Hapus</a>
-                    </td>
+                    <td>{{ $data['penilaian']['aspek-teknis'][$i]->jenis_keterampilan }}</td>
+                    <td>{{ $data['penilaian']['aspek-teknis'][$i]->nilai }}</td>
+                    <td>{{ $data['penilaian']['aspek-teknis'][$i]->keterangan }}</td>
                 </tr>
-            </form>
             @endfor
             <tr>
                 <td colspan="2">Jumlah</td>
                 <td colspan="3" class="bg-success text-white">0</td>
             </tr>
-            <form method="POST" action="{{ route('pembimbing-lapang.validasi.penilaian.go_save_aspek_teknis', ['id_magang_pkl' => $data['magang-pkl']->id]) }}" class="kt-form">
-                @csrf
-                <tr>
-                    <td>Action</td>
-                    <td><input name="jenis_keterampilan" class="form-control" type="text" /></td>
-                    <td><input name="nilai" class="form-control" type="text" /></td>
-                    <td><input name="keterangan" class="form-control" type="text" /></td>
-                    <td><button type="submit" class="btn btn-primary">Simpan</button></td>
-                </tr>
-            </form>
         </tbody>
     </table>
 </div>

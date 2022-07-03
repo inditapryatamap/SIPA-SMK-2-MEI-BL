@@ -53,14 +53,14 @@ class PenilaianController extends Controller
                 'nilai_jenis_kegiatan.pelaksanaan'
             )
             ->join('mn_jenis_kegiatan', 'mn_jenis_kegiatan.id', 'nilai_jenis_kegiatan.id_mn_kegiatan')
-            ->where('id_jurusan', Auth::guard('siswa')->user()->id_jurusan)->get();
+            ->where('id_magang_pkl', $data['magang_pkl']->id)->get();
 
             if (count($data['penilaian']['jenis-kegiatan']) < 1) {
                 $data['penilaian']['jenis-kegiatan'] = MnJenisKegiatan::select(
                     'kompetensi',
                     'id as id_jenis_kegiatan',
                 )
-                ->where('id_jurusan', $data['magang-pkl']->id_jurusan)->get();
+                ->where('id_jurusan', Auth::guard('siswa')->user()->id_jurusan)->get();
             }
 
             // dd($data['jenis-kegiatan']);

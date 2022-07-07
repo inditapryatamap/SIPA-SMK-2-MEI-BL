@@ -106,6 +106,7 @@
                                 <div class="kt-heading kt-heading--md">Surat Keterangan</div>
                                 <div class="kt-form__section kt-form__section--first">
                                     <div class="kt-wizard-v1__form">
+                                        <a href="{{ route('riwayat.penilaian.print.pt_surat_keterangan', ['id_pengajuan' => $data['magang_pkl']->id]) }}" class="btn btn-primary mb-3">Print Nilai Surat Keterangan</a>
                                         @include('siswa.pages.riwayat.p-surat-keterangan')
                                     </div>
                                 </div>
@@ -117,6 +118,7 @@
                             <div class="kt-wizard-v1__content mt-5 mb-5" data-ktwizard-type="step-content">
                                 <div class="kt-heading kt-heading--md">Laporan Penilaian Kepribadian</div>
                                 <div class="kt-wizard-v1__form">
+                                    <a href="{{ route('riwayat.penilaian.print.pt_kepribadian', ['id_pengajuan' => $data['magang_pkl']->id]) }}" class="btn btn-primary mb-3">Print Nilai Kepribadian</a>
                                     @include('siswa.pages.riwayat.p-kepribadian')
                                 </div>
                             </div>
@@ -126,6 +128,7 @@
                             <!--begin: Form Wizard Step 5-->
                             <div class="kt-wizard-v1__content mt-5 mb-5" data-ktwizard-type="step-content">
                                 <div class="kt-heading kt-heading--md">Aspek Teknis dan Catatan Aspek Teknis</div>
+                                <a href="{{ route('riwayat.penilaian.print.pt_aspek_teknis', ['id_pengajuan' => $data['magang_pkl']->id]) }}" class="btn btn-primary mb-3">Print Nilai Aspek Teknis</a>
                                 @include('siswa.pages.riwayat.p-aspek-teknis')
                             </div>
                             

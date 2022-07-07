@@ -153,4 +153,92 @@ class PenilaianController extends Controller
         
         return view('siswa.pages.riwayat.print.pt-keterampilan', compact('data'));
     }
+
+    public function pt_surat_keterangan($id_pengajuan)
+    {
+        $data['magang_pkl'] = MagangPKL::where('pengajuan_magang_pkl.id', $id_pengajuan)
+        ->join('perusahaan', 'perusahaan.id', 'pengajuan_magang_pkl.id_perusahaan')
+        ->join('jenis_kegiatan', 'jenis_kegiatan.id', 'pengajuan_magang_pkl.id_jenis_kegiatan')
+        ->join('siswa', 'siswa.id', 'pengajuan_magang_pkl.id_siswa')
+        ->join('jurusan', 'jurusan.id', 'siswa.id_jurusan')
+        ->select(
+            'pengajuan_magang_pkl.id', 
+            'jenis_kegiatan.nama_kegiatan', 
+            'jenis_kegiatan.durasi',
+            'perusahaan.nama_perusahaan',
+            'jurusan.nama_jurusan',
+            'siswa.nama as nama_siswa'
+        )
+        ->first();
+
+        $data['penilaian']['surat-keterangan'] = NilaiSuratKeterangan::select(
+            'nilai_surat_keterangan.nilai',
+            'mn_surat_keterangan.id',
+            'mn_surat_keterangan.aspek_penilaian',
+        )
+        ->where('id_magang_pkl', $data['magang_pkl']->id)
+        ->join('mn_surat_keterangan', 'mn_surat_keterangan.id', 'nilai_surat_keterangan.id_surat_keterangan')
+        ->get();
+        if (count($data['penilaian']['surat-keterangan']) < 1) {
+            $data['penilaian']['surat-keterangan'] = MnSuratKeterangan::get();
+        }
+
+        return view('siswa.pages.riwayat.print.pt-surat-keterangan', compact('data'));
+    }
+
+    public function pt_kepribadian($id_pengajuan)
+    {
+        $data['magang_pkl'] = MagangPKL::where('pengajuan_magang_pkl.id', $id_pengajuan)
+        ->join('perusahaan', 'perusahaan.id', 'pengajuan_magang_pkl.id_perusahaan')
+        ->join('jenis_kegiatan', 'jenis_kegiatan.id', 'pengajuan_magang_pkl.id_jenis_kegiatan')
+        ->join('siswa', 'siswa.id', 'pengajuan_magang_pkl.id_siswa')
+        ->join('jurusan', 'jurusan.id', 'siswa.id_jurusan')
+        ->select(
+            'pengajuan_magang_pkl.id', 
+            'jenis_kegiatan.nama_kegiatan', 
+            'jenis_kegiatan.durasi',
+            'perusahaan.nama_perusahaan',
+            'jurusan.nama_jurusan',
+            'siswa.nama as nama_siswa',
+            'siswa.nis'
+        )
+        ->first();
+
+        $data['penilaian']['kepribadian'] = NilaiKepribadian::select(
+            'nilai_kepribadian.nilai',
+            'mn_kepribadian.id',
+            'mn_kepribadian.aspek_penilaian',
+        )
+        ->where('id_magang_pkl', $data['magang_pkl']->id)
+        ->join('mn_kepribadian', 'mn_kepribadian.id', 'nilai_kepribadian.id_kepribadian')
+        ->get();
+        if (count($data['penilaian']['kepribadian']) < 1) {
+            $data['penilaian']['kepribadian'] = MnKepribadian::get();
+        }
+
+        return view('siswa.pages.riwayat.print.pt-kepribadian', compact('data'));
+    }
+
+    public function pt_aspek_teknis($id_pengajuan)
+    {
+        $data['magang_pkl'] = MagangPKL::where('pengajuan_magang_pkl.id', $id_pengajuan)
+        ->join('perusahaan', 'perusahaan.id', 'pengajuan_magang_pkl.id_perusahaan')
+        ->join('jenis_kegiatan', 'jenis_kegiatan.id', 'pengajuan_magang_pkl.id_jenis_kegiatan')
+        ->join('siswa', 'siswa.id', 'pengajuan_magang_pkl.id_siswa')
+        ->join('jurusan', 'jurusan.id', 'siswa.id_jurusan')
+        ->select(
+            'pengajuan_magang_pkl.id', 
+            'jenis_kegiatan.nama_kegiatan', 
+            'jenis_kegiatan.durasi',
+            'perusahaan.nama_perusahaan',
+            'jurusan.nama_jurusan',
+            'siswa.nama as nama_siswa',
+            'siswa.nis'
+        )
+        ->first();
+
+        $data['penilaian']['aspek-teknis'] = NilaiAspekTeknis::where('id_magang_pkl', $data['magang_pkl']->id)->get();
+
+        return view('siswa.pages.riwayat.print.pt-aspek-teknis', compact('data'));
+    }
 }

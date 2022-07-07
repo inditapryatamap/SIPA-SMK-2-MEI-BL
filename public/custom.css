@@ -94,9 +94,21 @@
 }
 
 .container-pt {
-    margin: 50px;
+    margin: 50px !important;
+    padding-bottom: 50px;
 }
 
 .signature-enter {
     margin-top: 100px;
+}
+
+.ct-pt-surat-keterangan {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+}
+
+.cfk {
+    width: 400px;
 }

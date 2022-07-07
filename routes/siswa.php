@@ -50,6 +50,9 @@ Route::group(['middleware' => 'auth:siswa'], function() {
                 Route::prefix('print')->group(function () {
                     Route::get('jenis-kegiatan/{id_pengajuan}', [Siswa\PenilaianController::class, 'pt_jenis_kegiatan'])->name('riwayat.penilaian.print.pt_jenis_kegiatan');
                     Route::get('keterampilan/{id_pengajuan}', [Siswa\PenilaianController::class, 'pt_keterampilan'])->name('riwayat.penilaian.print.pt_keterampilan');
+                    Route::get('surat-keterangan/{id_pengajuan}', [Siswa\PenilaianController::class, 'pt_surat_keterangan'])->name('riwayat.penilaian.print.pt_surat_keterangan');
+                    Route::get('kepribadian/{id_pengajuan}', [Siswa\PenilaianController::class, 'pt_kepribadian'])->name('riwayat.penilaian.print.pt_kepribadian');
+                    Route::get('aspek-teknis/{id_pengajuan}', [Siswa\PenilaianController::class, 'pt_aspek_teknis'])->name('riwayat.penilaian.print.pt_aspek_teknis');
                 });
             });
 

@@ -80,6 +80,7 @@
                                 <div class="kt-heading kt-heading--md">Jenis Kegiatan Yang Akan Dilaksanakan Di DU/DI</div>
                                 <div class="kt-form__section kt-form__section--first">
                                     <div class="kt-wizard-v1__form mt-3">
+                                        <a href="{{ route('riwayat.penilaian.print.pt_jenis_kegiatan', ['id_pengajuan' => $data['magang_pkl']->id]) }}" class="btn btn-primary mb-3">Print Nilai Jenis Kegiatan</a>
                                         @include('siswa.pages.riwayat.p-jenis-kegiatan')
                                     </div>
                                 </div>
@@ -92,6 +93,7 @@
                                 <div class="kt-heading kt-heading--md">Keterampilan Yang Bertambah Di DU/DI</div>
                                 <div class="kt-form__section kt-form__section--first">
                                     <div class="kt-wizard-v1__form">
+                                        <a href="{{ route('riwayat.penilaian.print.pt_keterampilan', ['id_pengajuan' => $data['magang_pkl']->id]) }}" class="btn btn-primary mb-3">Print Nilai Keterampilan</a>
                                         @include('siswa.pages.riwayat.p-keterampilan')
                                     </div>
                                 </div>

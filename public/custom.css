@@ -92,3 +92,11 @@
     align-items: center;
     height: 100%;
 }
+
+.container-pt {
+    margin: 50px;
+}
+
+.signature-enter {
+    margin-top: 100px;
+}

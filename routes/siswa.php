@@ -46,6 +46,11 @@ Route::group(['middleware' => 'auth:siswa'], function() {
 
             Route::prefix('penilaian')->group(function () {
                 Route::get('list', [Siswa\PenilaianController::class, 'index'])->name('riwayat.penilaian.list');
+
+                Route::prefix('print')->group(function () {
+                    Route::get('jenis-kegiatan/{id_pengajuan}', [Siswa\PenilaianController::class, 'pt_jenis_kegiatan'])->name('riwayat.penilaian.print.pt_jenis_kegiatan');
+                    Route::get('keterampilan/{id_pengajuan}', [Siswa\PenilaianController::class, 'pt_keterampilan'])->name('riwayat.penilaian.print.pt_keterampilan');
+                });
             });
 
             Route::prefix('kuesioner')->group(function () {

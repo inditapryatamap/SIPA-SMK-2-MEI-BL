@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\GuruPembimbing;
+use App\Models\KuesionerSelect;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -25,6 +26,9 @@ class DatabaseSeeder extends Seeder
             PerusahaanSeeder::class,
             ReviewPertanyaanSeeder::class,
             JenisSuratSeeder::class,
+            KuesionerSeeder::class,
+            KuesionerSelectSeeder::class,
+            PenilaianJenisKegiatanSeeder::class
         ]);
     }
 }

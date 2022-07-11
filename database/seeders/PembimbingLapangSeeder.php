@@ -18,14 +18,34 @@ class PembimbingLapangSeeder extends Seeder
      */
     public function run()
     {
-        $siswa = new PembimbingLapang();
-        $siswa->id = 1;
-        $siswa->email = 'lapang@gmail.com';
-        $siswa->nama = 'Fajar Rizky';
-        $siswa->no_telpon = '+62895636134374';
-        $siswa->password = bcrypt('12345678');
-        $siswa->created_at = Carbon::now();
-        $siswa->updated_at = Carbon::now();
-        $siswa->save();
+        $pembimbinglapang = new PembimbingLapang();
+        $pembimbinglapang->id = 1;
+        $pembimbinglapang->email = 'lapang@gmail.com';
+        $pembimbinglapang->nama = 'Fajar Rizky';
+        $pembimbinglapang->no_telpon = '+6289512415124';
+        $pembimbinglapang->password = bcrypt('12345678');
+        $pembimbinglapang->created_at = Carbon::now();
+        $pembimbinglapang->updated_at = Carbon::now();
+        $pembimbinglapang->save();
+
+        $pembimbinglapang = new PembimbingLapang();
+        $pembimbinglapang->id = 2;
+        $pembimbinglapang->email = 'nadim@gmail.com';
+        $pembimbinglapang->nama = 'Nadiem Makarim';
+        $pembimbinglapang->no_telpon = '+6289512415124';
+        $pembimbinglapang->password = bcrypt('12345678');
+        $pembimbinglapang->created_at = Carbon::now();
+        $pembimbinglapang->updated_at = Carbon::now();
+        $pembimbinglapang->save();
+
+        $pembimbinglapang = new PembimbingLapang();
+        $pembimbinglapang->id = 3;
+        $pembimbinglapang->email = 'jardine@gmail.com';
+        $pembimbinglapang->nama = 'Jardine Cycle';
+        $pembimbinglapang->no_telpon = '+6289512415124';
+        $pembimbinglapang->password = bcrypt('12345678');
+        $pembimbinglapang->created_at = Carbon::now();
+        $pembimbinglapang->updated_at = Carbon::now();
+        $pembimbinglapang->save();
     }
 }

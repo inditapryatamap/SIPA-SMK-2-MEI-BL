@@ -18,14 +18,35 @@ class JurusanSeeder extends Seeder
     {
         $jurusan = new Jurusan();
         $jurusan->id = 1;
-        $jurusan->nama_jurusan = 'Informatika';
+        $jurusan->nama_jurusan = 'Teknik Instalasi Tenaga Listrik';
         $jurusan->created_at = Carbon::now();
         $jurusan->updated_at = Carbon::now();
         $jurusan->save();
 
         $jurusan = new Jurusan();
         $jurusan->id = 2;
-        $jurusan->nama_jurusan = 'Teknologi Informasi';
+        $jurusan->nama_jurusan = 'Teknik Pemesinan';
+        $jurusan->created_at = Carbon::now();
+        $jurusan->updated_at = Carbon::now();
+        $jurusan->save();
+
+        $jurusan = new Jurusan();
+        $jurusan->id = 3;
+        $jurusan->nama_jurusan = 'Teknik Komputer dan Jaringan';
+        $jurusan->created_at = Carbon::now();
+        $jurusan->updated_at = Carbon::now();
+        $jurusan->save();
+
+        $jurusan = new Jurusan();
+        $jurusan->id = 4;
+        $jurusan->nama_jurusan = 'Teknik Audio Video';
+        $jurusan->created_at = Carbon::now();
+        $jurusan->updated_at = Carbon::now();
+        $jurusan->save();
+
+        $jurusan = new Jurusan();
+        $jurusan->id = 5;
+        $jurusan->nama_jurusan = 'Teknik Sepeda Motor';
         $jurusan->created_at = Carbon::now();
         $jurusan->updated_at = Carbon::now();
         $jurusan->save();

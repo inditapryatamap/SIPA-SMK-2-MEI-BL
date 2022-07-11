@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\siswa;
 
 use App\Http\Controllers\Controller;
+use App\Models\KuesionerJawaban;
 use App\Models\MagangPKL;
 use App\Models\Pengumuman;
 use App\Models\Perusahaan;
@@ -36,6 +37,11 @@ class DashboardController extends Controller
         });
 
         $data['rekomendasi'] = MagangPKL::select('perusahaan.nama_perusahaan', 'pengajuan_magang_pkl.id_perusahaan', DB::raw('count(*) as total'))->groupBy('pengajuan_magang_pkl.id_perusahaan', 'perusahaan.nama_perusahaan')->orderBy('total', 'DESC')->join('perusahaan', 'perusahaan.id', 'pengajuan_magang_pkl.id_perusahaan')->get();
+        
+        $data['kuesioner']['tinggi'] = KuesionerJawaban::join('kuesioner', 'kuesioner.id', 'kuesioner_jawaban.id_kuesioner')->where([['kuesioner.for', 'siswa'],['kuesioner.type', 'range'],['kuesioner_jawaban.jawaban', '>', 3]])->count();
+        $data['kuesioner']['sama'] = KuesionerJawaban::join('kuesioner', 'kuesioner.id', 'kuesioner_jawaban.id_kuesioner')->where([['kuesioner.for', 'siswa'],['kuesioner.type', 'range'],['kuesioner_jawaban.jawaban', '=', 3]])->count();
+        $data['kuesioner']['rendah'] = KuesionerJawaban::join('kuesioner', 'kuesioner.id', 'kuesioner_jawaban.id_kuesioner')->where([['kuesioner.for', 'siswa'],['kuesioner.type', 'range'],['kuesioner_jawaban.jawaban', '<', 3]])->count();
+        
         return view('siswa.pages.dashboard', compact('data'));
     }
 }

@@ -11,7 +11,9 @@ Route::post('/go-login-pembimbing-lapang', [LoginController::class, 'goLoginPemb
 Route::group(['middleware' => 'auth:pembimbing-lapang'], function() {
     Route::prefix('pembimbing-lapang')->group(function () {
         Route::get('/dashboard', [PembimbingLapang\DashboardController::class, 'index'])->name('pembimbing-lapang.dashboard');
-
+        Route::prefix('pengumuman')->group(function () {
+            Route::get('/detail/{id_pengumuman}', [PembimbingLapang\PengumumanController::class, 'detail'])->name('pembimbing-lapang.pengumuman.detail');
+        });
         Route::prefix('validasi')->group(function () {
           
             Route::prefix('jurnal-harian')->group(function () {

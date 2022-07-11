@@ -11,7 +11,9 @@ Route::post('/go-login-guru-pembimbing', [LoginController::class, 'goLoginGuruPe
 Route::group(['middleware' => 'auth:guru-pembimbing'], function() {
     Route::prefix('guru-pembimbing')->group(function () {
         Route::get('/dashboard', [GuruPembimbing\DashboardController::class, 'index'])->name('guru-pembimbing.dashboard');
-
+        Route::prefix('pengumuman')->group(function () {
+            Route::get('/detail/{id_pengumuman}', [GuruPembimbing\PengumumanController::class, 'detail'])->name('guru-pembimbing.pengumuman.detail');
+        });
         Route::prefix('validasi')->group(function () {
             Route::prefix('kehadiran')->group(function () {
                 Route::get('/list', [GuruPembimbing\KehadiranController::class, 'index'])->name('guru-pembimbing.validasi.kehadiran.list');

@@ -81,7 +81,7 @@
                             </select>
                         </div>
                         <div class="col-md-12 text-right">
-                            <button type="submit" class="btn btn-info">Isi Absensi</button>
+                            <button type="submit" class="btn btn-info">Isi Absensi Hari Ini</button>
                         </div>
                     </div>
                 </form>
@@ -103,8 +103,8 @@
                                 <th>Perusahaan</th>
                                 <th>Tanggal Kegiatan</th>
                                 <th>Status Absensi</th>
-                                <th>Status</th>
-                                <th>Aksi</th>
+                                <th>Status Pembimbing Lapang</th>
+                                <th>Status Guru Pembimbing</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -114,9 +114,55 @@
                                     <td>{{ $data['current_magang_pkl']->nama_siswa }}</td>
                                     <td>{{ $data['current_magang_pkl']->nama_perusahaan }}</td>
                                     <td>{{ $data['absensi'][$i]->tanggal }}</td>
-                                    <td>{{ $data['absensi'][$i]->absensi }}</td>
-                                    <td>{{ $data['absensi'][$i]->status }}</td>
-                                    <td><button class="btn btn-info">Edit</button></td>
+                                    <td>
+                                        @switch($data['absensi'][$i]->absensi)
+                                            @case('h')
+                                                <span class="badge badge-success">Hadir</span>
+                                                @break
+                                            @case('i')
+                                                <span class="badge badge-info">Izin</span>
+                                                @break
+                                            @case('s')
+                                                <span class="badge badge-warning">Sakit</span>
+                                                @break
+                                            @case('a')
+                                                <span class="badge badge-danger">Alpa (Tanpa Keterangan)</span>
+                                                @break
+                                            @default
+                                                <span class="badge badge-light">-</span>
+                                                @break
+                                        @endswitch
+                                    </td>
+                                    <td>
+                                        @switch($data['absensi'][$i]->status_pembimbing_lapang)
+                                            @case(0)
+                                                <span class="badge badge-info">Belum Diproses</span>
+                                                @break
+                                            @case(1)
+                                                <span class="badge badge-success">Diverifikasi</span>
+                                                @break
+                                            @case(2)
+                                                <span class="badge badge-danger">Tidak Diverifikasi</span>
+                                                @break
+                                            @default
+                                                
+                                        @endswitch
+                                    </td>
+                                    <td>
+                                        @switch($data['absensi'][$i]->status_guru_pembimbing)
+                                            @case(0)
+                                                <span class="badge badge-info">Belum Diproses</span>
+                                                @break
+                                            @case(1)
+                                                <span class="badge badge-success">Diverifikasi</span>
+                                                @break
+                                            @case(2)
+                                                <span class="badge badge-danger">Tidak Diverifikasi</span>
+                                                @break
+                                            @default
+                                                
+                                        @endswitch
+                                    </td>
                                 </tr>
                             @endfor
                         </tbody>

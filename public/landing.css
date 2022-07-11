@@ -136,6 +136,25 @@ body {
     margin-bottom: 25px;
 }
 
-.carousel-caption {
+.container-landing-form {
+    margin: 20px;
+}
 
+.ct-landing-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://cdn.pixabay.com/photo/2016/06/02/02/33/triangles-1430105__480.png');
+    height: 100%;
+    border-radius: 20px;
+}
+
+.logo-landing-form {
+    width: 400px;
+}
+
+.ct-landing-form-2 {
+    background: #1A946F;
+    padding: 20px;
+    border-radius: 20px;
 }

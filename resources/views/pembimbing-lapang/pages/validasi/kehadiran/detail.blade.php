@@ -77,10 +77,28 @@
                                     <div class="row border-bottom mb-2">
                                         {{-- {{ dd($data['kehadiran']) }} --}}
                                         <div class="col-md-8">
-                                            <div class="kt-timeline-v3__item kt-timeline-v3__item--success">
-                                                <span class="kt-timeline-v3__item-time" style="width: 9.6rem">{{ $data['kehadiran'][$i]->tanggal }}</span>
+                                            <div class="kt-timeline-v3__item kt-timeline-v3__item--success ">
+                                                <span class=" text-center" style="width: 9.6rem">
+                                                    @switch($data['kehadiran'][$i]->absensi)
+                                                    @case('h')
+                                                        <span class="badge badge-success">Hadir</span>
+                                                        @break
+                                                    @case('i')
+                                                        <span class="badge badge-info">Izin</span>
+                                                        @break
+                                                    @case('s')
+                                                        <span class="badge badge-warning">Sakit</span>
+                                                        @break
+                                                    @case('a')
+                                                        <span class="badge badge-danger">Alpa (Tanpa Keterangan)</span>
+                                                        @break
+                                                    @default
+                                                        <span class="badge badge-light">-</span>
+                                                        @break
+                                                @endswitch
+                                                </span>
                                                 <div class="kt-timeline-v3__item-desc" style="padding-left: 14rem">
-                                                    <span class="kt-timeline-v3__item-text">
+                                                    <span class="kt-timeline-v3__item-text text-right">
                                                         {{ $data['kehadiran'][$i]->tanggal }}
                                                     </span><br>
                                                     <span class="kt-timeline-v3__item-user-name mr-1 label-jurnal-detail">

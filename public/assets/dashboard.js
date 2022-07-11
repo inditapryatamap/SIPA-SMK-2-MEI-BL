@@ -1,4 +1,4 @@
-var profitShare = function() {        
+var profitShare = function() {   
     if (!KTUtil.getByID('kt_chart_profit_share')) {
         return;
     }
@@ -12,7 +12,7 @@ var profitShare = function() {
         data: {
             datasets: [{
                 data: [
-                    35, 30, 35
+                    keselarasan.tinggi, keselarasan.sama, keselarasan.rendah
                 ],
                 backgroundColor: [
                     '#0E961C',
@@ -61,7 +61,6 @@ var profitShare = function() {
     };
 
     var ctx = KTUtil.getByID('kt_chart_profit_share').getContext('2d');
-    console.log('hai');
     new Chart(ctx, config);
 }
 

@@ -153,15 +153,15 @@
                                     <div class="kt-widget14__legends">
                                         <div class="kt-widget14__legend">
                                             <span class="kt-widget14__bullet" style="background: #0E961C"></span>
-                                            <span class="kt-widget14__stats">37% Tinggi</span>
+                                            <span class="kt-widget14__stats">{{ $data['kuesioner']['tinggi'] }} Tinggi</span>
                                         </div>
                                         <div class="kt-widget14__legend">
                                             <span class="kt-widget14__bullet" style="background: #FF8A00"></span>
-                                            <span class="kt-widget14__stats">47% Sama</span>
+                                            <span class="kt-widget14__stats">{{ $data['kuesioner']['sama'] }} Sama</span>
                                         </div>
                                         <div class="kt-widget14__legend">
                                             <span class="kt-widget14__bullet" style="background: #FF0000"></span>
-                                            <span class="kt-widget14__stats">19% Rendah</span>
+                                            <span class="kt-widget14__stats">{{ $data['kuesioner']['rendah'] }} Rendah</span>
                                         </div>
                                     </div>
                                     <div class="kt-widget14__chart">
@@ -266,5 +266,6 @@
 
 <script>
      var keseluruhan = {!! json_encode($data['keseluruhan']) !!};
+     var keselarasan = {!! json_encode($data['kuesioner']) !!};
 </script>
 <script src="{{ url('assets') }}/dashboard.js" type="text/javascript"></script>

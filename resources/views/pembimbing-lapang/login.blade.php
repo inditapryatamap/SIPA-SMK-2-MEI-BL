@@ -1,34 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-</head>
-<body>
-    <div class="container mt-5">
-        <form method="POST" action="{{ route('pembimbing-lapang.go_login') }}">
-            @csrf
-            @include('flash')
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                <input type="text" name="email" class="form-control">
+@include('landing-head')
+<div class="container-landing-form">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="ct-landing-form">
+                <img src="{{ url('logo-landing.png') }}" class="logo-landing-form" />
             </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Password</label>
-                <input type="password" name="password" class="form-control">
+        </div>
+        
+        <div class="col-md-4">
+            <div class="ct-landing-form-2">
+                <h3 style="margin-top: 100px;" class="text-center text-white">Sistem Informasi <br>Pelaksanaan Akademik</h3>
+                <h3 style="margin-top: 100px" class="text-white mb-4">Login</h3>
+                <form method="POST" action="{{ route('pembimbing-lapang.go_login') }}">
+                    @csrf
+                    @include('flash')
+                    <div class="mb-4">
+                        <label for="exampleFormControlInput1" class="form-label text-white">Email</label>
+                        <input type="text" name="email" class="form-control">
+                    </div>
+                    <div class="mb-4">
+                        <label for="exampleFormControlInput1" class="form-label text-white">Password</label>
+                        <input type="password" name="password" class="form-control">
+                    </div>
+                    <div class="mb-4 text-right">
+                        <a class="text-white" href="">Lupa Password ?</a>
+                    </div>
+                    @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    <div class="mb-3 d-grid gap-2 mt-5">
+                        <button type="submit" class="btn btn-primary btn-block">Masuk</button>
+                    </div>
+                </form>
             </div>
-            @error('password')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-            <div class="mb-3">
-                <button type="submit" class="btn btn-primary">Masuk</button>
-            </div>
-        </form>
+            
+        </div>
     </div>
-</body>
-</html>
+</div>
+
+@include('landing-footer')

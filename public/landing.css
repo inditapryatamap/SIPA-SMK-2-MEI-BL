@@ -158,3 +158,23 @@ body {
     padding: 20px;
     border-radius: 20px;
 }
+
+.ct-connected {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 30px;
+    flex-direction: row;
+    height: 100%;
+}
+
+.maincf {
+    text-align: left;
+}
+
+.kkfls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}

@@ -20,6 +20,35 @@
         <div class="col-md-12 text-center mt-4">
             <h2 class="text-white">Stay Connected With Us</h2>
         </div>
+        <div class="kkfls">
+            <div class="ct-connected">
+                <div class="rte">
+                    <i style="color: white; font-size: 45px" class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="maincf" style="margin-left: 10px">
+                    <h5 class="text-white mb-0 pb-0">Gmail</h5>
+                    <p class="text-white mb-0 pb-0">smk2mei17@gmail.com</p>
+                </div>
+            </div>
+            <div class="ct-connected">
+                <div class="rte">
+                    <i style="color: white; font-size: 45px" class="fa-brands fa-instagram"></i>
+                </div>
+                <div class="maincf" style="margin-left: 10px">
+                    <h5 class="text-white mb-0 pb-0">Instagram</h5>
+                    <p class="text-white mb-0 pb-0">@smk2mei</p>
+                </div>
+            </div>
+            <div class="ct-connected">
+                <div class="rte">
+                    <i style="color: white; font-size: 45px" class="fa-solid fa-globe"></i>
+                </div>
+                <div class="maincf" style="margin-left: 10px">
+                    <h5 class="text-white mb-0 pb-0">Website</h5>
+                    <p class="text-white mb-0 pb-0">smk2mei-bdl.sch.id</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </body>

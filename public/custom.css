@@ -112,3 +112,11 @@
 .cfk {
     width: 400px;
 }
+
+.asdc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+

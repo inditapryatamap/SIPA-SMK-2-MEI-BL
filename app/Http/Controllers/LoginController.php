@@ -23,11 +23,6 @@ class LoginController extends Controller
         // $this->middleware('guest:siswa')->except('postLogout');
     }
 
-    public function index()
-    {
-        return view('landing');
-    }
-
     public function loginAdmin()
     {
         return view('admin.login');

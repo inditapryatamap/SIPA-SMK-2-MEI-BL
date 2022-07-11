@@ -144,15 +144,21 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('https://cdn.pixabay.com/photo/2016/06/02/02/33/triangles-1430105__480.png');
+    background-image: url('bg-login.svg');
     height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
     border-radius: 20px;
 }
 
 .logo-landing-form {
     width: 400px;
+    margin-bottom: 480px;
 }
 
+.btn-login-mags {
+    margin-bottom: 100px;
+}
 .ct-landing-form-2 {
     background: #1A946F;
     padding: 20px;
@@ -174,6 +180,33 @@ body {
 
 .kkfls {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.container-contact {
+    margin: 100px;
+}
+
+.container-title-faq {
+    background: #F3F0FF;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin-bottom: 30px;
+}
+
+.ct-logo-nav-d {
+    display: flex;
+    margin-left: 30px;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+}
+
+.resc {
+    display: flex;
+    padding: 10px;
     justify-content: center;
     align-items: center;
     height: 100%;

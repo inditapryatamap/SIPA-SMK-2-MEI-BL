@@ -14,15 +14,17 @@
 </head>
 
 <body>
-    <div class="row bg-main head-landing">
-        <div class="col-md-6">
-            {{-- <img alt="Logo" style="width: 50%;" src="{{ url('assets') }}/media/logos/logo-dark-sipa.png" /> --}}
+    <div class="resc bg-main head-landing">
+        <div class="resc-d">
+            <div class="ct-logo-nav-d">
+                <img alt="Logo" style="width: 15%;" src="{{ url('logo-landing.png') }}" />
+            </div>
         </div>
-        <div class="col-md-6 text-right landing-nav-right">
+        <div class="resc-d text-right landing-nav-right">
             <div class="container-menu-landing">
-                <a href="">Home</a>
-                <a href="">Contact</a>
-                <a href="">Faq</a>
+                <a href={{ route('/') }}>Home</a>
+                <a href={{ route('contact') }}>Contact</a>
+                <a href={{ route('faq') }}>Faq</a>
                 <div class="dropdown">
                     <button class="btn btn-primary circle-btn dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                       Masuk

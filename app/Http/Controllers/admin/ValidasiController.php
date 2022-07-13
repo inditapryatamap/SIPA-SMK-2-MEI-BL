@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\GuruPembimbing;
 use App\Models\MagangPKL;
+use App\Models\PembimbingLapang;
 use App\Models\Perusahaan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,6 +31,16 @@ class ValidasiController extends Controller
         ->join('jenis_kegiatan', 'jenis_kegiatan.id', 'pengajuan_magang_pkl.id_jenis_kegiatan')
         ->join('jurusan', 'jurusan.id', 'siswa.id_jurusan')
         ->paginate(10);
+
+        for ($i=0; $i < count($data['magang-pkl']); $i++) { 
+            if ($data['magang-pkl'][$i]->id_guru_pembimbing != null) {
+                $data['magang-pkl'][$i]->pembimbing_nama = PembimbingLapang::select('nama')->where('id', $data['magang-pkl'][$i]->id_guru_pembimbing)->first()->nama;
+            } else {
+                $data['magang-pkl'][$i]->pembimbing_nama = 'Belum Ditentukan';
+            }
+        }
+
+        // dd($data['magang-pkl']);
         
         return view('admin.pages.validasi.magang-pkl.list', compact('data'));
     }
@@ -44,7 +55,10 @@ class ValidasiController extends Controller
             'perusahaan.status',
             'pembimbing_lapang.nama',
         )
-        ->join('pembimbing_lapang', 'pembimbing_lapang.id', 'perusahaan.id_pembimbing_lapang')->paginate(1);
+        ->join('pembimbing_lapang', 'pembimbing_lapang.id', 'perusahaan.id_pembimbing_lapang')->paginate(10);
+
+        
+
         return view('admin.pages.validasi.perusahaan.list', compact('data'));
     }
 
@@ -101,6 +115,12 @@ class ValidasiController extends Controller
         // ->join('guru_pembimbing', 'guru_pembimbing.id', 'pengajuan_magang_pkl.id_guru_pembimbing')
         ->where('pengajuan_magang_pkl.id', $id_pengajuan)
         ->first();
+        
+        if ($data['pengajuan']->id_guru_pembimbing != null) {
+            $data['pengajuan']->pembimbing_nama = PembimbingLapang::select('nama')->where('id', $data['pengajuan']->id_guru_pembimbing)->first()->nama;
+        } else {
+            $data['pengajuan']->pembimbing_nama = '';
+        }
 
         $data['pembimbing'] = GuruPembimbing::get();
         return view('admin.pages.validasi.magang-pkl.detail', compact('data'));
@@ -111,6 +131,8 @@ class ValidasiController extends Controller
         $validator = Validator::make($request->all(), [
             'id_guru_pembimbing' => ['required', 'integer'],
         ]);
+
+        
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();

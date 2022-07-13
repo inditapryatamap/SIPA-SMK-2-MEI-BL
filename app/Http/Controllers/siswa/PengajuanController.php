@@ -32,6 +32,14 @@ class PengajuanController extends Controller
             'perusahaan.nama_perusahaan'
         )->get();
 
+        for ($i=0; $i < count($data['magang_pkl']); $i++) { 
+            if ($data['magang_pkl'][$i]->id_guru_pembimbing != null) {
+                $data['magang_pkl'][$i]->nama_pembimbing = PembimbingLapang::select('nama')->where('id', $data['magang_pkl'][$i]->id_guru_pembimbing)->first()->nama;
+            } else {
+                $data['magang_pkl'][$i]->nama_pembimbing = null;
+            }
+        }
+
         $data['jenis-kegiatan'] = JenisKegiatan::get();
         return view('siswa.pages.pengajuan_magang_pkl', compact('data'));
     }

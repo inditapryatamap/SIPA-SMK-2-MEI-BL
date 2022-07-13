@@ -102,7 +102,12 @@
                                             </span>
                                         @endif
                                     </td>
-                                    <td><button class="btn btn-info">Edit</button></td>
+                                    <td>
+                                        @if ($data['jurnal'][$i]->status_pembimbing_lapang == 0 && $data['jurnal'][$i]->status_guru_pembimbing == 0)
+                                        <button onclick="handleClickKegiatan({{ $data['jurnal'][$i] }})" class="btn btn-info">Edit</button>
+                                        @endif
+                                        
+                                    </td>
                                 </tr>
                             @endfor
                         </tbody>
@@ -112,6 +117,45 @@
         </div>
     </div>
     @endif
-    
 </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form method="POST" action="{{ route('riwayat.jurnal.go_update') }}" class="kt-form" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Ubah Kegiatan</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 mb-4">
+                            <input type="hidden" id="id_kegiatan" name="id_kegiatan" class="form-control" />
+                            <label class="label-input">Kegiatan</label>
+                            <input id="kegiatan" name="kegiatan" class="form-control" />
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batalkan</button>
+                    <button type="submit" class="btn btn-primary">Ubah Kegiatan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 @include('siswa.frame.footer')
+
+<script>
+    function handleClickKegiatan(params) {
+        console.log('params', params)
+        $('#exampleModal').modal('show')
+        $('#kegiatan').val(params.kegiatan)
+        $('#id_kegiatan').val(params.id)
+        
+    }
+</script>

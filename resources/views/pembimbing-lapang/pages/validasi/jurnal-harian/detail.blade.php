@@ -131,8 +131,8 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="centered-action-jurnal">
-                                                <a href="{{ route('pembimbing-lapang.jurnal-harian.go_validasi', ['id_jurnal_harian' => $data['jurnal-harian'][$i]->id, 'tipe' => 1]) }}" class="btn btn-success btn-icon mr-2"><i class="fa fa-check"></i></a>
-                                                <a href="{{ route('pembimbing-lapang.jurnal-harian.go_validasi', ['id_jurnal_harian' => $data['jurnal-harian'][$i]->id, 'tipe' => 2]) }}" class="btn btn-danger btn-icon"><i class="fa fa-times"></i></a>
+                                                <a href="{{ route('pembimbing-lapang.validasi.jurnal-harian.go_validasi', ['id_jurnal_harian' => $data['jurnal-harian'][$i]->id, 'tipe' => 1]) }}" class="btn btn-success btn-icon mr-2"><i class="fa fa-check"></i></a>
+                                                <a href="{{ route('pembimbing-lapang.validasi.jurnal-harian.go_validasi', ['id_jurnal_harian' => $data['jurnal-harian'][$i]->id, 'tipe' => 2]) }}" class="btn btn-danger btn-icon"><i class="fa fa-times"></i></a>
                                             </div>
                                         </div>
                                     </div>

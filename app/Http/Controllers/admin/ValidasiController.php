@@ -57,9 +57,40 @@ class ValidasiController extends Controller
         )
         ->join('pembimbing_lapang', 'pembimbing_lapang.id', 'perusahaan.id_pembimbing_lapang')->paginate(10);
 
-        
-
+        $data['guru_pembimbing'] = GuruPembimbing::select('id', 'nama')->get();
         return view('admin.pages.validasi.perusahaan.list', compact('data'));
+    }
+
+    public function go_create_perusahaan(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id_pembimbing_lapang' => ['required', 'string'],
+            'nama_perusahaan' => ['required', 'string'],
+            'profile_perusahaan' => ['required', 'string'],
+            'alamat_perusahaan' => ['required', 'string'],
+            'no_telp' => ['required', 'string'],
+            'deskripsi_pekerjaan' => ['required', 'string'],
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $query = Perusahaan::create([
+            'id_pembimbing_lapang' => $request->id_pembimbing_lapang,
+            'nama_perusahaan' => $request->nama_perusahaan,
+            'profile_perusahaan' => $request->profile_perusahaan,
+            'alamat_perusahaan' => $request->alamat_perusahaan,
+            'no_telp' => $request->no_telp,
+            'deskripsi_pekerjaan' => $request->deskripsi_pekerjaan,
+            'status' => 'diverifikasi',
+            'created_by' => Auth::guard('admin')->user()->id
+        ]);
+
+        if ($query) {
+            return redirect()->back()->with(['success' => 'Perusahaan berhasil diperbarui']);
+        }
+        return redirect()->back()->with(['errors' => 'Query gagal, Ada kesalahan sistem. Coba kembali beberapa saat']);
     }
 
     public function detailPerusahaan($id_perusahaan)

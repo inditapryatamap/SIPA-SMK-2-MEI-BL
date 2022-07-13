@@ -37,6 +37,7 @@ Route::group(['middleware' => 'auth:siswa'], function() {
             Route::prefix('jurnal-harian')->group(function () {
                 Route::get('list', [Siswa\JurnalHarianController::class, 'index'])->name('riwayat.jurnal.list');
                 Route::post('create', [Siswa\JurnalHarianController::class, 'go_create'])->name('riwayat.jurnal.go_create');
+                Route::post('go_update', [Siswa\JurnalHarianController::class, 'go_update'])->name('riwayat.jurnal.go_update');
             });
 
             Route::prefix('absensi')->group(function () {

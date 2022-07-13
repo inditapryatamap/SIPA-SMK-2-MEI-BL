@@ -73,4 +73,28 @@ class JurnalHarianController extends Controller
         }
         return redirect()->back()->with(['errors' => 'Kegiatan tidak ditemukan']);
     }
+
+    public function go_update(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'kegiatan' => ['required', 'string'],
+            'id_kegiatan' => ['required', 'string'],
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        if (JurnalHarian::where('id', $request->id_kegiatan)->exists()) {
+            $query = JurnalHarian::where('id', $request->id_kegiatan)->update([
+                'kegiatan' => $request->kegiatan,
+            ]);
+
+            if ($query) {
+                return redirect()->back()->with(['success' => 'Jurnal harian telah berhasil di perbarui']);
+            }
+            return redirect()->back()->with(['errors' => 'Query gagal, Ada kesalahan sistem. Coba kembali beberapa saat']);
+        }
+        return redirect()->back()->with(['errors' => 'Jurnal harian tidak ditemukan']);
+    }
 }

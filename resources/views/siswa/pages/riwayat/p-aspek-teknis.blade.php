@@ -36,7 +36,7 @@
         </tbody>
     </table>
 </div>
-
+<?php $hasilAspek = 0 ?>
 <div class="table-responsive">
     <table class="table table-bordered">
         <thead class="text-center">
@@ -54,11 +54,12 @@
                     <td>{{ $data['penilaian']['aspek-teknis'][$i]->jenis_keterampilan }}</td>
                     <td>{{ $data['penilaian']['aspek-teknis'][$i]->nilai }}</td>
                     <td>{{ $data['penilaian']['aspek-teknis'][$i]->keterangan }}</td>
+                    {{ $hasilAspek += (int)$data['penilaian']['aspek-teknis'][$i]->nilai }}
                 </tr>
             @endfor
             <tr>
                 <td colspan="2">Jumlah</td>
-                <td colspan="3" class="bg-success text-white">0</td>
+                <td colspan="3" class="bg-success text-white">{{ $hasilAspek }}</td>
             </tr>
         </tbody>
     </table>

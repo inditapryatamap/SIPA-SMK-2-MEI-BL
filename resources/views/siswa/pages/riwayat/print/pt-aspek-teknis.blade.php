@@ -42,6 +42,7 @@
             <h5 class="text-black">: {{ $data['magang_pkl']->nama_perusahaan }}</h5>
         </div>
     </div>
+    <?php $hasilAspek = 0 ?>
     <div class="row mt-5">
         <div class="col-md-12">
             <table class="table table-bordered">
@@ -60,11 +61,12 @@
                             <td>{{ $data['penilaian']['aspek-teknis'][$i]->jenis_keterampilan }}</td>
                             <td>{{ $data['penilaian']['aspek-teknis'][$i]->nilai }}</td>
                             <td>{{ $data['penilaian']['aspek-teknis'][$i]->keterangan }}</td>
+                            {{ $hasilAspek += (int)$data['penilaian']['aspek-teknis'][$i]->nilai }}
                         </tr>
                     @endfor
                     <tr>
                         <td colspan="2">Jumlah</td>
-                        <td colspan="3">0</td>
+                        <td colspan="3">{{ $hasilAspek }}</td>
                     </tr>
                 </tbody>
             </table>

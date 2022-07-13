@@ -17,28 +17,28 @@ class KuesionerSelectSeeder extends Seeder
     public function run()
     {
         $kuesioner = new KuesionerSelect();
-        $kuesioner->id_kuesioner = 9;
+        $kuesioner->id_kuesioner = 8;
         $kuesioner->option = 'Rp100.000 - Rp250.000';
         $kuesioner->created_at = Carbon::now();
         $kuesioner->updated_at = Carbon::now();
         $kuesioner->save();
 
         $kuesioner = new KuesionerSelect();
-        $kuesioner->id_kuesioner = 9;
+        $kuesioner->id_kuesioner = 8;
         $kuesioner->option = '< Rp500.000';
         $kuesioner->created_at = Carbon::now();
         $kuesioner->updated_at = Carbon::now();
         $kuesioner->save();
 
         $kuesioner = new KuesionerSelect();
-        $kuesioner->id_kuesioner = 9;
+        $kuesioner->id_kuesioner = 8;
         $kuesioner->option = 'Rp500.000 - Rp750.000';
         $kuesioner->created_at = Carbon::now();
         $kuesioner->updated_at = Carbon::now();
         $kuesioner->save();
 
         $kuesioner = new KuesionerSelect();
-        $kuesioner->id_kuesioner = 9;
+        $kuesioner->id_kuesioner = 8;
         $kuesioner->option = '> Rp1.000.000';
         $kuesioner->created_at = Carbon::now();
         $kuesioner->updated_at = Carbon::now();

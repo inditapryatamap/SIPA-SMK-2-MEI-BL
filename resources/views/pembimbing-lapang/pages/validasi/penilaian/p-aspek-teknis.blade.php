@@ -37,6 +37,7 @@
     </table>
 </div>
 
+<?php $hasilAspek = 0 ?>
 <div class="table-responsive">
     <table class="table table-bordered">
         <thead class="text-center">
@@ -57,6 +58,7 @@
                     <td><input value="{{ $data['aspek-teknis'][$i]->jenis_keterampilan }}" name="jenis_keterampilan" class="form-control" type="text" /></td>
                     <td><input value="{{ $data['aspek-teknis'][$i]->nilai }}" name="nilai" class="form-control" type="text" /></td>
                     <td><input value="{{ $data['aspek-teknis'][$i]->keterangan }}" name="keterangan" class="form-control" type="text" /></td>
+                    {{ $hasilAspek += (int)$data['aspek-teknis'][$i]->nilai }}
                     <td>
                         <button class="btn btn-info">Perbarui</button>
                         <a href="{{ route('pembimbing-lapang.validasi.penilaian.go_delete_aspek_teknis', ['id_aspek_teknis' => $data['aspek-teknis'][$i]->id]) }}" class="btn btn-danger">Hapus</a>
@@ -66,7 +68,7 @@
             @endfor
             <tr>
                 <td colspan="2">Jumlah</td>
-                <td colspan="3" class="bg-success text-white">0</td>
+                <td colspan="3" class="bg-success text-white">{{ $hasilAspek }}</td>
             </tr>
             <form method="POST" action="{{ route('pembimbing-lapang.validasi.penilaian.go_save_aspek_teknis', ['id_magang_pkl' => $data['magang-pkl']->id]) }}" class="kt-form">
                 @csrf

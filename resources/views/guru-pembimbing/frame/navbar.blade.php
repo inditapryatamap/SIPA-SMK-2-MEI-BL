@@ -791,7 +791,7 @@
              <!--end: Head -->
              <!--begin: Navigation -->
              <div class="kt-notification">
-                <a href="#" class="kt-notification__item">
+               <a href="{{ route('guru-pembimbing.profile') }}" class="kt-notification__item">
                    <div class="kt-notification__item-icon">
                       <i class="flaticon2-calendar-3 kt-font-success"></i>
                    </div>

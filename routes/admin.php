@@ -14,6 +14,10 @@ Route::group(['middleware' => 'auth:admin'], function() {
     Route::prefix('admin')->group(function () {
         Route::get('/dashboard', [Admin\DashboardController::class, 'index'])->name('admin.dashboard');
 
+        Route::get('profile', [Admin\ProfileController::class, 'index'])->name('admin.profile');
+        Route::post('go_update_profile', [Admin\ProfileController::class, 'go_update_profile'])->name('admin.go_update_profile');
+
+
         Route::prefix('pengumuman')->group(function () {
             Route::get('/detail/{id_pengumuman}', [Admin\PengumumanController::class, 'detail'])->name('admin.pengumuman.detail');
             Route::post('/go_create_pengumuman', [Admin\PengumumanController::class, 'go_create_pengumuman'])->name('admin.pengumuman.go_create_pengumuman');

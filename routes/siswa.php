@@ -13,6 +13,9 @@ Route::group(['middleware' => 'auth:siswa'], function() {
     Route::prefix('siswa')->group(function () {
 
         Route::get('dashboard', [Siswa\DashboardController::class, 'index'])->name('siswa.dashboard');
+        
+        Route::get('profile', [Siswa\ProfileController::class, 'index'])->name('siswa.profile');
+        Route::post('go_update_profile', [Siswa\ProfileController::class, 'go_update_profile'])->name('siswa.go_update_profile');
 
         Route::prefix('pengumuman')->group(function () {
             Route::get('/detail/{id_pengumuman}', [Siswa\PengumumanController::class, 'detail'])->name('siswa.pengumuman.detail');

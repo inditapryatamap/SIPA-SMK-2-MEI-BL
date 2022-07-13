@@ -11,6 +11,10 @@ Route::post('/go-login-guru-pembimbing', [LoginController::class, 'goLoginGuruPe
 Route::group(['middleware' => 'auth:guru-pembimbing'], function() {
     Route::prefix('guru-pembimbing')->group(function () {
         Route::get('/dashboard', [GuruPembimbing\DashboardController::class, 'index'])->name('guru-pembimbing.dashboard');
+        
+        Route::get('profile', [GuruPembimbing\ProfileController::class, 'index'])->name('guru-pembimbing.profile');
+        Route::post('go_update_profile', [GuruPembimbing\ProfileController::class, 'go_update_profile'])->name('guru-pembimbing.go_update_profile');
+
         Route::prefix('pengumuman')->group(function () {
             Route::get('/detail/{id_pengumuman}', [GuruPembimbing\PengumumanController::class, 'detail'])->name('guru-pembimbing.pengumuman.detail');
         });

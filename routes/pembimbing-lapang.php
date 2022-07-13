@@ -24,7 +24,7 @@ Route::group(['middleware' => 'auth:pembimbing-lapang'], function() {
 
             Route::prefix('kehadiran')->group(function () {
                 Route::get('/list', [PembimbingLapang\KehadiranController::class, 'index'])->name('pembimbing-lapang.validasi.kehadiran.list');
-                Route::get('/detail/{id_pengajuan}', [PembimbingLapang\KehadiranController::class, 'detail'])->name('pembimbing-lapang.validasi.jurnal-harian.detail');
+                Route::get('/detail/{id_pengajuan}', [PembimbingLapang\KehadiranController::class, 'detail'])->name('pembimbing-lapang.validasi.kehadiran.detail');
                 Route::get('/go_validasi/{id_jurnal_harian}/{tipe}', [PembimbingLapang\KehadiranController::class, 'go_validasi'])->name('pembimbing-lapang.validasi.kehadiran.go_validasi');
             });
 

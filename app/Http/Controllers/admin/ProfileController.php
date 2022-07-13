@@ -6,6 +6,7 @@ use App\Models\Admin;
 use App\Models\Jurusan;
 use App\Models\Siswa;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
@@ -39,7 +40,7 @@ class ProfileController extends Controller
             $query = Admin::where('id', Auth::guard('admin')->user()->id)->update([
                 'nama' => $request->nama,
                 'email' => $request->email,
-                'password' => $password,
+                'password' => Hash::make($password),
             ]);
 
             if ($query) {

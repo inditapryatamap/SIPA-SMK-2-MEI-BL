@@ -6,6 +6,7 @@ use App\Models\Jurusan;
 use App\Models\PembimbingLapang;
 use App\Models\Siswa;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
@@ -39,7 +40,7 @@ class ProfileController extends Controller
             $query = PembimbingLapang::where('id', Auth::guard('pembimbing-lapang')->user()->id)->update([
                 'nama' => $request->nama,
                 'email' => $request->email,
-                'password' => $password,
+                'password' => Hash::make($password),
                 'no_telpon' => $request->no_telpon,
             ]);
 

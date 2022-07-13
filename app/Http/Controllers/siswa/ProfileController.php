@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Jurusan;
 use App\Models\Siswa;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
@@ -43,7 +44,7 @@ class ProfileController extends Controller
                 'id_jurusan' => $request->id_jurusan,
                 'nama' => $request->nama,
                 'email' => $request->email,
-                'password' => $password,
+                'password' => Hash::make($password),
                 'ttl' => $request->ttl,
                 'no_telpon' => $request->no_telpon,
             ]);

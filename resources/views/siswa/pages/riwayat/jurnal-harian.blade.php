@@ -103,7 +103,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        @if ($data['jurnal'][$i]->status_pembimbing_lapang == 0 && $data['jurnal'][$i]->status_guru_pembimbing == 0)
+                                        @if ($data['jurnal'][$i]->status_pembimbing_lapang == null && $data['jurnal'][$i]->status_guru_pembimbing == null)
                                         <button onclick="handleClickKegiatan({{ $data['jurnal'][$i] }})" class="btn btn-info">Edit</button>
                                         @endif
                                         

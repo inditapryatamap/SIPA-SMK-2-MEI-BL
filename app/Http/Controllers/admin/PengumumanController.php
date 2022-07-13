@@ -40,4 +40,17 @@ class PengumumanController extends Controller
         }
         return redirect()->back()->with(['errors' => 'Query gagal, Ada kesalahan sistem. Coba kembali beberapa saat']);
     }
+
+    public function go_delete_pengumuman($id_pengumuman)
+    {
+        if (Pengumuman::where('id', $id_pengumuman)->exists()) {
+            $query = Pengumuman::where('id', $id_pengumuman)->delete();
+
+            if ($query) {
+                return redirect()->back()->with(['success' => 'Pengumuman berhasil dihapus']);
+            }
+            return redirect()->back()->with(['errors' => 'Query gagal, Ada kesalahan sistem. Coba kembali beberapa saat']);
+        }
+        return redirect()->back()->with(['errors' => 'Pengumuman tidak ditemukan']);
+    }
 }

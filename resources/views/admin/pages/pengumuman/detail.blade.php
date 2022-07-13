@@ -10,6 +10,7 @@
                         <p>
                             {!! $data['pengumuman']->pengumuman !!}
                         </p>
+                        
                     </div>
                 </div>
             </div>

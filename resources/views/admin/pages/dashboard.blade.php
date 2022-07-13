@@ -216,7 +216,8 @@
                                     {!! $data['pengumuman'][$i]->pengumuman !!}
                                 </p> 
                             @endif
-                            <a href="{{ route('admin.pengumuman.detail', ['id_pengumuman' => $data['pengumuman'][$i]->id]) }}" >Selengkapnya</a>
+                            <a class=" mr-4" href="{{ route('admin.pengumuman.detail', ['id_pengumuman' => $data['pengumuman'][$i]->id]) }}" >Selengkapnya</a>
+                            <a href="{{ route('admin.pengumuman.go_delete_pengumuman', ['id_pengumuman' => $data['pengumuman'][$i]->id]) }}" class="text-danger">Hapus Pengumuman</a>
                         </div>
                     </div>
                 </div>

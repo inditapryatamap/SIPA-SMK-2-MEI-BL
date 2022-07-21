@@ -73,14 +73,14 @@
             <form method="POST" action="{{ route('admin.perusahaan.go_create_perusahaan') }}" class="kt-form" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Ubah Kegiatan</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Tambah Perusahaan</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12 mb-4">
-                            <label class="label-input">Kegiatan</label>
+                            <label class="label-input">Pembimbing Lapang</label>
                             <select name="id_pembimbing_lapang" class="form-control">
                                 @for ($i = 0; $i < count($data['guru_pembimbing']); $i++)
                                     <option value="{{ $data['guru_pembimbing'][$i]->id }}">{{ $data['guru_pembimbing'][$i]->nama }}</option>

@@ -57,7 +57,7 @@ class ValidasiController extends Controller
         )
         ->join('pembimbing_lapang', 'pembimbing_lapang.id', 'perusahaan.id_pembimbing_lapang')->paginate(10);
 
-        $data['guru_pembimbing'] = GuruPembimbing::select('id', 'nama')->get();
+        $data['pemimbing_lapang'] = PembimbingLapang::select('id', 'nama')->get();
         return view('admin.pages.validasi.perusahaan.list', compact('data'));
     }
 

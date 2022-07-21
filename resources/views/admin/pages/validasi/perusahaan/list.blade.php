@@ -82,8 +82,8 @@
                         <div class="col-md-12 mb-4">
                             <label class="label-input">Pembimbing Lapang</label>
                             <select name="id_pembimbing_lapang" class="form-control">
-                                @for ($i = 0; $i < count($data['guru_pembimbing']); $i++)
-                                    <option value="{{ $data['guru_pembimbing'][$i]->id }}">{{ $data['guru_pembimbing'][$i]->nama }}</option>
+                                @for ($i = 0; $i < count($data['pemimbing_lapang']); $i++)
+                                    <option value="{{ $data['pemimbing_lapang'][$i]->id }}">{{ $data['pemimbing_lapang'][$i]->nama }}</option>
                                 @endfor
                             </select>
                         </div>

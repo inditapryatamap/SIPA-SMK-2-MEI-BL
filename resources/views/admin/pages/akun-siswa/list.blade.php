@@ -17,6 +17,9 @@
                         <li class="nav-item">
                             <a href="{{ route('admin.siswa.create') }}" class="nav-link active text-black" >Tambah Akun</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.siswa.export') }}" class="nav-link active text-black" >Export Data</a>
+                        </li>
                     </ul>
                 </div>
             </div>

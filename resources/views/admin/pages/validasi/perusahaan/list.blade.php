@@ -5,6 +5,7 @@
     </div>
     <div class="col-md-12">
         <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">Tambah Perusahaan</button>
+        <a href="{{ route('admin.perusahaan.export') }}" class="btn btn-success mb-3">Export Data</a>
     </div>
     <div class="col-lg-12">
         <div class="kt-portlet">

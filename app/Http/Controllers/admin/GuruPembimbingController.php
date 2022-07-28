@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\admin;
+
+use App\Exports\GuruPembimbingExport;
 use App\Http\Controllers\Controller;
 use App\Models\DokumenReview;
 use App\Models\GuruPembimbing;
@@ -9,6 +11,7 @@ use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 
 class GuruPembimbingController extends Controller
 {
@@ -105,5 +108,10 @@ class GuruPembimbingController extends Controller
             return redirect()->back()->with(['errors' => 'Query gagal, Ada kesalahan sistem. Coba kembali beberapa saat']);
         }
         return redirect()->back()->with(['errors' => 'Akun guru pembimbing tidak ditemukan']);
+    }
+
+    public function export() 
+    {
+        return Excel::download(new GuruPembimbingExport, 'Guru Pembimbing.xlsx');
     }
 }

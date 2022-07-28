@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth:admin'], function() {
             
             Route::prefix('perusahaan')->group(function () {
                 Route::get('/list', [Admin\ValidasiController::class, 'perusahaan'])->name('admin.perusahaan');
+                Route::get('/export', [Admin\ValidasiController::class, 'export'])->name('admin.perusahaan.export');
                 Route::get('/detail/{id_perusahaan}', [Admin\ValidasiController::class, 'detailPerusahaan'])->name('admin.perusahaan.detail');
                 Route::get('/go_update_status/{id_perusahaan}/{tipe}', [Admin\ValidasiController::class, 'go_update_status_perusahaan'])->name('admin.perusahaan.go_update_status');
                 Route::post('/go_create_perusahaan', [Admin\ValidasiController::class, 'go_create_perusahaan'])->name('admin.perusahaan.go_create_perusahaan');
@@ -60,6 +61,7 @@ Route::group(['middleware' => 'auth:admin'], function() {
 
         Route::prefix('siswa')->group(function () {
             Route::get('/list', [Admin\SiswaController::class, 'index'])->name('admin.siswa.list');
+            Route::get('/export', [Admin\SiswaController::class, 'export'])->name('admin.siswa.export');
             Route::get('/create', [Admin\SiswaController::class, 'create'])->name('admin.siswa.create');
             Route::get('/update/{id_siswa}', [Admin\SiswaController::class, 'update'])->name('admin.siswa.update');
             Route::post('/go_create', [Admin\SiswaController::class, 'go_create'])->name('admin.siswa.go.create');
@@ -69,6 +71,7 @@ Route::group(['middleware' => 'auth:admin'], function() {
 
         Route::prefix('guru-pembimbing')->group(function () {
             Route::get('/list', [Admin\GuruPembimbingController::class, 'index'])->name('admin.guru-pembimbing.list');
+            Route::get('/export', [Admin\GuruPembimbingController::class, 'export'])->name('admin.guru-pembimbing.export');
             Route::get('/create', [Admin\GuruPembimbingController::class, 'create'])->name('admin.guru-pembimbing.create');
             Route::get('/update/{id_guru_pembimbing}', [Admin\GuruPembimbingController::class, 'update'])->name('admin.guru-pembimbing.update');
             Route::post('/go_create', [Admin\GuruPembimbingController::class, 'go_create'])->name('admin.guru-pembimbing.go.create');
@@ -78,6 +81,7 @@ Route::group(['middleware' => 'auth:admin'], function() {
 
         Route::prefix('pembimbing-lapang')->group(function () {
             Route::get('/list', [Admin\PembimbingLapangController::class, 'index'])->name('admin.pembimbing-lapang.list');
+            Route::get('/export', [Admin\PembimbingLapangController::class, 'export'])->name('admin.pembimbing-lapang.export');
             Route::get('/create', [Admin\PembimbingLapangController::class, 'create'])->name('admin.pembimbing-lapang.create');
             Route::get('/update/{id_pembimbing_lapang}', [Admin\PembimbingLapangController::class, 'update'])->name('admin.pembimbing-lapang.update');
             Route::post('/go_create', [Admin\PembimbingLapangController::class, 'go_create'])->name('admin.pembimbing-lapang.go.create');

@@ -1,13 +1,17 @@
 <?php
 
 namespace App\Http\Controllers\admin;
+
+use App\Exports\SiswaExport;
 use App\Http\Controllers\Controller;
+use App\Imports\SiswaImport;
 use App\Models\DokumenReview;
 use App\Models\Jurusan;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SiswaController extends Controller
 {
@@ -135,5 +139,20 @@ class SiswaController extends Controller
             return redirect()->back()->with(['errors' => 'Query gagal, Ada kesalahan sistem. Coba kembali beberapa saat']);
         }
         return redirect()->back()->with(['errors' => 'Akun siswa tidak ditemukan']);
+    }
+
+    public function export() 
+    {
+        return Excel::download(new SiswaExport, 'Siswa.xlsx');
+    }
+       
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function import() 
+    {
+        Excel::import(new SiswaImport,request()->file('file'));
+               
+        return back();
     }
 }

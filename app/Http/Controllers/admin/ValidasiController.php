@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\admin;
+
+use App\Exports\PerusahaanExport;
 use App\Http\Controllers\Controller;
 use App\Models\GuruPembimbing;
 use App\Models\MagangPKL;
@@ -9,6 +11,7 @@ use App\Models\Perusahaan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ValidasiController extends Controller
 {
@@ -210,5 +213,10 @@ class ValidasiController extends Controller
             return redirect()->back()->with(['errors' => 'Query gagal, Ada kesalahan sistem. Coba kembali beberapa saat']);
         }
         return redirect()->back()->with(['errors' => 'Perusahaan tidak ditemukan']);
+    }
+
+    public function export() 
+    {
+        return Excel::download(new PerusahaanExport, 'Perusahaan.xlsx');
     }
 }

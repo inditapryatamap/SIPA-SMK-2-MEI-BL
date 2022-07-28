@@ -16,7 +16,35 @@
 <div id="kt_scrolltop" class="kt-scrolltop">
 <i class="fa fa-arrow-up"></i>
 </div>
-@include('admin.frame.script')
+@include('pembimbing-lapang.frame.script')
+<script src="./assets/js/demo1/pages/components/extended/sweetalert2.js" type="text/javascript"></script>
+<script>
+   function logout() {
+      swal.fire({
+            title: 'Apakah Anda ingin keluar SIPA ?',
+            text: "Anda harus login kembali untuk masuk ke sistem",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Keluar',
+            cancelButtonText: 'Batalkan',
+            reverseButtons: true
+      }).then(function(result){
+            if (result.value) {
+               swal.fire(
+                  'Berhasil',
+                  'Mengarahkan ke halaman login',
+                  'success'
+               )
+               window.location.href = window.location.origin + '/logout'
+            } else if (result.dismiss === 'cancel') {
+               swal.fire(
+                  'Dibatalkan',
+                  'Logout dibatalkan',
+                  'error'
+               )
+            }
+      });
+   }
+</script>
 </body>
-<!-- end::Body -->
 </html>

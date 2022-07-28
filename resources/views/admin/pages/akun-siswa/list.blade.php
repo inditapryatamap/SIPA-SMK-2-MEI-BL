@@ -37,6 +37,7 @@
                                         <th>NIS</th>
                                         <th>Nama Siswa</th>
                                         <th>Jurusan</th>
+                                        <th>Status</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -47,6 +48,7 @@
                                             <td>{{ $data['siswa'][$i]->nis }}</td>
                                             <td>{{ $data['siswa'][$i]->nama }}</td>
                                             <td>{{ $data['siswa'][$i]->nama_jurusan }}</td>
+                                            <td><span class="badge badge-primary">{{ $data['siswa'][$i]['status'] }}</span></td>
                                             <td class="text-center">
                                                 <a href="{{ route('admin.siswa.update', ['id_siswa' => $data['siswa'][$i]->id]) }}" class="btn btn-primary">Perbarui</a>
                                                 <a href="{{ route('admin.siswa.go.delete', ['id_siswa' => $data['siswa'][$i]->id]) }}" class="btn btn-danger">Hapus</a>
@@ -55,7 +57,7 @@
                                     @endfor
                                 </tbody>
                             </table>
-                            {{ $data['siswa']->links('pagination::bootstrap-5') }}
+                            {{-- {{ $data['siswa']->links('pagination::bootstrap-5') }} --}}
                         </div>
                     </div>
                 </div>

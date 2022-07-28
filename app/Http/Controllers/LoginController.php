@@ -156,13 +156,15 @@ class LoginController extends Controller
 
     public function postLogout()
     {
-        if (Auth::guard('admin')->check()) {
+        if (Auth::guard('admin')->user() != null) {
             Auth::guard('admin')->logout();
-        }else if (Auth::guard('siswa')->check()) {
+        }else if (Auth::guard('siswa')->user() != null) {
             Auth::guard('siswa')->logout();
-        } else if (Auth::guard('guru-pembimbing')->check()) {
+        } else if (Auth::guard('guru-pembimbing')->user() != null) {
             Auth::guard('guru-pembimbing')->logout();
-        } else {
+        } else if (Auth::guard('pembimbing-lapang')->user() != null) {
+            Auth::guard('pembimbing-lapang')->logout();
+        }  else {
             Auth::guard()->logout();
         }
 

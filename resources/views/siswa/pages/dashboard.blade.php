@@ -16,7 +16,9 @@
                             </span>
                         </div>
                         <span class="kt-widget24__stats kt-font-brand">
-                            {{ $data['total']['siswa'] }}
+                            <a href="{{ route('export.siswa') }}">
+                                {{ $data['total']['siswa'] }}
+                            </a>
                         </span>
                     </div>
                 </div>
@@ -35,7 +37,9 @@
                             </span>
                         </div>
                         <span class="kt-widget24__stats kt-font-warning">
-                            {{ $data['total']['pkl'] }}
+                            <a class="text-warning" href="{{ route('export.siswa') }}">
+                                {{ $data['total']['pkl'] }}
+                            </a>
                         </span>
                     </div>
                 </div>
@@ -52,7 +56,9 @@
                             </span>
                         </div>
                         <span class="kt-widget24__stats kt-font-danger">
-                            {{ $data['total']['magang'] }}
+                            <a href="{{ route('export.siswa') }}">
+                                {{ $data['total']['magang'] }}
+                            </a>
                         </span>
                     </div>
                 </div>
@@ -69,7 +75,9 @@
                             </span>
                         </div>
                         <span class="kt-widget24__stats kt-font-success">
-                            {{ $data['total']['perusahaan'] }}
+                            <a href="{{ route('export.perusahaan') }}">
+                                {{ $data['total']['perusahaan'] }}
+                            </a>
                         </span>
                     </div>
                 </div>

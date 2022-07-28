@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Imports\SiswaImport;
 use App\Models\DokumenReview;
 use App\Models\Jurusan;
+use App\Models\MagangPKL;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +18,7 @@ class SiswaController extends Controller
 {
     public function index()
     {
-        $data['siswa'] = Siswa::select(
+        $siswa = Siswa::select(
             'siswa.id',
             'siswa.id_jurusan',
             'siswa.nis',
@@ -25,7 +26,25 @@ class SiswaController extends Controller
             'jurusan.nama_jurusan',
         )
         ->join('jurusan', 'jurusan.id', 'siswa.id_jurusan')
-        ->paginate(10);
+        ->get();
+
+        // dd($siswa);
+
+        $data['siswa'] = [];
+        for ($i=0; $i < count($siswa); $i++) { 
+            $data['siswa'][$i] = $siswa[$i];
+
+            $data['siswa'][$i]['status'] = 'Belum melaksanakan PKL / Magang';
+            if (MagangPKL::where('id_siswa', $siswa[$i]->id)->exists()) {
+                $magangpkl = MagangPKL::where('id_siswa', $siswa[$i]->id)->select('jenis_kegiatan.nama_kegiatan', 'pengajuan_magang_pkl.id')->join('jenis_kegiatan', 'jenis_kegiatan.id', 'pengajuan_magang_pkl.id_jenis_kegiatan')->first();
+                $data['siswa'][$i]['status'] = 'Sedang melaksanakan ' . $magangpkl->nama_kegiatan;
+
+                if (DokumenReview::where('id_magang_pkl', $magangpkl->id)->exists()) {
+                    $data['siswa'][$i]['status'] = 'Sudah melaksanakan ' . $magangpkl->nama_kegiatan;
+                }
+            }
+        }
+
         return view('admin.pages.akun-siswa.list', compact('data'));
     }
 

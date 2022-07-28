@@ -63,218 +63,24 @@
                </a>
             </li>
             <li class="kt-menu__section ">
-               <h4 class="kt-menu__section-text">Custom</h4>
+               <h4 class="kt-menu__section-text">Fungsi Utama</h4>
                <i class="kt-menu__section-icon flaticon-more-v2"></i>
             </li>
-            {{-- <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
-               data-ktmenu-submenu-toggle="hover">
-               <a href="javascript:;"
-                  class="kt-menu__link kt-menu__toggle">
+            <li class="kt-menu__item" aria-haspopup="true">
+               <a
+                  href="{{ route('surat.list') }}" class="kt-menu__link ">
                   <span class="kt-menu__link-icon">
-                     <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                        viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                           <rect id="bound" x="0" y="0" width="24" height="24" />
-                           <rect id="Rectangle-7" fill="#000000" x="4" y="4" width="7" height="7"
-                              rx="1.5" />
-                           <path
-                              d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z"
-                              id="Combined-Shape" fill="#000000" opacity="0.3" />
+                           <rect id="bound" x="0" y="0" width="24" height="24"></rect>
+                           <path d="M13.6855025,18.7082217 C15.9113859,17.8189707 18.682885,17.2495635 22,17 C22,16.9325178 22,13.1012863 22,5.50630526 L21.9999762,5.50630526 C21.9999762,5.23017604 21.7761292,5.00632908 21.5,5.00632908 C21.4957817,5.00632908 21.4915635,5.00638247 21.4873465,5.00648922 C18.658231,5.07811173 15.8291155,5.74261533 13,7 C13,7.04449645 13,10.79246 13,18.2438906 L12.9999854,18.2438906 C12.9999854,18.520041 13.2238496,18.7439052 13.5,18.7439052 C13.5635398,18.7439052 13.6264972,18.7317946 13.6855025,18.7082217 Z" id="Combined-Shape" fill="#000000"></path>
+                           <path d="M10.3144829,18.7082217 C8.08859955,17.8189707 5.31710038,17.2495635 1.99998542,17 C1.99998542,16.9325178 1.99998542,13.1012863 1.99998542,5.50630526 L2.00000925,5.50630526 C2.00000925,5.23017604 2.22385621,5.00632908 2.49998542,5.00632908 C2.50420375,5.00632908 2.5084219,5.00638247 2.51263888,5.00648922 C5.34175439,5.07811173 8.17086991,5.74261533 10.9999854,7 C10.9999854,7.04449645 10.9999854,10.79246 10.9999854,18.2438906 L11,18.2438906 C11,18.520041 10.7761358,18.7439052 10.4999854,18.7439052 C10.4364457,18.7439052 10.3734882,18.7317946 10.3144829,18.7082217 Z" id="Path-41-Copy" fill="#000000" opacity="0.3"></path>
                         </g>
                      </svg>
                   </span>
-                  <span class="kt-menu__link-text">Applications</span><i
-                     class="kt-menu__ver-arrow la la-angle-right"></i>
+                  <span class="kt-menu__link-text">Buat Surat</span>
                </a>
-               <div class="kt-menu__submenu ">
-                  <span class="kt-menu__arrow"></span>
-                  <ul class="kt-menu__subnav">
-                     <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span
-                        class="kt-menu__link"><span
-                        class="kt-menu__link-text">Applications</span></span></li>
-                     <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
-                        data-ktmenu-submenu-toggle="hover">
-                        <a href="javascript:;"
-                           class="kt-menu__link kt-menu__toggle"><i
-                           class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
-                           class="kt-menu__link-text">Users</span><i
-                           class="kt-menu__ver-arrow la la-angle-right"></i></a>
-                        <div class="kt-menu__submenu ">
-                           <span class="kt-menu__arrow"></span>
-                           <ul class="kt-menu__subnav">
-                              <li class="kt-menu__item " aria-haspopup="true"><a
-                                 href="demo1/custom/apps/user/list-default.html"
-                                 class="kt-menu__link "><i
-                                 class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
-                                 class="kt-menu__link-text">List - Default</span></a>
-                              </li>
-                              <li class="kt-menu__item " aria-haspopup="true"><a
-                                 href="demo1/custom/apps/user/list-datatable.html"
-                                 class="kt-menu__link "><i
-                                 class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
-                                 class="kt-menu__link-text">List - Datatable</span></a>
-                              </li>
-                              <li class="kt-menu__item " aria-haspopup="true"><a
-                                 href="demo1/custom/apps/user/list-columns-1.html"
-                                 class="kt-menu__link "><i
-                                 class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
-                                 class="kt-menu__link-text">List - Columns - 1</span></a>
-                              </li>
-                              <li class="kt-menu__item " aria-haspopup="true"><a
-                                 href="demo1/custom/apps/user/list-columns-2.html"
-                                 class="kt-menu__link "><i
-                                 class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
-                                 class="kt-menu__link-text">List - Columns - 2</span></a>
-                              </li>
-                              <li class="kt-menu__item " aria-haspopup="true"><a
-                                 href="demo1/custom/apps/user/add-user.html"
-                                 class="kt-menu__link "><i
-                                 class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
-                                 class="kt-menu__link-text">Add User</span></a></li>
-                              <li class="kt-menu__item " aria-haspopup="true"><a
-                                 href="demo1/custom/apps/user/edit-user.html"
-                                 class="kt-menu__link "><i
-                                 class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
-                                 class="kt-menu__link-text">Edit User</span></a></li>
-                              <li class="kt-menu__item  kt-menu__item--submenu"
-                                 aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
-                                 <a
-                                    href="javascript:;" class="kt-menu__link kt-menu__toggle"><i
-                                    class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
-                                    class="kt-menu__link-text">Profile 1</span><i
-                                    class="kt-menu__ver-arrow la la-angle-right"></i></a>
-                                 <div class="kt-menu__submenu ">
-                                    <span
-                                       class="kt-menu__arrow"></span>
-                                    <ul class="kt-menu__subnav">
-                                       <li class="kt-menu__item " aria-haspopup="true"><a
-                                          href="demo1/custom/apps/user/profile-1/overview.html"
-                                          class="kt-menu__link "><i
-                                          class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
-                                          class="kt-menu__link-text">Overview</span></a>
-                                       </li>
-                                       <li class="kt-menu__item " aria-haspopup="true"><a
-                                          href="demo1/custom/apps/user/profile-1/personal-information.html"
-                                          class="kt-menu__link "><i
-                                          class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
-                                          class="kt-menu__link-text">Personal
-                                          Information</span></a>
-                                       </li>
-                                       <li class="kt-menu__item " aria-haspopup="true"><a
-                                          href="demo1/custom/apps/user/profile-1/account-information.html"
-                                          class="kt-menu__link "><i
-                                          class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
-                                          class="kt-menu__link-text">Account
-                                          Information</span></a>
-                                       </li>
-                                       <li class="kt-menu__item " aria-haspopup="true"><a
-                                          href="demo1/custom/apps/user/profile-1/change-password.html"
-                                          class="kt-menu__link "><i
-                                          class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
-                                          class="kt-menu__link-text">Change
-                                          Password</span></a>
-                                       </li>
-                                       <li class="kt-menu__item " aria-haspopup="true"><a
-                                          href="demo1/custom/apps/user/profile-1/email-settings.html"
-                                          class="kt-menu__link "><i
-                                          class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
-                                          class="kt-menu__link-text">Email
-                                          Settings</span></a>
-                                       </li>
-                                    </ul>
-                                 </div>
-                              </li>
-                              <li class="kt-menu__item " aria-haspopup="true"><a
-                                 href="demo1/custom/apps/user/profile-2.html"
-                                 class="kt-menu__link "><i
-                                 class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
-                                 class="kt-menu__link-text">Profile 2</span></a></li>
-                              <li class="kt-menu__item " aria-haspopup="true"><a
-                                 href="demo1/custom/apps/user/profile-3.html"
-                                 class="kt-menu__link "><i
-                                 class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
-                                 class="kt-menu__link-text">Profile 3</span></a></li>
-                              <li class="kt-menu__item " aria-haspopup="true"><a
-                                 href="demo1/custom/apps/user/profile-4.html"
-                                 class="kt-menu__link "><i
-                                 class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
-                                 class="kt-menu__link-text">Profile 4</span></a></li>
-                           </ul>
-                        </div>
-                     </li>
-                     <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
-                        data-ktmenu-submenu-toggle="hover">
-                        <a href="javascript:;"
-                           class="kt-menu__link kt-menu__toggle"><i
-                           class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
-                           class="kt-menu__link-text">Contacts</span><i
-                           class="kt-menu__ver-arrow la la-angle-right"></i></a>
-                        <div class="kt-menu__submenu ">
-                           <span class="kt-menu__arrow"></span>
-                           <ul class="kt-menu__subnav">
-                              <li class="kt-menu__item " aria-haspopup="true"><a
-                                 href="demo1/custom/apps/contacts/list-columns.html"
-                                 class="kt-menu__link "><i
-                                 class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
-                                 class="kt-menu__link-text">List - Columns</span></a>
-                              </li>
-                              <li class="kt-menu__item " aria-haspopup="true"><a
-                                 href="demo1/custom/apps/contacts/list-datatable.html"
-                                 class="kt-menu__link "><i
-                                 class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
-                                 class="kt-menu__link-text">List - Datatable</span></a>
-                              </li>
-                              <li class="kt-menu__item " aria-haspopup="true"><a
-                                 href="demo1/custom/apps/contacts/view-contact.html"
-                                 class="kt-menu__link "><i
-                                 class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
-                                 class="kt-menu__link-text">View Contact</span></a></li>
-                              <li class="kt-menu__item " aria-haspopup="true"><a
-                                 href="demo1/custom/apps/contacts/add-contact.html"
-                                 class="kt-menu__link "><i
-                                 class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
-                                 class="kt-menu__link-text">Add Contact</span></a></li>
-                              <li class="kt-menu__item " aria-haspopup="true"><a
-                                 href="demo1/custom/apps/contacts/edit-contact.html"
-                                 class="kt-menu__link "><i
-                                 class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
-                                 class="kt-menu__link-text">Edit Contact</span></a></li>
-                           </ul>
-                        </div>
-                     </li>
-                     <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
-                        data-ktmenu-submenu-toggle="hover">
-                        <a href="javascript:;"
-                           class="kt-menu__link kt-menu__toggle"><i
-                           class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
-                           class="kt-menu__link-text">Chat</span><i
-                           class="kt-menu__ver-arrow la la-angle-right"></i></a>
-                        <div class="kt-menu__submenu ">
-                           <span class="kt-menu__arrow"></span>
-                           <ul class="kt-menu__subnav">
-                              <li class="kt-menu__item " aria-haspopup="true"><a
-                                 href="demo1/custom/apps/chat/private.html"
-                                 class="kt-menu__link "><i
-                                 class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
-                                 class="kt-menu__link-text">Private</span></a></li>
-                              <li class="kt-menu__item " aria-haspopup="true"><a
-                                 href="demo1/custom/apps/chat/group.html"
-                                 class="kt-menu__link "><i
-                                 class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
-                                 class="kt-menu__link-text">Group</span></a></li>
-                              <li class="kt-menu__item " aria-haspopup="true"><a
-                                 href="demo1/custom/apps/chat/popup.html"
-                                 class="kt-menu__link "><i
-                                 class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
-                                 class="kt-menu__link-text">Popup</span></a></li>
-                           </ul>
-                        </div>
-                     </li>
-                  </ul>
-               </div>
-            </li> --}}
+            </li>
             <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
                data-ktmenu-submenu-toggle="hover">
                <a href="javascript:;"
@@ -313,38 +119,14 @@
                         class="kt-menu__link "><i
                         class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
                         class="kt-menu__link-text">Perusahaan</span></a></li>
+                     <li class="kt-menu__item " aria-haspopup="true"><a
+                        href="{{ route('siswa.dokumen.list') }}"
+                        class="kt-menu__link "><i
+                        class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
+                        class="kt-menu__link-text">Unggah Laporan</span></a>
+                     </li>
                   </ul>
                </div>
-            </li>
-            <li class="kt-menu__item" aria-haspopup="true">
-               <a
-                  href="{{ route('surat.list') }}" class="kt-menu__link ">
-                  <span class="kt-menu__link-icon">
-                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
-                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                           <rect id="bound" x="0" y="0" width="24" height="24"></rect>
-                           <path d="M13.6855025,18.7082217 C15.9113859,17.8189707 18.682885,17.2495635 22,17 C22,16.9325178 22,13.1012863 22,5.50630526 L21.9999762,5.50630526 C21.9999762,5.23017604 21.7761292,5.00632908 21.5,5.00632908 C21.4957817,5.00632908 21.4915635,5.00638247 21.4873465,5.00648922 C18.658231,5.07811173 15.8291155,5.74261533 13,7 C13,7.04449645 13,10.79246 13,18.2438906 L12.9999854,18.2438906 C12.9999854,18.520041 13.2238496,18.7439052 13.5,18.7439052 C13.5635398,18.7439052 13.6264972,18.7317946 13.6855025,18.7082217 Z" id="Combined-Shape" fill="#000000"></path>
-                           <path d="M10.3144829,18.7082217 C8.08859955,17.8189707 5.31710038,17.2495635 1.99998542,17 C1.99998542,16.9325178 1.99998542,13.1012863 1.99998542,5.50630526 L2.00000925,5.50630526 C2.00000925,5.23017604 2.22385621,5.00632908 2.49998542,5.00632908 C2.50420375,5.00632908 2.5084219,5.00638247 2.51263888,5.00648922 C5.34175439,5.07811173 8.17086991,5.74261533 10.9999854,7 C10.9999854,7.04449645 10.9999854,10.79246 10.9999854,18.2438906 L11,18.2438906 C11,18.520041 10.7761358,18.7439052 10.4999854,18.7439052 C10.4364457,18.7439052 10.3734882,18.7317946 10.3144829,18.7082217 Z" id="Path-41-Copy" fill="#000000" opacity="0.3"></path>
-                        </g>
-                     </svg>
-                  </span>
-                  <span class="kt-menu__link-text">Buat Surat</span>
-               </a>
-            </li>
-            <li class="kt-menu__item" aria-haspopup="true">
-               <a
-                  href="{{ route('siswa.dokumen.list') }}" class="kt-menu__link ">
-                  <span class="kt-menu__link-icon">
-                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
-                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                           <rect id="bound" x="0" y="0" width="24" height="24"></rect>
-                           <rect id="Rectangle-7" fill="#000000" opacity="0.3" x="4" y="5" width="16" height="6" rx="1.5"></rect>
-                           <rect id="Rectangle-7-Copy" fill="#000000" x="4" y="13" width="16" height="6" rx="1.5"></rect>
-                        </g>
-                     </svg>
-                  </span>
-                  <span class="kt-menu__link-text">Unggah Dokumen</span>
-               </a>
             </li>
             <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
                data-ktmenu-submenu-toggle="hover">
@@ -405,8 +187,7 @@
                <i class="kt-menu__section-icon flaticon-more-v2"></i>
             </li>
             <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true">
-               <a
-                  href="{{ route('logout') }}" class="kt-menu__link ">
+               <span onclick="logout()" class="kt-menu__link ">
                   <span class="kt-menu__link-icon">
                      <svg
                         xmlns="http://www.w3.org/2000/svg"

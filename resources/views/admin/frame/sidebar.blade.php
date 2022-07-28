@@ -350,8 +350,7 @@
                <i class="kt-menu__section-icon flaticon-more-v2"></i>
             </li>
             <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true">
-               <a
-                  href="{{ route('logout') }}" class="kt-menu__link ">
+               <span onclick="logout()" class="kt-menu__link ">
                   <span class="kt-menu__link-icon">
                      <svg
                         xmlns="http://www.w3.org/2000/svg"

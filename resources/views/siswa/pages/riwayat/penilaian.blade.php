@@ -150,23 +150,33 @@
         </div>
     </div>  
     @else
-    <div class="col-lg-12 mb-3">
-        <div class="card radius-10">
-            <div class="card-body">
-                <h4 class="text-black font-bold">Penilaian</h4>
-                <p class="text-black mb-3">Hasil kegiatan yang sudah dilakukan</p>
-                <form method="GET" action="{{ route('riwayat.penilaian.list') }}">
-                    <label class="label-input">Kegiatan</label>
-                    <select class="form-control" name="magang-pkl">
-                        @for ($i = 0; $i < count($data['magang_pkl']); $i++)
-                            <option value={{ $data['magang_pkl'][$i]->id }}>{{ $data['magang_pkl'][$i]->jenis_kegiatan }} di {{ $data['magang_pkl'][$i]->nama_perusahaan }}</option>
-                        @endfor
-                    </select>
-                    <button class="btn btn-primary mt-2">Tampilkan</button>
-                </form>
+    
+        @if (count($data['magang_pkl']) > 0)
+            <div class="col-lg-12 mb-3">
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <h4 class="text-black font-bold">Penilaian</h4>
+                        <p class="text-black mb-3">Hasil kegiatan yang sudah dilakukan</p>
+                        <form method="GET" action="{{ route('riwayat.penilaian.list') }}">
+                            <label class="label-input">Kegiatan</label>
+                            <select class="form-control" name="magang-pkl">
+                                @for ($i = 0; $i < count($data['magang_pkl']); $i++)
+                                    <option value={{ $data['magang_pkl'][$i]->id }}>{{ $data['magang_pkl'][$i]->jenis_kegiatan }} di {{ $data['magang_pkl'][$i]->nama_perusahaan }}</option>
+                                @endfor
+                            </select>
+                            <button class="btn btn-primary mt-2">Tampilkan</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+        @else
+            <div class="col-lg-12">
+                <div class="kt-portlet">
+                    @include('not-found')
+                </div>
+            </div>
+        @endif
+   
     @endif
 </div>
 @include('siswa.frame.footer')

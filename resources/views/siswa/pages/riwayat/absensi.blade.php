@@ -3,6 +3,7 @@
     <div class="col-lg-12">
         @include('flash')
     </div>
+    @if (count($data['magang_pkl']) > 0)
     <div class="col-lg-12 mb-3">
         <div class="card radius-10">
             <div class="card-body">
@@ -20,6 +21,14 @@
             </div>
         </div>
     </div>
+    @else
+        <div class="col-lg-12">
+            <div class="kt-portlet">
+                @include('not-found')
+            </div>
+        </div>
+    @endif
+   
     @if (!empty($data['absensi']))
     <div class="col-md-12">
         <div class="kt-portlet">

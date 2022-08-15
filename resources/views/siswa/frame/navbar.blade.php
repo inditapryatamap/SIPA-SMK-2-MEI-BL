@@ -805,8 +805,8 @@
                    </div>
                 </a>
                 <div class="kt-notification__custom kt-space-between">
-                   <a href="demo1/custom/user/login-v2.html" target="_blank"
-                      class="btn btn-label btn-label-brand btn-sm btn-bold">Keluar</a>
+                   <span onclick="logout()" target="_blank"
+                      class="btn btn-label btn-label-brand btn-sm btn-bold">Keluar</span>
                 </div>
              </div>
              <!--end: Navigation -->

@@ -74,5 +74,7 @@
             </tbody>
         </table>
     </div>
-    <button type="submit" class="btn btn-primary">Simpan</button>
+    @if (count($data['surat-keterangan']) > 0)
+        <button type="submit" class="btn btn-primary">Simpan</button>
+    @endif
 </form>

@@ -72,7 +72,7 @@ class PengajuanController extends Controller
 
     public function pengajuan_perusahaan()
     {
-        $data['perusahaan'] = Perusahaan::get();
+        $data['perusahaan'] = Perusahaan::orderBy('id', 'DESC')->get();
         return view('siswa.pages.pengajuan_perusahaan', compact('data'));
     }
 

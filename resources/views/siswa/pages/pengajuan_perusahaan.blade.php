@@ -86,7 +86,15 @@
                                             <td>{{ $data['perusahaan'][$i]->no_telp }}</td>
                                             <td>{{ $data['perusahaan'][$i]->profile_perusahaan }}</td>
                                             <td>{{ $data['perusahaan'][$i]->deskripsi_pekerjaan }}</td>
-                                            <td><div class="badge badge-primary">Menunggu</div></td>
+                                            <td>
+                                                @if ($data['perusahaan'][$i]->status === 'diverifikasi')
+                                                    <span class="badge badge-success">{{ strtoupper($data['perusahaan'][$i]->status) }}</span>
+                                                @elseif ($data['perusahaan'][$i]->status === 'ditolak')
+                                                    <span class="badge badge-danger">{{ strtoupper($data['perusahaan'][$i]->status) }}</span>
+                                                @else
+                                                    <span class="badge badge-info">{{ strtoupper($data['perusahaan'][$i]->status) }}</span>
+                                                @endif
+                                            </td>
                                             <td><button class="btn btn-danger">Hapus</button></td>
                                         </tr>
                                     @endfor

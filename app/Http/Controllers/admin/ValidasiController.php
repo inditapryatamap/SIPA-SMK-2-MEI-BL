@@ -87,7 +87,7 @@ class ValidasiController extends Controller
             'no_telp' => $request->no_telp,
             'deskripsi_pekerjaan' => $request->deskripsi_pekerjaan,
             'status' => 'diverifikasi',
-            'created_by' => Auth::guard('admin')->user()->id
+            // 'created_by' => Auth::guard('admin')->user()->id
         ]);
 
         if ($query) {
@@ -98,21 +98,40 @@ class ValidasiController extends Controller
 
     public function detailPerusahaan($id_perusahaan)
     {
-        $data['perusahaan'] = Perusahaan::select(
-            'perusahaan.id',
-            'perusahaan.nama_perusahaan',
-            'perusahaan.alamat_perusahaan',
-            'perusahaan.profile_perusahaan',
-            'perusahaan.deskripsi_pekerjaan',
-            'perusahaan.status',
-            'perusahaan.no_telp',
-            'pembimbing_lapang.nama as nama_pembimbing',
-            'siswa.nama as nama_siswa',
-        )
-        ->where('perusahaan.id', $id_perusahaan)
-        ->join('pembimbing_lapang', 'pembimbing_lapang.id', 'perusahaan.id_pembimbing_lapang')
-        ->join('siswa', 'siswa.id', 'perusahaan.created_by')
-        ->first();
+        $created_by = Perusahaan::select('created_by')->where('perusahaan.id', $id_perusahaan)->first()->created_by;
+        if ($created_by != null) {
+            $data['perusahaan'] = Perusahaan::select(
+                'perusahaan.id',
+                'perusahaan.nama_perusahaan',
+                'perusahaan.alamat_perusahaan',
+                'perusahaan.profile_perusahaan',
+                'perusahaan.deskripsi_pekerjaan',
+                'perusahaan.status',
+                'perusahaan.no_telp',
+                'pembimbing_lapang.nama as nama_pembimbing',
+                'siswa.nama as nama_siswa',
+            )
+            ->where('perusahaan.id', $id_perusahaan)
+            ->join('pembimbing_lapang', 'pembimbing_lapang.id', 'perusahaan.id_pembimbing_lapang')
+            ->join('siswa', 'siswa.id', 'perusahaan.created_by')
+            ->first();
+        } else {
+            $data['perusahaan'] = Perusahaan::select(
+                'perusahaan.id',
+                'perusahaan.nama_perusahaan',
+                'perusahaan.alamat_perusahaan',
+                'perusahaan.profile_perusahaan',
+                'perusahaan.deskripsi_pekerjaan',
+                'perusahaan.status',
+                'perusahaan.no_telp',
+                'pembimbing_lapang.nama as nama_pembimbing',
+            )
+            ->where('perusahaan.id', $id_perusahaan)
+            ->join('pembimbing_lapang', 'pembimbing_lapang.id', 'perusahaan.id_pembimbing_lapang')
+            ->first();
+            $data['perusahaan']['nama_siswa'] = 'Admin';
+        }
+        
 
         return view('admin.pages.validasi.perusahaan.detail', compact('data'));
     }

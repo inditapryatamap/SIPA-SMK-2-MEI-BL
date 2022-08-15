@@ -23,7 +23,7 @@
                         <input type="password" name="password" class="form-control">
                     </div>
                     <div class="mb-4 text-right">
-                        <a class="text-white" href="">Lupa Password ?</a>
+                        <a class="text-white" href="{{ route('forgot_password') }}">Lupa Password ?</a>
                     </div>
                     @error('password')
                         <span class="invalid-feedback" role="alert">

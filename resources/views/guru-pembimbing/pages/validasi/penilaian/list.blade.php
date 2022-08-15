@@ -1,4 +1,4 @@
-@include('pembimbing-lapang.frame.header')
+@include('guru-pembimbing.frame.header')
 <div class="row">
     <div class="col-lg-12">
         @include('flash')
@@ -59,4 +59,4 @@
         </div>
     </div>
 </div>
-@include('pembimbing-lapang.frame.footer')
+@include('guru-pembimbing.frame.footer')

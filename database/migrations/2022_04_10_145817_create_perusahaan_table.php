@@ -22,11 +22,11 @@ return new class extends Migration
             $table->string('no_telp');
             $table->text('deskripsi_pekerjaan');
             $table->enum('status', ['diproses', 'diverifikasi', 'ditolak'])->comment('diproses', 'diverifikasi', 'ditolak')->default('diproses');
-            $table->unsignedBigInteger('created_by');
+            $table->integer('created_by')->nullable();
             $table->timestamps();
 
             $table->foreign('id_pembimbing_lapang')->references('id')->on('pembimbing_lapang')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('created_by')->references('id')->on('siswa')->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreign('created_by')->references('id')->on('siswa')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

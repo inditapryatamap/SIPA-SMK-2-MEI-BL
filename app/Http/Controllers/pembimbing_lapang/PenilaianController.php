@@ -167,6 +167,7 @@ class PenilaianController extends Controller
             'id_magang_pkl' => $id_pengajuan,
             'keterampilan' => $request->keterampilan,
             'indikator_keberhasilan' => $request->indikator_keberhasilan,
+            'status' => 0,
         ]);
 
         if ($query) {
@@ -292,7 +293,7 @@ class PenilaianController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'jenis_keterampilan' => ['required', 'string'],
-            'nilai' => ['required', 'string'],
+            'nilai' => ['required', 'integer'],
             'keterangan' => ['required', 'string'],
         ]);
 

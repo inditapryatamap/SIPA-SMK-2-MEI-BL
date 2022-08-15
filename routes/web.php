@@ -10,6 +10,8 @@ Route::get('/logout', [LoginController::class, 'postLogout'])->name('logout');
 Route::get('/', [LandingController::class, 'index'])->name('/');
 Route::get('/contact', [LandingController::class, 'contact'])->name('contact');
 Route::get('/faq', [LandingController::class, 'faq'])->name('faq');
+Route::get('/forgot-password', [LandingController::class, 'forgot_password'])->name('forgot_password');
+Route::post('/go-forgot-password', [LandingController::class, 'go_forgot_password'])->name('go_forgot_password');
 
 
 

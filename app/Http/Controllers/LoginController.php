@@ -87,7 +87,6 @@ class LoginController extends Controller
                 $request->session()->regenerate();
                 return redirect()->route('siswa.dashboard');
             } else {
-                $this->incrementLoginAttempts($request);
                 return redirect()
                     ->back()
                     ->withInput()
@@ -115,7 +114,6 @@ class LoginController extends Controller
                 // $this->clearLoginAttempts($request);
                 return redirect()->route('guru-pembimbing.dashboard');
             } else {
-                // $this->incrementLoginAttempts($request);
                 return redirect()
                     ->back()
                     ->withInput()

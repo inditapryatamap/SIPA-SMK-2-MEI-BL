@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Interfaces\admin\DashboardRepositoryInterface;
+use App\Interfaces\Admin\DashboardRepositoryInterface;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -17,7 +17,8 @@ class DashboardController extends Controller
 
     public function index(Request $request)
     {
-        $data = $this->dashboardRepository->detailDashboard($request->all());
-        return view('admin.pages.dashboard', compact('data'));
+        return view('admin.pages.dashboard', 
+            ["data" => $this->dashboardRepository->detailDashboard($request->all())]
+        );
     }
 }

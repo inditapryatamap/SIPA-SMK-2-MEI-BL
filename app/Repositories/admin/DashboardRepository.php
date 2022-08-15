@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories\admin;
+namespace App\Repositories\Admin;
 
-use App\Interfaces\admin\DashboardRepositoryInterface;
+use App\Interfaces\Admin\DashboardRepositoryInterface;
 use App\Models\KuesionerJawaban;
 use App\Models\MagangPKL;
 use App\Models\Pengumuman;

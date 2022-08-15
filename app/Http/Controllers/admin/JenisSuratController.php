@@ -2,21 +2,25 @@
 
 namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
-use App\Models\DokumenReview;
-use App\Models\GuruPembimbing;
+use App\Interfaces\Admin\JenisSuratRepositoryInterface;
 use App\Models\JenisSurat;
-use App\Models\Kegiatan;
-use App\Models\Siswa;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class JenisSuratController extends Controller
 {
+    private JenisSuratRepositoryInterface $jenisSuratRepository;
+
+    public function __construct(JenisSuratRepositoryInterface $jenisSuratRepository) 
+    {
+        $this->jenisSuratRepository = $jenisSuratRepository;
+    }
+
     public function index()
     {
-        $data['jenis-surat'] = JenisSurat::paginate(10);
-        return view('admin.pages.master-data.jenis-surat.list', compact('data'));
+        return view('admin.pages.master-data.jenis-surat.list', 
+            ["data" => $this->jenisSuratRepository->listJenisSurat()]
+        );
     }
 
     public function go_create(Request $request)
@@ -30,12 +34,7 @@ class JenisSuratController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $query = JenisSurat::create([
-            'name' => $request->name,
-            'description' => $request->description,
-        ]);
-
-        if ($query) {
+        if ($this->jenisSuratRepository->createJenisSurat($request)) {
             return redirect()->back()->with(['success' => 'Jenis surat berhasil dibuat']);
         }
         return redirect()->back()->with(['errors' => 'Query gagal, Ada kesalahan sistem. Coba kembali beberapa saat']);
@@ -53,30 +52,19 @@ class JenisSuratController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        if (JenisSurat::where('id', $request->id_jenis_surat)->exists()) {
-            $query = JenisSurat::where('id', $request->id_jenis_surat)->update([
-                'name' => $request->name,
-                'description' => $request->description,
-            ]);
-    
-            if ($query) {
-                return redirect()->back()->with(['success' => 'Jenis surat berhasil dibuat']);
-            }
-            return redirect()->back()->with(['errors' => 'Query gagal, Ada kesalahan sistem. Coba kembali beberapa saat']);
+        $query = $this->jenisSuratRepository->updateJenisSurat($request);
+
+        if ($query) {
+            return redirect()->back()->with(['success' => 'Jenis surat berhasil dibuat']);
         }
-        return redirect()->back()->with(['errors' => 'Jenis surat tidak ditemukan']);
+        return redirect()->back()->with(['errors' => 'Jenis surat tidak berhasil dibuat']);
     }
 
     public function go_delete($id_jenis_surat)
     {
-        if (JenisSurat::where('id', $id_jenis_surat)->exists()) {
-            $query = JenisSurat::where('id', $id_jenis_surat)->delete();
-
-            if ($query) {
-                return redirect()->back()->with(['success' => 'Jenis surat berhasil dihapus']);
-            }
-            return redirect()->back()->with(['errors' => 'Query gagal, Ada kesalahan sistem. Coba kembali beberapa saat']);
-        }
-        return redirect()->back()->with(['errors' => 'Jenis surat tidak ditemukan']);
+        $this->jenisSuratRepository->deleteJenisSurat($id_jenis_surat);
+        return redirect()->back()->with(
+            ['success' => 'Jenis surat berhasil dihapus']
+        );
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Exports\GuruPembimbingExport;
 use App\Http\Controllers\Controller;
+use App\Interfaces\Admin\GuruPembimbingRepositoryInterface;
 use App\Models\DokumenReview;
 use App\Models\GuruPembimbing;
 use App\Models\Jurusan;
@@ -15,10 +16,18 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class GuruPembimbingController extends Controller
 {
+    private GuruPembimbingRepositoryInterface $guruPembimbingRepository;
+
+    public function __construct(GuruPembimbingRepositoryInterface $guruPembimbingRepository) 
+    {
+        $this->guruPembimbingRepository = $guruPembimbingRepository;
+    }
+
     public function index()
     {
-        $data['guru_pembimbing'] = GuruPembimbing::paginate(10);
-        return view('admin.pages.akun-guru-pembimbing.list', compact('data'));
+        return view('admin.pages.akun-guru-pembimbing.list', 
+            ["data" => $this->guruPembimbingRepository->listGuruPembimbing()]
+        );
     }
 
     public function update($id_guru_pembimbing)

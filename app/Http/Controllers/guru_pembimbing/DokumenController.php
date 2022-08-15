@@ -29,7 +29,7 @@ class DokumenController extends Controller
         ->join('pengajuan_magang_pkl', 'pengajuan_magang_pkl.id', 'dokumen.id_magang_pkl')
         ->join('perusahaan', 'perusahaan.id', 'pengajuan_magang_pkl.id_perusahaan')
         ->join('jenis_kegiatan', 'jenis_kegiatan.id', 'pengajuan_magang_pkl.id_jenis_kegiatan')
-        ->where('tipe', $tipe)
+        ->where([['tipe', $tipe], ['pengajuan_magang_pkl.id_guru_pembimbing', Auth::guard('guru-pembimbing')->user()->id], ['pengajuan_magang_pkl.status', 'diverifikasi']])
         ->paginate(10);
         return view('guru-pembimbing.pages.dokumen.list', compact('data'));
     }

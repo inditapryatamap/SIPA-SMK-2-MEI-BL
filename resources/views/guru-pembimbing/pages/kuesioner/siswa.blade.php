@@ -5,20 +5,16 @@
     </div>
     <div class="col-lg-12">
         <div class="kt-portlet">
+            @if (count($data['user']) > 0)
             <div class="kt-portlet__head">
                 <div class="kt-portlet__head-label">
                     <h3 class="kt-portlet__head-title">
-                        Daftar Dokumen Laporan Kegiatan
+                        Daftar kuesioner yang telah dibuat siswa
                     </h3>
                 </div>
             </div>
             <div class="kt-portlet__body">
-
-                <!--begin::Section-->
                 <div class="kt-section">
-                    <div class="kt-section__info">
-                        Daftar siswa yang sudah mengumpulkan laporan kegiatan
-                    </div>
                     <div class="kt-section__content">
                         <div class="table-responsive">
                             <table class="table table-bordered">
@@ -49,11 +45,10 @@
                         </div>
                     </div>
                 </div>
-
-                <!--end::Section-->
             </div>
-
-            <!--end::Form-->
+            @else
+                @include('not-found')
+            @endif
         </div>
     </div>
 </div>

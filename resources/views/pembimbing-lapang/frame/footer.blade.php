@@ -16,6 +16,7 @@
 <div id="kt_scrolltop" class="kt-scrolltop">
 <i class="fa fa-arrow-up"></i>
 </div>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 @include('pembimbing-lapang.frame.script')
 <script src="./assets/js/demo1/pages/components/extended/sweetalert2.js" type="text/javascript"></script>
 <script>

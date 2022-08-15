@@ -35,7 +35,7 @@ class PenilaianController extends Controller
         ->join('siswa', 'siswa.id', 'pengajuan_magang_pkl.id_siswa')
         ->join('jenis_kegiatan', 'jenis_kegiatan.id', 'pengajuan_magang_pkl.id_jenis_kegiatan')
         ->join('jurusan', 'jurusan.id', 'siswa.id_jurusan')
-        ->where('perusahaan.id_pembimbing_lapang', Auth::guard('pembimbing-lapang')->user()->id)
+        ->where([['perusahaan.id_pembimbing_lapang', Auth::guard('pembimbing-lapang')->user()->id], ['pengajuan_magang_pkl.status', 'diverifikasi']])
         ->orderBy('perusahaan.nama_perusahaan', 'DESC')
         ->paginate(10);
         return view('pembimbing-lapang.pages.validasi.penilaian.list', compact('data'));

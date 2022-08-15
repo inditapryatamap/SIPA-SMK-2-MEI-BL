@@ -5,6 +5,7 @@
     </div>
     <div class="col-lg-12">
         <div class="kt-portlet">
+            @if (count($data['dokumen']) > 0)
             <div class="kt-portlet__head">
                 <div class="kt-portlet__head-label">
                     <h3 class="kt-portlet__head-title">
@@ -59,11 +60,10 @@
                         </div>
                     </div>
                 </div>
-
-                <!--end::Section-->
             </div>
-
-            <!--end::Form-->
+            @else
+                @include('not-found')
+            @endif
         </div>
     </div>
 </div>

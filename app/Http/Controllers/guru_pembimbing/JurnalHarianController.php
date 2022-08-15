@@ -25,7 +25,7 @@ class JurnalHarianController extends Controller
         ->join('siswa', 'siswa.id', 'pengajuan_magang_pkl.id_siswa')
         ->join('jurusan', 'jurusan.id', 'siswa.id_jurusan')
         ->join('jenis_kegiatan', 'jenis_kegiatan.id', 'pengajuan_magang_pkl.id_jenis_kegiatan')
-        ->where('pengajuan_magang_pkl.id_guru_pembimbing', Auth::guard('guru-pembimbing')->user()->id)
+        ->where([['pengajuan_magang_pkl.id_guru_pembimbing', Auth::guard('guru-pembimbing')->user()->id], ['pengajuan_magang_pkl.status', 'diverifikasi']])
         ->orderBy('perusahaan.nama_perusahaan', 'DESC')
         ->paginate(10);
         return view('guru-pembimbing.pages.validasi.jurnal-harian.list', compact('data'));

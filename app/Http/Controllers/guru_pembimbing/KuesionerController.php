@@ -26,6 +26,7 @@ class KuesionerController extends Controller
         ->join('siswa', 'siswa.id', 'pengajuan_magang_pkl.id_siswa')
         ->join('perusahaan', 'perusahaan.id', 'pengajuan_magang_pkl.id_perusahaan')
         ->join('jenis_kegiatan', 'jenis_kegiatan.id', 'pengajuan_magang_pkl.id_jenis_kegiatan')
+        ->where([['pengajuan_magang_pkl.id_guru_pembimbing', Auth::guard('guru-pembimbing')->user()->id], ['pengajuan_magang_pkl.status', 'diverifikasi']])
         ->paginate(10);
         return view('guru-pembimbing.pages.kuesioner.siswa', compact('data'));
     }
@@ -43,6 +44,7 @@ class KuesionerController extends Controller
         ->join('perusahaan', 'perusahaan.id', 'pengajuan_magang_pkl.id_perusahaan')
         ->join('pembimbing_lapang', 'pembimbing_lapang.id', 'perusahaan.id_pembimbing_lapang')
         ->join('jenis_kegiatan', 'jenis_kegiatan.id', 'pengajuan_magang_pkl.id_jenis_kegiatan')
+        ->where([['pengajuan_magang_pkl.id_guru_pembimbing', Auth::guard('guru-pembimbing')->user()->id], ['pengajuan_magang_pkl.status', 'diverifikasi']])
         ->paginate(10);
         return view('guru-pembimbing.pages.kuesioner.perusahaan', compact('data'));
     }

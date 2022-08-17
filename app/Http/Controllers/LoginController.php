@@ -9,6 +9,7 @@ use App\Models\Siswa;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
@@ -54,17 +55,19 @@ class LoginController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        if (Admin::where('nis', $request->nis)->count() > 0 ) {
+        if (Admin::where('nis', $request->nis)->exists()) {
+            $data = Admin::where('nis', $request->nis)->first();
+            if (!Hash::check($request->password, $data->password)) {
+                return redirect()->back()->withInput()->withErrors('Password tidak cocok');
+            }
+
             if (Auth::guard('admin')->attempt($request->only('nis', 'password'))) {
-                $request->session()->regenerate();
-                // $this->clearLoginAttempts($request);
                 return redirect()->route('admin.dashboard');
             } else {
-                // $this->incrementLoginAttempts($request);
                 return redirect()
                     ->back()
                     ->withInput()
-                    ->withErrors(["Incorrect user login details!"]);
+                    ->withErrors(["Gagal menghubungkan" . Auth::guard('admin')->attempt($request->only('nis', 'password'))]);
             }
         } else {
             return redirect()->back()->withErrors('User tidak ditemukan')->withInput();
@@ -82,15 +85,16 @@ class LoginController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        if (Siswa::where('nis', $request->nis)->count() > 0) {
+        if (Siswa::where('nis', $request->nis)->exists()) {
+            $data = Siswa::where('nis', $request->nis)->first();
+            if (!Hash::check($request->password, $data->password)) {
+                return redirect()->back()->withInput()->withErrors('Password tidak cocok');
+            }
+            
             if (Auth::guard('siswa')->attempt($request->only('nis', 'password'))) {
-                $request->session()->regenerate();
                 return redirect()->route('siswa.dashboard');
             } else {
-                return redirect()
-                    ->back()
-                    ->withInput()
-                    ->withErrors(["Incorrect user login details!"]);
+                return redirect()->back()->withInput()->withErrors(["Gagal menghubungkan" . Auth::guard('siswa')->attempt($request->only('nis', 'password'))]);
             }
         } else {
             return redirect()->back()->withErrors('User tidak ditemukan')->withInput();
@@ -108,19 +112,19 @@ class LoginController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        if (GuruPembimbing::where('nis', $request->nis)->count() > 0 ) {
+        if (GuruPembimbing::where('nis', $request->nis)->exists()) {
+            $data = GuruPembimbing::where('nis', $request->nis)->first();
+            if (!Hash::check($request->password, $data->password)) {
+                return redirect()->back()->withInput()->withErrors('Password tidak cocok');
+            }
+            
             if (Auth::guard('guru-pembimbing')->attempt($request->only('nis', 'password'))) {
-                $request->session()->regenerate();
-                // $this->clearLoginAttempts($request);
                 return redirect()->route('guru-pembimbing.dashboard');
             } else {
-                return redirect()
-                    ->back()
-                    ->withInput()
-                    ->withErrors(["Incorrect user login details!"]);
+                return redirect()->back()->withInput()->withErrors(["Gagal menghubungkan" . Auth::guard('guru-pembimbing')->attempt($request->only('nis', 'password'))]);
             }
         } else {
-            return redirect()->back()->withErrors('Guru Pembimbing tidak ditemukan')->withInput();
+            return redirect()->back()->withErrors('Guru pembimbing tidak ditemukan')->withInput();
         }
     }
 
@@ -135,20 +139,19 @@ class LoginController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        if (PembimbingLapang::where('email', $request->email)->count() > 0 ) {
+        if (PembimbingLapang::where('email', $request->email)->exists()) {
+            $data = PembimbingLapang::where('email', $request->email)->first();
+            if (!Hash::check($request->password, $data->password)) {
+                return redirect()->back()->withInput()->withErrors('Password tidak cocok');
+            }
+            
             if (Auth::guard('pembimbing-lapang')->attempt($request->only('email', 'password'))) {
-                $request->session()->regenerate();
-                // $this->clearLoginAttempts($request);
                 return redirect()->route('pembimbing-lapang.dashboard');
             } else {
-                // $this->incrementLoginAttempts($request);
-                return redirect()
-                    ->back()
-                    ->withInput()
-                    ->withErrors(["Incorrect user login details!"]);
+                return redirect()->back()->withInput()->withErrors(["Gagal menghubungkan" . Auth::guard('pembimbing-lapang')->attempt($request->only('email', 'password'))]);
             }
         } else {
-            return redirect()->back()->withErrors('Pembimbing Lapang tidak ditemukan')->withInput();
+            return redirect()->back()->withErrors('Pembimbing lapang tidak ditemukan')->withInput();
         }
     }
 

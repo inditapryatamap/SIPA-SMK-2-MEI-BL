@@ -16,11 +16,11 @@
                     @include('flash')
                     <div class="mb-4">
                         <label for="exampleFormControlInput1" class="form-label text-white">NIS</label>
-                        <input type="text" name="nis" class="form-control">
+                        <input type="text" name="nis" value="{{ old('nis') }}" class="form-control">
                     </div>
                     <div class="mb-4">
                         <label for="exampleFormControlInput1" class="form-label text-white">Password</label>
-                        <input type="password" name="password" class="form-control">
+                        <input type="password" value="{{ old('password') }}" name="password" class="form-control">
                     </div>
                     <div class="mb-4 text-right">
                         <a class="text-white" href="{{ route('forgot_password') }}">Lupa Password ?</a>

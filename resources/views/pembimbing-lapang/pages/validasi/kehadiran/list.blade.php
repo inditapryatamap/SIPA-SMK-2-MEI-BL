@@ -43,7 +43,7 @@
                                                 <td>{{ $data['magang-pkl'][$i]->nama_kegiatan }} - {{ $data['magang-pkl'][$i]->durasi }} hari</td>
                                                 <td>{{ $data['magang-pkl'][$i]->nama_perusahaan }}</td>
                                                 <td class="text-center">
-                                                    <a href="{{ route('pembimbing-lapang.validasi.jurnal-harian.detail', ['id_pengajuan' => $data['magang-pkl'][$i]->id]) }}" class="btn btn-primary">Absensi</a>
+                                                    <a href="{{ route('pembimbing-lapang.validasi.kehadiran.detail', ['id_pengajuan' => $data['magang-pkl'][$i]->id]) }}" class="btn btn-primary">Absensi</a>
                                                 </td>
                                             </tr>
                                         @endfor

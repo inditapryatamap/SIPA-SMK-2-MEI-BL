@@ -28,16 +28,18 @@ class ValidasiController extends Controller
             'siswa.nama',
             'siswa.nis',
             'jurusan.nama_jurusan',
+            // 'guru_pembimbing.nama as nama_guru_pembimbing',
         )
         ->join('perusahaan', 'perusahaan.id', 'pengajuan_magang_pkl.id_perusahaan')
         ->join('siswa', 'siswa.id', 'pengajuan_magang_pkl.id_siswa')
+        // ->join('guru_pembimbing', 'guru_pembimbing.id', 'pengajuan_magang_pkl.id_guru_pembimbing')
         ->join('jenis_kegiatan', 'jenis_kegiatan.id', 'pengajuan_magang_pkl.id_jenis_kegiatan')
         ->join('jurusan', 'jurusan.id', 'siswa.id_jurusan')
         ->paginate(10);
 
         for ($i=0; $i < count($data['magang-pkl']); $i++) { 
             if ($data['magang-pkl'][$i]->id_guru_pembimbing != null) {
-                $data['magang-pkl'][$i]->pembimbing_nama = PembimbingLapang::select('nama')->where('id', $data['magang-pkl'][$i]->id_guru_pembimbing)->first()->nama;
+                $data['magang-pkl'][$i]->pembimbing_nama = GuruPembimbing::select('nama')->where('id', $data['magang-pkl'][$i]->id_guru_pembimbing)->first()->nama;
             } else {
                 $data['magang-pkl'][$i]->pembimbing_nama = 'Belum Ditentukan';
             }

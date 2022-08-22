@@ -24,7 +24,7 @@ class SuratController extends Controller
         )
         ->join('siswa', 'siswa.id', 'surat.id_siswa')
         ->join('jenis_surat', 'jenis_surat.id', 'surat.id_jenis_surat')
-        ->paginate(1);
+        ->paginate(10);
         return view('admin.pages.surat.list', compact('data'));
     }
 

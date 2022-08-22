@@ -20,7 +20,7 @@ class SuratController extends Controller
         ->select('surat.id', 'surat.status', 'surat.file', 'surat.keterangan', 'siswa.nama as nama_siswa', 'jenis_surat.name as nama_surat')
         ->join('siswa', 'surat.id_siswa', 'siswa.id')
         ->join('jenis_surat', 'surat.id_jenis_surat', 'jenis_surat.id')
-        ->paginate(1);
+        ->paginate(10);
         return view('siswa.pages.surat.list', compact('data'));
     }
 

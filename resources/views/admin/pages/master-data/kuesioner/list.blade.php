@@ -82,7 +82,7 @@
                         <label>Untuk</label>
                         <select name="for" class="form-control">
                             <option value="siswa">Siswa</option>
-                            <option value="lapang">Pembimbing Lapang</option>
+                            <option value="lapang">Pembimbing Lapangan</option>
                         </select>
                         <span class="form-text text-muted">Pilih user untuk kuesioner ini</span>
                     </div>
@@ -133,7 +133,7 @@
                         <label>Untuk</label>
                         <select name="for" id="ed_untuk" class="form-control">
                             <option value="siswa">Siswa</option>
-                            <option value="lapang">Pembimbing Lapang</option>
+                            <option value="lapang">Pembimbing Lapangan</option>
                         </select>
                         <span class="form-text text-muted">Pilih user untuk kuesioner ini</span>
                     </div>

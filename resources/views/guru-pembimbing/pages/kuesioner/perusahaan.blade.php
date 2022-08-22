@@ -9,7 +9,7 @@
             <div class="kt-portlet__head">
                 <div class="kt-portlet__head-label">
                     <h3 class="kt-portlet__head-title">
-                        Daftar kuesioner yang telah dibuat pembimbing lapang
+                        Daftar kuesioner yang telah dibuat pembimbing lapangan
                     </h3>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Perusahaan</th>
-                                        <th>Pembimbing Lapang</th>
+                                        <th>Pembimbing Lapangan</th>
                                         <th>Jenis Kegiatan</th>
                                         <th></th>
                                     </tr>

@@ -29,7 +29,7 @@
                                     <input name="alamat_perusahaan" class="form-control" />
                                 </div>
                                 <div class="col-md-6 mb-4">
-                                    <label class="label-input">Nama Pembimbing Lapang</label>
+                                    <label class="label-input">Nama Pembimbing Lapangan</label>
                                     <input name="nama_pembimbing_lapang" class="form-control" />
                                 </div>
                                 <div class="col-md-6 mb-4">

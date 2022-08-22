@@ -9,7 +9,7 @@
             <div class="kt-portlet__head">
                 <div class="kt-portlet__head-label">
                     <h3 class="kt-portlet__head-title">
-                        Tambah Akun Pembimbing Lapang
+                        Tambah Akun Pembimbing Lapangan
                     </h3>
                 </div>
             </div>
@@ -17,7 +17,7 @@
                 @csrf
                 <div class="kt-portlet__body">
                     <div class="kt-section kt-section--first">
-                        <h3 class="kt-section__title">1. Informasi Pembimbing Lapang:</h3>
+                        <h3 class="kt-section__title">1. Informasi Pembimbing Lapangan:</h3>
                         <div class="kt-section__body">
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label">Nama:</label>

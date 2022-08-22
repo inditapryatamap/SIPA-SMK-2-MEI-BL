@@ -76,7 +76,7 @@
 
     <div class="row mt-5">
         <div class="col-md-6 text-center">
-            <p class="font-bold text-black">Pembimbing Lapang / Perusahaan</p>
+            <p class="font-bold text-black">Pembimbing Lapangan / Perusahaan</p>
             <p class="signature-enter">( ........................................................................... )</p>
         </div>
         <div class="col-md-6 text-center">

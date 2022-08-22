@@ -8,7 +8,7 @@
             <div class="kt-portlet__head">
                 <div class="kt-portlet__head-label">
                     <h3 class="kt-portlet__head-title">
-                        Daftar Pembimbing Lapang
+                        Daftar Pembimbing Lapangan
                     </h3>
                     
                 </div>
@@ -26,7 +26,7 @@
             <div class="kt-portlet__body">
                 <div class="kt-section">
                     <div class="kt-section__info">
-                        Pembimbing Lapang yang terdaftar di sistem
+                        Pembimbing Lapangan yang terdaftar di sistem
                     </div>
                     <div class="kt-section__content">
                         <div class="table-responsive">

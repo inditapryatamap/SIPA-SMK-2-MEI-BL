@@ -112,7 +112,7 @@
                                 <th>Perusahaan</th>
                                 <th>Tanggal Kegiatan</th>
                                 <th>Status Absensi</th>
-                                <th>Status Pembimbing Lapang</th>
+                                <th>Status Pembimbing Lapangan</th>
                                 <th>Status Guru Pembimbing</th>
                             </tr>
                         </thead>

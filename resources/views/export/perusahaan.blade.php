@@ -77,7 +77,7 @@
                             <tr class="text-center">
                                 <th>No</th>
                                 <th>Perusahaan</th>
-                                <th>Pembimbing Lapang</th>
+                                <th>Pembimbing Lapangan</th>
                                 <th>Profile Perusahaan</th>
                                 <th>Alamat</th>
                                 <th>Nomor Telepon</th>
@@ -103,7 +103,7 @@
                             <tr class="text-center">
                                 <th>No</th>
                                 <th>Perusahaan</th>
-                                <th>Pembimbing Lapang</th>
+                                <th>Pembimbing Lapangan</th>
                                 <th>Profile Perusahaan</th>
                                 <th>Alamat</th>
                                 <th>Nomor Telepon</th>

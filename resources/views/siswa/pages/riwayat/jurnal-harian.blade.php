@@ -69,7 +69,7 @@
                                 <th>Tanggal Kegiatan</th>
                                 <th>Kegiatan</th>
                                 <th>Validasi Guru Pembimbing</th>
-                                <th>Validasi Pembimbing Lapang</th>
+                                <th>Validasi Pembimbing Lapangan</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>

@@ -26,7 +26,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Perusahaan</th>
-                                        <th>Pembimbing Lapang</th>
+                                        <th>Pembimbing Lapangan</th>
                                         <th>Jenis Kegiatan</th>
                                         <th></th>
                                     </tr>

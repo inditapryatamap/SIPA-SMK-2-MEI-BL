@@ -230,7 +230,7 @@
                         </g>
                     </svg>
                   </span>
-                  <span class="kt-menu__link-text">Pembimbing Lapang</span>
+                  <span class="kt-menu__link-text">Pembimbing Lapangan</span>
                </a>
             </li>
             <li class="kt-menu__section ">

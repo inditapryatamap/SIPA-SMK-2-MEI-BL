@@ -38,7 +38,7 @@
                                 <span class="kt-widget__data text-center">{{ $data['perusahaan']->no_telp }}</span>
                             </div>
                             <div class="container-detail-pekerjaan mt-5">
-                                <h5 class="mb-3">Nama Pembimbing Lapang</h5>
+                                <h5 class="mb-3">Nama Pembimbing Lapangan</h5>
                                 <span class="kt-widget__data text-center">{{ $data['perusahaan']->nama_pembimbing }}</span>
                             </div>
                             <div class="container-detail-pekerjaan mt-5">

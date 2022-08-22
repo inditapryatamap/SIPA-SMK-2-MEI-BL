@@ -81,7 +81,7 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12 mb-4">
-                            <label class="label-input">Pembimbing Lapang</label>
+                            <label class="label-input">Pembimbing Lapangan</label>
                             <select name="id_pembimbing_lapang" class="form-control">
                                 @for ($i = 0; $i < count($data['pemimbing_lapang']); $i++)
                                     <option value="{{ $data['pemimbing_lapang'][$i]->id }}">{{ $data['pemimbing_lapang'][$i]->nama }}</option>

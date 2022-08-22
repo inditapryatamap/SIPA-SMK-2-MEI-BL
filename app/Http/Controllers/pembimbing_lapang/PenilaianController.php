@@ -38,6 +38,7 @@ class PenilaianController extends Controller
         ->where([['perusahaan.id_pembimbing_lapang', Auth::guard('pembimbing-lapang')->user()->id], ['pengajuan_magang_pkl.status', 'diverifikasi']])
         ->orderBy('perusahaan.nama_perusahaan', 'DESC')
         ->paginate(10);
+        
         return view('pembimbing-lapang.pages.validasi.penilaian.list', compact('data'));
     }
 

@@ -34,10 +34,13 @@ Route::group(['middleware' => 'auth:admin'], function() {
             
             Route::prefix('perusahaan')->group(function () {
                 Route::get('/list', [Admin\ValidasiController::class, 'perusahaan'])->name('admin.perusahaan');
+                Route::get('/update/{id_perusahaan}', [Admin\ValidasiController::class, 'update'])->name('admin.perusahaan.update');
                 Route::get('/export', [Admin\ValidasiController::class, 'export'])->name('admin.perusahaan.export');
                 Route::get('/detail/{id_perusahaan}', [Admin\ValidasiController::class, 'detailPerusahaan'])->name('admin.perusahaan.detail');
                 Route::get('/go_update_status/{id_perusahaan}/{tipe}', [Admin\ValidasiController::class, 'go_update_status_perusahaan'])->name('admin.perusahaan.go_update_status');
                 Route::post('/go_create_perusahaan', [Admin\ValidasiController::class, 'go_create_perusahaan'])->name('admin.perusahaan.go_create_perusahaan');
+                Route::post('/go_update_perusahaan/{id_perusahaan}', [Admin\ValidasiController::class, 'go_update_perusahaan'])->name('admin.perusahaan.go_update_perusahaan');
+                Route::get('/go_delete_perusahaan/{id_perusahaan}', [Admin\ValidasiController::class, 'go_delete_perusahaan'])->name('admin.perusahaan.go_delete_perusahaan');
             });
 
         });

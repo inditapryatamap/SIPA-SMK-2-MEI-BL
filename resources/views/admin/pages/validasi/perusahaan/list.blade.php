@@ -54,7 +54,11 @@
                                                     <span class="badge badge-info">{{ strtoupper($data['perusahaan'][$i]->status) }}</span>
                                                 @endif
                                             </td>
-                                            <td><a href="{{ route('admin.perusahaan.detail', ['id_perusahaan' => $data['perusahaan'][$i]->id]) }}" class="btn btn-success">Detail</a></td>
+                                            <td style="width: 260px" class="text-center">
+                                                <a href="{{ route('admin.perusahaan.detail', ['id_perusahaan' => $data['perusahaan'][$i]->id]) }}" class="btn btn-success">Detail</a>
+                                                <a href="{{ route('admin.perusahaan.update', ['id_perusahaan' => $data['perusahaan'][$i]->id]) }}" class="btn btn-primary">Ubah</a>
+                                                <a href="{{ route('admin.perusahaan.go_delete_perusahaan', ['id_perusahaan' => $data['perusahaan'][$i]->id]) }}" class="btn btn-danger">Hapus</a>
+                                            </td>
                                         </tr>
                                     @endfor
                                 </tbody>

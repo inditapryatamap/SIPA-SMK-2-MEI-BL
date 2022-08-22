@@ -138,6 +138,50 @@ class ValidasiController extends Controller
         return view('admin.pages.validasi.perusahaan.detail', compact('data'));
     }
 
+    public function update($id_perusahaan)
+    {
+        $data['perusahaan'] = Perusahaan::select(
+            'perusahaan.*',
+            'pembimbing_lapang.nama',
+        )
+        ->join('pembimbing_lapang', 'pembimbing_lapang.id', 'perusahaan.id_pembimbing_lapang')
+        ->where('perusahaan.id', $id_perusahaan)->first();
+
+        $data['pemimbing_lapang'] = PembimbingLapang::select('id', 'nama')->get();
+
+        return view('admin.pages.validasi.perusahaan.update', compact('data'));
+    }
+
+    public function go_update_perusahaan(Request $request, $id_perusahaan)
+    {
+        $validator = Validator::make($request->all(), [
+            'id_pembimbing_lapang' => ['required', 'string'],
+            'nama_perusahaan' => ['required', 'string'],
+            'profile_perusahaan' => ['required', 'string'],
+            'alamat_perusahaan' => ['required', 'string'],
+            'no_telp' => ['required', 'string'],
+            'deskripsi_pekerjaan' => ['required', 'string'],
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $query = Perusahaan::where('id', $id_perusahaan)->update([
+            'id_pembimbing_lapang' => $request->id_pembimbing_lapang,
+            'nama_perusahaan' => $request->nama_perusahaan,
+            'profile_perusahaan' => $request->profile_perusahaan,
+            'alamat_perusahaan' => $request->alamat_perusahaan,
+            'no_telp' => $request->no_telp,
+            'deskripsi_pekerjaan' => $request->deskripsi_pekerjaan,
+        ]);
+
+        if ($query) {
+            return redirect()->back()->with(['success' => 'Perusahaan berhasil diperbarui']);
+        }
+        return redirect()->back()->with(['errors' => 'Query gagal, Ada kesalahan sistem. Coba kembali beberapa saat']);
+    }
+
     public function detailMagangPKL($id_pengajuan)
     {
         $data['pengajuan'] = MagangPKL::select(
@@ -239,5 +283,15 @@ class ValidasiController extends Controller
     public function export() 
     {
         return Excel::download(new PerusahaanExport, 'Perusahaan.xlsx');
+    }
+
+    public function go_delete_perusahaan($id)
+    {
+        $query = Perusahaan::where('id', $id)->delete();
+
+        if ($query) {
+            return redirect()->back()->with(['success' => 'Status perusahaan berhasil diperbarui']);
+        }
+        return redirect()->back()->with(['errors' => 'Query gagal, Ada kesalahan sistem. Coba kembali beberapa saat']);
     }
 }

@@ -36,7 +36,7 @@ class ProfileController extends Controller
         if ($request->password == null) {
             $password = Auth::guard('siswa')->user()->password;
         } else {
-            $password = $request->password;
+            $password = Hash::make($request->password);
         }
 
         if (Siswa::where('id', Auth::guard('siswa')->user()->id)->exists()) {
@@ -44,7 +44,7 @@ class ProfileController extends Controller
                 'id_jurusan' => $request->id_jurusan,
                 'nama' => $request->nama,
                 'email' => $request->email,
-                'password' => Hash::make($password),
+                'password' => $password,
                 'ttl' => $request->ttl,
                 'no_telpon' => $request->no_telpon,
             ]);

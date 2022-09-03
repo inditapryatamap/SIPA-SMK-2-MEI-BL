@@ -34,14 +34,14 @@ class ProfileController extends Controller
         if ($request->password == null) {
             $password = Auth::guard('guru-pembimbing')->user()->password;
         } else {
-            $password = $request->password;
+            $password = Hash::make($request->password);
         }
 
         if (GuruPembimbing::where('id', Auth::guard('guru-pembimbing')->user()->id)->exists()) {
             $query = GuruPembimbing::where('id', Auth::guard('guru-pembimbing')->user()->id)->update([
                 'nama' => $request->nama,
                 'email' => $request->email,
-                'password' => Hash::make($password),
+                'password' => $password,
                 'no_telpon' => $request->no_telpon,
             ]);
 

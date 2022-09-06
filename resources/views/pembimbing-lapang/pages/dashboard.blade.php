@@ -38,7 +38,7 @@
                             </span>
                         </div>
                         <span class="kt-widget24__stats kt-font-warning">
-                            <a class="text-warning" href="{{ route('export.siswa') }}">
+                            <a class="text-warning" href="{{ url('export/siswa?type=pkl') }}">
                                 {{ $data['total']['pkl'] }}
                             </a>
                         </span>
@@ -57,7 +57,7 @@
                             </span>
                         </div>
                         <span class="kt-widget24__stats kt-font-danger">
-                            <a href="{{ route('export.siswa') }}">
+                            <a href="{{ url('export/siswa?type=magang') }}">
                                 {{ $data['total']['magang'] }}
                             </a>
                         </span>

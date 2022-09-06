@@ -34,7 +34,7 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Nama Siswa</th>
+                                        <th>Nama Pembimbing Lapangan</th>
                                         <th>Email</th>
                                         <th>Nomor Telepon</th>
                                         <th></th>

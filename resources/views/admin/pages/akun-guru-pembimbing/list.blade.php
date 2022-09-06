@@ -35,7 +35,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>NIS</th>
-                                        <th>Nama Siswa</th>
+                                        <th>Nama Guru Pembimbing</th>
                                         <th>Email</th>
                                         <th></th>
                                     </tr>

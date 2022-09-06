@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ExportController extends Controller
 {
-    public function siswa()
+    public function siswa(Request $request)
     {
         $data['button_export'] = false;
         if (Auth::guard('admin')->user() != null) {
@@ -19,6 +19,7 @@ class ExportController extends Controller
         }
         
         $siswa = Siswa::select(
+            "siswa.id", 
             "siswa.nama", 
             "siswa.nis",
             "jurusan.nama_jurusan",
@@ -30,19 +31,35 @@ class ExportController extends Controller
         ->get();
 
         $data['siswa'] = [];
+        // dd($siswa);
         for ($i=0; $i < count($siswa); $i++) { 
-            $data['siswa'][$i] = $siswa[$i];
+            
 
-            $data['siswa'][$i]['status'] = 'Belum melaksanakan PKL / Magang';
+            if ($request['type'] != 'magang' && $request['type'] != 'pkl') {
+                $data['siswa'][$i] = $siswa[$i];
+                $data['siswa'][$i]['status'] = 'Belum melaksanakan PKL / Magang';
+            }
             if (MagangPKL::where('id_siswa', $siswa[$i]->id)->exists()) {
-                $magangpkl = MagangPKL::where('id_siswa', $siswa[$i]->id)->select('jenis_kegiatan.nama_kegiatan', 'pengajuan_magang_pkl.id')->join('jenis_kegiatan', 'jenis_kegiatan.id', 'pengajuan_magang_pkl.id_jenis_kegiatan')->first();
-                $data['siswa'][$i]['status'] = 'Sedang melaksanakan ' . $magangpkl->nama_kegiatan;
+                // dd('a');
 
-                if (DokumenReview::where('id_magang_pkl', $magangpkl->id)->exists()) {
+                $magangpkl = MagangPKL::where('id_siswa', $siswa[$i]->id)->select('jenis_kegiatan.nama_kegiatan', 'pengajuan_magang_pkl.id')->join('jenis_kegiatan', 'jenis_kegiatan.id', 'pengajuan_magang_pkl.id_jenis_kegiatan')->first();
+                
+                if ($magangpkl->nama_kegiatan == 'Praktik Kerja Lapangan - PKL' && $request['type'] == 'pkl') {
+                    $data['siswa'][$i] = $siswa[$i];
+                    $data['siswa'][$i]['status'] = 'Sedang melaksanakan ' . $magangpkl->nama_kegiatan;
+                } else if ($magangpkl->nama_kegiatan == 'Magang' && $request['type'] == 'magang') {
+                    $data['siswa'][$i] = $siswa[$i];
+                    $data['siswa'][$i]['status'] = 'Sedang melaksanakan ' . $magangpkl->nama_kegiatan;
+                }
+                
+                if (DokumenReview::where('id_magang_pkl', $magangpkl->id)->exists() && $request['type'] != 'magang' && $request['type'] != 'pkl') {
+                    $data['siswa'][$i] = $siswa[$i];
                     $data['siswa'][$i]['status'] = 'Sudah melaksanakan ' . $magangpkl->nama_kegiatan;
                 }
             }
         }
+
+        $data['siswa'] = array_values($data['siswa']);
         return view('export.siswa', compact('data'));
     }
 

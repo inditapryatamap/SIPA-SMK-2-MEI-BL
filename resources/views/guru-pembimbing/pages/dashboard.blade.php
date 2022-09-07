@@ -202,7 +202,7 @@
                                             <div class="cor mb-4" style="width: 100%">
                                                 <div class="diws">
                                                     <h6>{{ $data['rekomendasi'][$i]->nama_perusahaan }}</h6>
-                                                    <h6>{{ $data['rekomendasi'][$i]->total }}</h6>
+                                                    {{-- <h6>{{ $data['rekomendasi'][$i]->total }}</h6> --}}
                                                 </div>
                                                 
                                                 <div class="progress" style="width: 100%">
@@ -213,7 +213,7 @@
                                             <div class="cor mb-4" style="width: 100%">
                                                 <div class="diws">
                                                     <h6>{{ $data['rekomendasi'][$i]->nama_perusahaan }}</h6>
-                                                    <h6>{{ $data['rekomendasi'][$i]->total }}</h6>
+                                                    {{-- <h6>{{ $data['rekomendasi'][$i]->total }}</h6> --}}
                                                 </div>
                                                 <div class="progress" style="width: 100%">
                                                     <div class="progress-bar" role="progressbar" style="width: {{ number_format((float)$percent, 2, '.', '') }}%; background: #FF8A00" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -222,8 +222,8 @@
                                         @elseif ($i === 2)
                                             <div class="cor" style="width: 100%">
                                                 <div class="diws">
-                                                    <h6>Raja Komputer</h6>
-                                                    <h6>50</h6>
+                                                    <h6>{{ $data['rekomendasi'][$i]->nama_perusahaan }}</h6>
+                                                    {{-- <h6>50</h6> --}}
                                                 </div>
                                                 <div class="progress" style="width: 100%">
                                                     <div class="progress-bar" role="progressbar" style="width: {{ number_format((float)$percent, 2, '.', '') }}%; background: #FF0000" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>

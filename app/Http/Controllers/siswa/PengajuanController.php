@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\siswa;
 
 use App\Http\Controllers\Controller;
+use App\Models\GuruPembimbing;
 use App\Models\JenisKegiatan;
 use App\Models\Jurusan;
 use App\Models\MagangPKL;
@@ -34,7 +35,7 @@ class PengajuanController extends Controller
 
         for ($i=0; $i < count($data['magang_pkl']); $i++) { 
             if ($data['magang_pkl'][$i]->id_guru_pembimbing != null) {
-                $data['magang_pkl'][$i]->nama_pembimbing = PembimbingLapang::select('nama')->where('id', $data['magang_pkl'][$i]->id_guru_pembimbing)->first()->nama;
+                $data['magang_pkl'][$i]->nama_pembimbing = GuruPembimbing::select('nama')->where('id', $data['magang_pkl'][$i]->id_guru_pembimbing)->first()->nama;
             } else {
                 $data['magang_pkl'][$i]->nama_pembimbing = null;
             }

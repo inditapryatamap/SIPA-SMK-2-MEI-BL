@@ -63,6 +63,7 @@
                             <div class="kt-wizard-v1__content" data-ktwizard-type="step-content" data-ktwizard-state="current">
                                 <div class="kt-form__section kt-form__section--first">
                                     @if ($data['dokumen_individu'] != null)
+                                    
                                         <h6>Dokumen <span class="text-success">sudah pernah</span> diupload, lihat detail dokumen <a href="{{ route('siswa.dokumen.detail', ['id_dokumen' => $data['dokumen_individu']->id]) }}">disini</a></h6>
                                     @else
                                         <div class="kt-wizard-v1__form">
@@ -119,7 +120,7 @@
                             <div class="kt-wizard-v1__content" data-ktwizard-type="step-content" data-ktwizard-state="current">
                                 <div class="kt-form__section kt-form__section--first">
                                     @if ($data['dokumen_kelompok'] != null)
-                                        <h6>Dokumen <span class="text-success">sudah pernah</span> diupload, lihat detail dokumen <a href="{{ route('siswa.dokumen.detail', ['id_dokumen' => $data['dokumen_individu']->id]) }}">disini</a></h6>
+                                        <h6>Dokumen <span class="text-success">sudah pernah</span> diupload, lihat detail dokumen <a href="{{ route('siswa.dokumen.detail', ['id_dokumen' => $data['dokumen_kelompok']->id]) }}">disini</a></h6>
                                     @else
                                         <div class="kt-wizard-v1__form">
                                             <div class="form-group">

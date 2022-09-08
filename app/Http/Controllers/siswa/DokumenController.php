@@ -39,6 +39,8 @@ class DokumenController extends Controller
             )
             ->where([['dokumen.id_magang_pkl', $request['id_magang_pkl']], ['tipe', 'kelompok']])
             ->first();
+
+            // dd($data);
         } else {
             $data['id_magang_pkl'] = null;
         }
